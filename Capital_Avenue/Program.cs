@@ -2,6 +2,7 @@ namespace Capital_Avenue
 {
     internal static class Program
     {
+        public static CAWindow PageHome;
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
@@ -11,7 +12,8 @@ namespace Capital_Avenue
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new CAWindow());
+            PageHome = new CAWindow();
+            Application.Run(PageHome);
         }
     }
 }
