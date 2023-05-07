@@ -23,6 +23,9 @@ namespace Capital_Avenue.Models
             this.Loyer = loyer;
         }
 
-
+        internal static void payLoyer()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

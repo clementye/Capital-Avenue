@@ -14,15 +14,23 @@ namespace Capital_Avenue.Models
 
         public int Capital { get; set; }
 
-        List<String> OwnedProperties;
 
-        List<String> Cards;
+        /*List<String> OwnedProperties;
 
-        public void addPlayer(string name, string pawn, int capital)
+        List<String> Cards;*/
+
+        public CLPlayer(string name, string pawn, int capital) 
         {
             Name = name;
             Pawn = pawn;
             Capital = capital;
         }
+
+        /*public void addPlayer(string name, string pawn, int capital)
+        {
+            Name = name;
+            Pawn = pawn;
+            Capital = capital;
+        }*/
     }
 }
