@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using Capital_Avenue.Models;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Capital_Avenue.Views
 {
@@ -18,8 +20,6 @@ namespace Capital_Avenue.Views
         public UCEnterPlayer()
         {
             InitializeComponent();
-
-
         }
 
         private void UCEnterPlayer_Load(object sender, EventArgs e)
@@ -33,9 +33,26 @@ namespace Capital_Avenue.Views
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            String Name = Joueur1.Text;
-            Program.PageHome.NextPage(new UCMonopoly());
+            // j'appuie sur ENTER après avoir remplis les champs
+            // je dois :
+            // => valider les champs !
+            // si NOK : affichage des erreurs (par une fonction dédié)
+            // else : récupération des champs, et initialisation de la partie avec les valeurs fournis
 
+            if (Player1.Text.Length > 0) // TODO add other test to validate view
+            {
+                CLPlayer p = new CLPlayer(Player1.Text, "Voiture", 1);
+                CLPlayer p2 = new CLPlayer(Player2.Text, "Chaussure", 1);
+                List<CLPlayer> playerList = new List<CLPlayer>();
+                playerList.Add(p);
+                playerList.Add(p2);
+                Game newGame = new Game(playerList);
+                Program.PageHome.NextPage(new UCMonopoly(newGame));
+            }
+            else
+            {
+                // TODO display errors in view
+            }
         }
 
 

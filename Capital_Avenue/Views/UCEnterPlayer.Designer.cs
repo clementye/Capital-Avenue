@@ -32,11 +32,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCEnterPlayer));
             label1 = new Label();
             label2 = new Label();
-            Joueur1 = new TextBox();
+            Player1 = new TextBox();
             button1 = new Button();
             Avatar = new Label();
             comboBox1 = new ComboBox();
             imageList1 = new ImageList(components);
+            Player2 = new TextBox();
+            label3 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -61,17 +63,17 @@
             label2.TabIndex = 1;
             label2.Text = "Joueur 1 :";
             // 
-            // Joueur1
+            // Player1
             // 
-            Joueur1.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            Joueur1.Location = new Point(290, 127);
-            Joueur1.Name = "Joueur1";
-            Joueur1.Size = new Size(201, 51);
-            Joueur1.TabIndex = 2;
+            Player1.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
+            Player1.Location = new Point(290, 127);
+            Player1.Name = "Player1";
+            Player1.Size = new Size(201, 51);
+            Player1.TabIndex = 2;
             // 
             // button1
             // 
-            button1.Location = new Point(336, 242);
+            button1.Location = new Point(337, 360);
             button1.Name = "button1";
             button1.Size = new Size(139, 46);
             button1.TabIndex = 3;
@@ -109,15 +111,35 @@
             imageList1.Images.SetKeyName(0, "token_green.png");
             imageList1.Images.SetKeyName(1, "token_2");
             // 
+            // Player2
+            // 
+            Player2.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
+            Player2.Location = new Point(290, 216);
+            Player2.Name = "Player2";
+            Player2.Size = new Size(201, 51);
+            Player2.TabIndex = 6;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(159, 228);
+            label3.Name = "label3";
+            label3.Size = new Size(134, 34);
+            label3.TabIndex = 7;
+            label3.Text = "Joueur 2 :";
+            // 
             // UCEnterPlayer
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
+            Controls.Add(label3);
+            Controls.Add(Player2);
             Controls.Add(comboBox1);
             Controls.Add(Avatar);
             Controls.Add(button1);
-            Controls.Add(Joueur1);
+            Controls.Add(Player1);
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "UCEnterPlayer";
@@ -131,10 +153,12 @@
 
         private Label label1;
         private Label label2;
-        private TextBox Joueur1;
+        private TextBox Player1;
         private Button button1;
         private Label Avatar;
         private ComboBox comboBox1;
         private ImageList imageList1;
+        private TextBox Player2;
+        private Label label3;
     }
 }

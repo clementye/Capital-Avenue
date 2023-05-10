@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Capital_Avenue.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,10 +15,13 @@ namespace Capital_Avenue.Views
     public partial class UCMonopoly : UserControl
     {
         private string hexPlay1 = "#6aff2d";
-
-        public UCMonopoly()
+        private Game currentGame;
+        private LeftUCPanel UCLeftPanel;
+        public UCMonopoly(Game game)
         {
             InitializeComponent();
+            this.currentGame = game;
+
             this.Dock = DockStyle.Fill;
             this.addPlayerPanel();
 
@@ -26,9 +31,17 @@ namespace Capital_Avenue.Views
 
         public void addPlayerPanel()
         {
-            LeftUCPanel lucp = new LeftUCPanel();
-            lucp.Size = new Size(500, 840);
-            this.Controls.Add(lucp);
+            UCLeftPanel = new LeftUCPanel(currentGame.playerList);
+            UCLeftPanel.Size = new Size(500, 840);
+            this.Controls.Add(UCLeftPanel);
+            
+        }
+
+        public void onDiceClick()
+        {
+            // je lance les dés, je réfresh l'affichage, je déplace l'icone du joueur, j'actualise le monde.
+
+            UCLeftPanel.UpdateValues();
         }
         public void UserControl(string name)
         {
