@@ -94,7 +94,6 @@
             pictureBox1.Size = new Size(644, 582);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
             // 
             // Case10
             // 
