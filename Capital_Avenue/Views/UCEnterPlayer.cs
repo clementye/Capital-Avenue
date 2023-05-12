@@ -42,11 +42,14 @@ namespace Capital_Avenue.Views
             if (Player1.Text.Length > 0) // TODO add other test to validate view
             {
                 CLPlayer p = new CLPlayer(Player1.Text, "Voiture", 1);
+                CLPawn pa = new CLPawn("Voiture", Player1.Text);
                 CLPlayer p2 = new CLPlayer(Player2.Text, "Chaussure", 1);
                 List<CLPlayer> playerList = new List<CLPlayer>();
+                List<CLPawn> pawnList = new List<CLPawn>();
                 playerList.Add(p);
                 playerList.Add(p2);
-                Game newGame = new Game(playerList);
+                pawnList.Add(pa);
+                Game newGame = new Game(playerList, pawnList);
                 Program.PageHome.NextPage(new UCMonopoly(newGame));
             }
             else

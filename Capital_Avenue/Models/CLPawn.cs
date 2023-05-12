@@ -6,15 +6,17 @@ using System.Threading.Tasks;
 
 namespace Capital_Avenue.Models
 {
-    internal class CLPawn
+    public class CLPawn
     {
         public string Name { get; set; }
         public int Index { get; set; }
+        public string Player { get; set; }
         internal int modifiedPosition = 0;
 
-        public CLPawn(string name) 
+        public CLPawn(string name, string player) 
         { 
             Name = name;
+            Player = player;
             Index = 0;
         }
 
@@ -30,6 +32,11 @@ namespace Capital_Avenue.Models
                 modifiedPosition = modifiedPosition - 40;
             }
             return Index = modifiedPosition;
+        }
+
+        public void updatePosition(int newIndex)
+        {
+            this.Index = newIndex;
         }
     }
 }

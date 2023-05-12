@@ -14,9 +14,10 @@ namespace Capital_Avenue.Views
 {
     public partial class UCMonopoly : UserControl
     {
-        
+
         private Game currentGame;
         private LeftUCPanel UCLeftPanel;
+        private UCPawn UCPawn;
         public UCMonopoly(Game game)
         {
             InitializeComponent();
@@ -24,6 +25,7 @@ namespace Capital_Avenue.Views
 
             this.Dock = DockStyle.Fill;
             this.addPlayerPanel();
+            this.addPawnPanel();
 
             /*this.Size = Screen.PrimaryScreen.WorkingArea.Size;
             this.Location = Screen.PrimaryScreen.WorkingArea.Location; */
@@ -34,7 +36,17 @@ namespace Capital_Avenue.Views
             UCLeftPanel = new LeftUCPanel(currentGame.playerList);
             UCLeftPanel.Size = new Size(500, 840);
             this.Controls.Add(UCLeftPanel);
-            
+
+        }
+
+        public void addPawnPanel()
+        {
+            foreach (CLPawn p in currentGame.pawnList)
+            {
+                UCPawn = new UCPawn(p);
+                UCPawn.Size = new Size(40, 40);
+                this.Controls.Add(UCPawn);
+            }
         }
 
         public void onDiceClick()
