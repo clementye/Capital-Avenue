@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,8 +21,9 @@ namespace Capital_Avenue.Views
         {
             //throw new NotImplementedException();
             PictureBox pb = new PictureBox();
-            pb.ImageLocation = "F:\\Users\\Pc\\Documents\\Devoir\\Intech\\S03\\Projet\\capital-avenue\\Capital_Avenue\\Content\\" + pawn.Name + ".png";
+            pb.ImageLocation = "..\\capital-avenue\\Capital_Avenue\\Content\\"+ pawn.Name +".png";
             pb.Size = new Size(40,40);
+            pb.BringToFront();
         }
     }
 }

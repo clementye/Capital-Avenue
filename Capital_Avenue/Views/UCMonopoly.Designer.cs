@@ -76,6 +76,8 @@
             Case37 = new Panel();
             Case38 = new Panel();
             Case39 = new Panel();
+            onDice = new Button();
+            onBankrupt = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             Case12.SuspendLayout();
             panel21.SuspendLayout();
@@ -98,6 +100,7 @@
             // 
             // Case10
             // 
+            Case10.Anchor = AnchorStyles.Right;
             Case10.Location = new Point(309, 8);
             Case10.Margin = new Padding(3, 2, 3, 2);
             Case10.Name = "Case10";
@@ -106,6 +109,7 @@
             // 
             // Case20
             // 
+            Case20.Anchor = AnchorStyles.Right;
             Case20.Location = new Point(723, 8);
             Case20.Margin = new Padding(3, 2, 3, 2);
             Case20.Name = "Case20";
@@ -114,6 +118,8 @@
             // 
             // Case30
             // 
+            Case30.Anchor = AnchorStyles.Right;
+            Case30.BackColor = SystemColors.ActiveCaptionText;
             Case30.Location = new Point(723, 362);
             Case30.Margin = new Padding(3, 2, 3, 2);
             Case30.Name = "Case30";
@@ -122,6 +128,7 @@
             // 
             // Case00
             // 
+            Case00.Anchor = AnchorStyles.Right;
             Case00.Location = new Point(309, 362);
             Case00.Margin = new Padding(3, 2, 3, 2);
             Case00.Name = "Case00";
@@ -130,6 +137,7 @@
             // 
             // Case29
             // 
+            Case29.Anchor = AnchorStyles.Right;
             Case29.Location = new Point(723, 328);
             Case29.Margin = new Padding(3, 2, 3, 2);
             Case29.Name = "Case29";
@@ -138,6 +146,7 @@
             // 
             // Case28
             // 
+            Case28.Anchor = AnchorStyles.Right;
             Case28.Location = new Point(723, 298);
             Case28.Margin = new Padding(3, 2, 3, 2);
             Case28.Name = "Case28";
@@ -146,6 +155,7 @@
             // 
             // Case27
             // 
+            Case27.Anchor = AnchorStyles.Right;
             Case27.Location = new Point(723, 263);
             Case27.Margin = new Padding(3, 2, 3, 2);
             Case27.Name = "Case27";
@@ -154,6 +164,7 @@
             // 
             // Case26
             // 
+            Case26.Anchor = AnchorStyles.Right;
             Case26.Location = new Point(723, 228);
             Case26.Margin = new Padding(3, 2, 3, 2);
             Case26.Name = "Case26";
@@ -162,6 +173,7 @@
             // 
             // Case25
             // 
+            Case25.Anchor = AnchorStyles.Right;
             Case25.Location = new Point(723, 193);
             Case25.Margin = new Padding(3, 2, 3, 2);
             Case25.Name = "Case25";
@@ -170,6 +182,7 @@
             // 
             // Case24
             // 
+            Case24.Anchor = AnchorStyles.Right;
             Case24.Location = new Point(723, 159);
             Case24.Margin = new Padding(3, 2, 3, 2);
             Case24.Name = "Case24";
@@ -178,6 +191,7 @@
             // 
             // Case23
             // 
+            Case23.Anchor = AnchorStyles.Right;
             Case23.Location = new Point(723, 127);
             Case23.Margin = new Padding(3, 2, 3, 2);
             Case23.Name = "Case23";
@@ -186,6 +200,7 @@
             // 
             // Case22
             // 
+            Case22.Anchor = AnchorStyles.Right;
             Case22.Location = new Point(723, 91);
             Case22.Margin = new Padding(3, 2, 3, 2);
             Case22.Name = "Case22";
@@ -194,6 +209,7 @@
             // 
             // Case21
             // 
+            Case21.Anchor = AnchorStyles.Right;
             Case21.Location = new Point(723, 64);
             Case21.Margin = new Padding(3, 2, 3, 2);
             Case21.Name = "Case21";
@@ -202,6 +218,7 @@
             // 
             // Case11
             // 
+            Case11.Anchor = AnchorStyles.Right;
             Case11.Location = new Point(375, 8);
             Case11.Margin = new Padding(3, 2, 3, 2);
             Case11.Name = "Case11";
@@ -210,6 +227,7 @@
             // 
             // Case12
             // 
+            Case12.Anchor = AnchorStyles.Right;
             Case12.Controls.Add(panel21);
             Case12.Location = new Point(410, 8);
             Case12.Margin = new Padding(3, 2, 3, 2);
@@ -245,6 +263,7 @@
             // 
             // Case14
             // 
+            Case14.Anchor = AnchorStyles.Right;
             Case14.Location = new Point(486, 8);
             Case14.Margin = new Padding(3, 2, 3, 2);
             Case14.Name = "Case14";
@@ -253,6 +272,7 @@
             // 
             // Case15
             // 
+            Case15.Anchor = AnchorStyles.Right;
             Case15.Location = new Point(527, 8);
             Case15.Margin = new Padding(3, 2, 3, 2);
             Case15.Name = "Case15";
@@ -261,6 +281,7 @@
             // 
             // Case16
             // 
+            Case16.Anchor = AnchorStyles.Right;
             Case16.Location = new Point(565, 8);
             Case16.Margin = new Padding(3, 2, 3, 2);
             Case16.Name = "Case16";
@@ -269,6 +290,7 @@
             // 
             // Case17
             // 
+            Case17.Anchor = AnchorStyles.Right;
             Case17.Location = new Point(604, 8);
             Case17.Margin = new Padding(3, 2, 3, 2);
             Case17.Name = "Case17";
@@ -277,6 +299,7 @@
             // 
             // Case18
             // 
+            Case18.Anchor = AnchorStyles.Right;
             Case18.Location = new Point(642, 8);
             Case18.Margin = new Padding(3, 2, 3, 2);
             Case18.Name = "Case18";
@@ -285,6 +308,7 @@
             // 
             // Case19
             // 
+            Case19.Anchor = AnchorStyles.Right;
             Case19.Location = new Point(676, 8);
             Case19.Margin = new Padding(3, 2, 3, 2);
             Case19.Name = "Case19";
@@ -293,6 +317,7 @@
             // 
             // Case09
             // 
+            Case09.Anchor = AnchorStyles.Right;
             Case09.Controls.Add(panel45);
             Case09.Location = new Point(309, 64);
             Case09.Margin = new Padding(3, 2, 3, 2);
@@ -310,6 +335,7 @@
             // 
             // Case01
             // 
+            Case01.Anchor = AnchorStyles.Right;
             Case01.Controls.Add(panel43);
             Case01.Location = new Point(309, 328);
             Case01.Margin = new Padding(3, 2, 3, 2);
@@ -336,6 +362,7 @@
             // 
             // Case02
             // 
+            Case02.Anchor = AnchorStyles.Right;
             Case02.Location = new Point(309, 298);
             Case02.Margin = new Padding(3, 2, 3, 2);
             Case02.Name = "Case02";
@@ -344,6 +371,7 @@
             // 
             // Case03
             // 
+            Case03.Anchor = AnchorStyles.Right;
             Case03.Location = new Point(309, 263);
             Case03.Margin = new Padding(3, 2, 3, 2);
             Case03.Name = "Case03";
@@ -352,6 +380,7 @@
             // 
             // Case04
             // 
+            Case04.Anchor = AnchorStyles.Right;
             Case04.Location = new Point(309, 228);
             Case04.Margin = new Padding(3, 2, 3, 2);
             Case04.Name = "Case04";
@@ -360,6 +389,7 @@
             // 
             // Case05
             // 
+            Case05.Anchor = AnchorStyles.Right;
             Case05.Location = new Point(309, 193);
             Case05.Margin = new Padding(3, 2, 3, 2);
             Case05.Name = "Case05";
@@ -368,6 +398,7 @@
             // 
             // Case06
             // 
+            Case06.Anchor = AnchorStyles.Right;
             Case06.Location = new Point(309, 159);
             Case06.Margin = new Padding(3, 2, 3, 2);
             Case06.Name = "Case06";
@@ -376,6 +407,7 @@
             // 
             // Case07
             // 
+            Case07.Anchor = AnchorStyles.Right;
             Case07.Location = new Point(309, 127);
             Case07.Margin = new Padding(3, 2, 3, 2);
             Case07.Name = "Case07";
@@ -384,6 +416,7 @@
             // 
             // Case08
             // 
+            Case08.Anchor = AnchorStyles.Right;
             Case08.Location = new Point(309, 95);
             Case08.Margin = new Padding(3, 2, 3, 2);
             Case08.Name = "Case08";
@@ -392,6 +425,7 @@
             // 
             // Case13
             // 
+            Case13.Anchor = AnchorStyles.Right;
             Case13.Location = new Point(449, 8);
             Case13.Margin = new Padding(3, 2, 3, 2);
             Case13.Name = "Case13";
@@ -400,6 +434,7 @@
             // 
             // Case31
             // 
+            Case31.Anchor = AnchorStyles.Right;
             Case31.Location = new Point(682, 362);
             Case31.Margin = new Padding(3, 2, 3, 2);
             Case31.Name = "Case31";
@@ -408,6 +443,7 @@
             // 
             // Case32
             // 
+            Case32.Anchor = AnchorStyles.Right;
             Case32.Location = new Point(642, 362);
             Case32.Margin = new Padding(3, 2, 3, 2);
             Case32.Name = "Case32";
@@ -416,6 +452,7 @@
             // 
             // Case33
             // 
+            Case33.Anchor = AnchorStyles.Right;
             Case33.Location = new Point(604, 362);
             Case33.Margin = new Padding(3, 2, 3, 2);
             Case33.Name = "Case33";
@@ -424,14 +461,16 @@
             // 
             // Case34
             // 
+            Case34.Anchor = AnchorStyles.Right;
             Case34.Location = new Point(565, 362);
             Case34.Margin = new Padding(3, 2, 3, 2);
             Case34.Name = "Case34";
             Case34.Size = new Size(42, 57);
-            Case34.TabIndex = 0;
+            Case34.TabIndex = 34;
             // 
             // Case35
             // 
+            Case35.Anchor = AnchorStyles.Right;
             Case35.Location = new Point(527, 362);
             Case35.Margin = new Padding(3, 2, 3, 2);
             Case35.Name = "Case35";
@@ -440,6 +479,7 @@
             // 
             // Case36
             // 
+            Case36.Anchor = AnchorStyles.Right;
             Case36.Location = new Point(488, 362);
             Case36.Margin = new Padding(3, 2, 3, 2);
             Case36.Name = "Case36";
@@ -448,6 +488,7 @@
             // 
             // Case37
             // 
+            Case37.Anchor = AnchorStyles.Right;
             Case37.Location = new Point(452, 362);
             Case37.Margin = new Padding(3, 2, 3, 2);
             Case37.Name = "Case37";
@@ -456,6 +497,7 @@
             // 
             // Case38
             // 
+            Case38.Anchor = AnchorStyles.Right;
             Case38.Location = new Point(410, 362);
             Case38.Margin = new Padding(3, 2, 3, 2);
             Case38.Name = "Case38";
@@ -464,17 +506,40 @@
             // 
             // Case39
             // 
+            Case39.Anchor = AnchorStyles.Right;
             Case39.Location = new Point(375, 362);
             Case39.Margin = new Padding(3, 2, 3, 2);
             Case39.Name = "Case39";
             Case39.Size = new Size(37, 57);
-            Case39.TabIndex = 0;
+            Case39.TabIndex = 39;
+            // 
+            // onDice
+            // 
+            onDice.Anchor = AnchorStyles.Right;
+            onDice.Location = new Point(439, 239);
+            onDice.Name = "onDice";
+            onDice.Size = new Size(75, 23);
+            onDice.TabIndex = 40;
+            onDice.Text = "Lancer les dés";
+            onDice.UseVisualStyleBackColor = true;
+            // 
+            // onBankrupt
+            // 
+            onBankrupt.Anchor = AnchorStyles.Right;
+            onBankrupt.Location = new Point(604, 243);
+            onBankrupt.Name = "onBankrupt";
+            onBankrupt.Size = new Size(75, 23);
+            onBankrupt.TabIndex = 41;
+            onBankrupt.Text = "Faillite";
+            onBankrupt.UseVisualStyleBackColor = true;
             // 
             // UCMonopoly
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
+            Controls.Add(onBankrupt);
+            Controls.Add(onDice);
             Controls.Add(Case20);
             Controls.Add(Case21);
             Controls.Add(Case22);
@@ -579,5 +644,7 @@
         private Panel panel43;
         private Panel Case39;
         private Panel panel45;
+        private Button onDice;
+        private Button onBankrupt;
     }
 }

@@ -34,7 +34,7 @@ namespace Capital_Avenue.Views
         public void addPlayerPanel()
         {
             UCLeftPanel = new LeftUCPanel(currentGame.playerList);
-            UCLeftPanel.Size = new Size(500, 840);
+            UCLeftPanel.Size = new Size(400, 640);
             this.Controls.Add(UCLeftPanel);
 
         }
@@ -45,14 +45,23 @@ namespace Capital_Avenue.Views
             {
                 UCPawn = new UCPawn(p);
                 UCPawn.Size = new Size(40, 40);
+                UCPawn.Location = new Point(550, 100);
+                UCPawn.BringToFront();
                 this.Controls.Add(UCPawn);
+
             }
         }
 
-        public void onDiceClick()
+        public void onDice_Click()
         {
             // je lance les dés, je réfresh l'affichage, je déplace l'icone du joueur, j'actualise le monde.
+            currentGame.Action();
+            UCLeftPanel.UpdateValues();
+        }
 
+        public void onBankrupt_Click()
+        {
+            currentGame.Bankruptcy();
             UCLeftPanel.UpdateValues();
         }
         public void UserControl(string name)
