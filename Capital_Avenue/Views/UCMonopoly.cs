@@ -14,7 +14,7 @@ namespace Capital_Avenue.Views
 {
     public partial class UCMonopoly : UserControl
     {
-        private string hexPlay1 = "#6aff2d";
+       
         private Game currentGame;
         private LeftUCPanel UCLeftPanel;
         public UCMonopoly(Game game)

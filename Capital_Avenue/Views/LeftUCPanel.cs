@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -10,7 +11,7 @@ namespace Capital_Avenue.Views
 {
     public class LeftUCPanel : UserControl
     {
-        private int toto;
+ 
         private string hexPlay1 = "#6AFF2D";
         private string hexPlay2 = "#401ad6";
         private List<CLPlayer> PlayerList;
@@ -19,6 +20,7 @@ namespace Capital_Avenue.Views
             this.PlayerList = playerList;
             List<string> colors = new List<string> {
                 "#6AFF2D",
+                "#401ad6",
                 "#401ad6"
             };
             int basePosition = 100;
@@ -37,16 +39,31 @@ namespace Capital_Avenue.Views
             UserControl uc1 = new UserControl();
             Panel p1 = new Panel();
             Label l1 = new Label();
+            PictureBox picture = new PictureBox();
             l1.Text = player.Name;
             p1.Controls.Add(l1);
-            p1.BackColor = ColorTranslator.FromHtml(color);
+            p1.Controls.Add(picture);
+            //p1.BackColor = ColorTranslator.FromHtml(color);
             p1.Size = new Size(300, 120);
+            picture.Size = new Size(300, 110);
+            picture.Location = new Point(30, (p1.Height - picture.Height) / 2);
+            picture.Image =images[player.Pawn];
             uc1.Controls.Add(p1);
             uc1.Location = new Point(0, position);
-            uc1.Size = new Size(1570, 120);
+            uc1.Size = new Size(1570,150);
             this.Controls.Add(uc1);
+          
         }
-        
+        Image[] images =
+          {
+                Properties.Resources.face1,
+                Properties.Resources.face2,
+                Properties.Resources.Chapeau,
+                Properties.Resources.Cloche,
+            };
+
+
+
 
         public void UpdateValues()
         {
