@@ -14,7 +14,7 @@ namespace Capital_Avenue.Views
 {
     public partial class UCMonopoly : UserControl
     {
-        
+
         private Game currentGame;
         private LeftUCPanel UCLeftPanel;
         public UCMonopoly(Game game)
@@ -34,7 +34,7 @@ namespace Capital_Avenue.Views
             UCLeftPanel = new LeftUCPanel(currentGame.playerList);
             UCLeftPanel.Size = new Size(500, 840);
             this.Controls.Add(UCLeftPanel);
-            
+
         }
 
         public void onDiceClick()
