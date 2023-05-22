@@ -25,7 +25,7 @@ namespace Capital_Avenue.Controllers
         // - 
         // 
 
-        public Random dice = new Random();
+        /*public Random dice = new Random();
         public int DTResult;
         private int baseCapital = 1500;
         public string Name { get; set; }
@@ -62,7 +62,7 @@ namespace Capital_Avenue.Controllers
             CLPlayer Fake1 = new CLPlayer(FaPlay1Name, FaPlay1Pawn, baseCapital);
             CLPlayer Fake2 = new CLPlayer(FaPlay2Name, FaPlay2Pawn, baseCapital);
         }*/
-        public void init()
+        /*public void init()
         {
             CLPlayer Fake1 = new CLPlayer(FaPlay1Name, FaPlay1Pawn, baseCapital);
             CLPlayer Fake2 = new CLPlayer(FaPlay2Name, FaPlay2Pawn, baseCapital);
@@ -86,9 +86,9 @@ namespace Capital_Avenue.Controllers
             //return newIndex;
         }
 
-        public string OnAction(/*Pawn.Index //Devra vérif l'index du pion, soit où il se trouve. Aucune idée de comment gérer ça pour l'instant*/)
-        {
+        public string OnAction(/*Pawn.Index //Devra vérif l'index du pion, soit où il se trouve. Aucune idée de comment gérer ça pour l'instant)
+        /*{
             throw new NotImplementedException();
-        }
+        }*/
     }
 }

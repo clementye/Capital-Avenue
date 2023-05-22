@@ -10,6 +10,7 @@
         List<string> OwnedProperties { get; set; }
 
         public List<string> Cards { get; private set; }
+        public bool isBankrupt;
 
         public CLPlayer(string name, string pawn, int capital)
         {
@@ -18,6 +19,7 @@
             this.Capital = capital;
             this.OwnedProperties = new List<string>();
             this.Cards = new List<string>();
+            isBankrupt = false;
         }
         public void AddCards(string Card)
         {

@@ -1,3 +1,4 @@
+
 ﻿using Capital_Avenue.Models;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace Capital_Avenue.Views
 
         private Game currentGame;
         private LeftUCPanel UCLeftPanel;
+        private UCPawn UCPawn;
         public UCMonopoly(Game game)
         {
             InitializeComponent();
@@ -24,6 +26,7 @@ namespace Capital_Avenue.Views
 
             this.Dock = DockStyle.Fill;
             this.addPlayerPanel();
+            this.addPawnPanel();
 
             /*this.Size = Screen.PrimaryScreen.WorkingArea.Size;
             this.Location = Screen.PrimaryScreen.WorkingArea.Location; */
@@ -32,15 +35,34 @@ namespace Capital_Avenue.Views
         public void addPlayerPanel()
         {
             UCLeftPanel = new LeftUCPanel(currentGame.playerList);
-            UCLeftPanel.Size = new Size(500, 840);
+            UCLeftPanel.Size = new Size(400, 640);
             this.Controls.Add(UCLeftPanel);
 
         }
 
-        public void onDiceClick()
+        public void addPawnPanel()
+        {
+            foreach (CLPawn p in currentGame.pawnList)
+            {
+                UCPawn = new UCPawn(p);
+                UCPawn.Size = new Size(40, 40);
+                UCPawn.Location = new Point(550, 100);
+                UCPawn.BringToFront();
+                this.Controls.Add(UCPawn);
+
+            }
+        }
+
+        public void onDice_Click()
         {
             // je lance les dés, je réfresh l'affichage, je déplace l'icone du joueur, j'actualise le monde.
+            currentGame.Action();
+            UCLeftPanel.UpdateValues();
+        }
 
+        public void onBankrupt_Click()
+        {
+            currentGame.Bankruptcy();
             UCLeftPanel.UpdateValues();
         }
         public void UserControl(string name)
