@@ -53,7 +53,7 @@ namespace Capital_Avenue.Models
             }
             else if (card.Contains("Aller"))
             {   
-                if (card.Contains("Prisn"))
+                if (card.Contains("Prison"))
                 {
                     CLPawn.UpdatePosition(30);
                 }

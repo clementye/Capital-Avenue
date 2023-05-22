@@ -14,6 +14,9 @@ namespace Capital_Avenue.Models
         public int currentPlayer = 0;
         public List<CLPlayer> BankruptList { get; private set; }
 
+        public CLDice CLDice { get; private set; }
+        public CLPawn CLPawn { get; private set; }
+
         public Game(List<CLPlayer> pList, List<CLPawn> paList, List<CLPlayer> bkList)
         {
             playerList = pList;
@@ -24,12 +27,12 @@ namespace Capital_Avenue.Models
         {
             if () //Check the number of player that are bankrupt and if there is less that the total number of player-1 (so, at least 2 players still in game)
             {
-                playerList[currentPlayer].IsBankrupt = true;
+                playerList[currentPlayer].isBankrupt = true;
                 this.EndTurn();
             }
             else
             {
-                playerList[currentPlayer].IsBankrupt = true;
+                playerList[currentPlayer].isBankrupt = true;
                 this.EndTurn();
                 throw new NotImplementedException();
                 //Va surement avoir besoin de l'appel d'une autre fonction pour afficher le gagnant.
