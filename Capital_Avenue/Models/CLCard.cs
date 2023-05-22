@@ -10,6 +10,8 @@ namespace Capital_Avenue.Models
     public class CLCard : CLCase
     {
         string CardType { get; set; }
+        public CLPawn CLPawn { get; private set; }
+        public CLPlayer CLPlayer { get; private set; }
 
         public CLCard(int index, string name, string cardType) : base(index, name)
         {
@@ -20,19 +22,19 @@ namespace Capital_Avenue.Models
 
         public void OnAction()
         {
-            string newCard = this.RandomCard();
+            string newCard = this.RandomCard(CLPawn);
             this.checkCard (newCard);
         }
 
-        public string RandomCard() //Faudra remplacer les magic numbers par deux liste, une pour la position des chances, et une autre pour l'autre cas. Cela simplifiera le tout.
+        public string RandomCard(CLPawn pawn) //Faudra remplacer les magic numbers par deux liste, une pour la position des chances, et une autre pour l'autre cas. Cela simplifiera le tout.
             //Pareil pour les autres cases (Rue, Station, Gare, Spécial, ...)
         {
-            if (CLPawn.Index == 2 || CLPawn.Index == 17 || CLPawn.Index == 33) //Case communitaire
+            if (pawn.Index == 2 || pawn.Index == 17 || pawn.Index == 33) //Case communitaire
             {
                 string card = "Sortir_de_Prison"; //à remplacer par une génération aléatoire d'une carte en fonction de si c'est Chance ou Communotaire
                 return card;
             }
-            else if(CLPawn.Index == 7 || CLPawn.Index == 22 || CLPawn.Index == 36) //
+            else if(pawn.Index == 7 || pawn.Index == 22 || pawn.Index == 36) //
             {
                 string card = "Sortir_de_Prison";
                 return card;
@@ -49,13 +51,13 @@ namespace Capital_Avenue.Models
             else if (card.Contains("Déplacer"))
             {
                 int newCoor = int.Parse(card);
-                CLPawn.LocationUpdate(newCoor);
+                CLPawn.locationUpdate(newCoor);
             }
             else if (card.Contains("Aller"))
             {   
                 if (card.Contains("Prison"))
                 {
-                    CLPawn.UpdatePosition(30);
+                    CLPawn.updatePosition(30);
                 }
                 else
                 {

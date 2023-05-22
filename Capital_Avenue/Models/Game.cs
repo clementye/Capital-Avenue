@@ -16,6 +16,7 @@ namespace Capital_Avenue.Models
 
         public CLDice CLDice { get; private set; }
         public CLPawn CLPawn { get; private set; }
+        public CLCase CLCase { get; private set; }
 
         public Game(List<CLPlayer> pList, List<CLPawn> paList, List<CLPlayer> bkList)
         {
@@ -25,6 +26,7 @@ namespace Capital_Avenue.Models
 
         public void Bankruptcy()
         {
+            throw new NotImplementedException();
             if () //Check the number of player that are bankrupt and if there is less that the total number of player-1 (so, at least 2 players still in game)
             {
                 playerList[currentPlayer].isBankrupt = true;
@@ -34,7 +36,7 @@ namespace Capital_Avenue.Models
             {
                 playerList[currentPlayer].isBankrupt = true;
                 this.EndTurn();
-                throw new NotImplementedException();
+                
                 //Va surement avoir besoin de l'appel d'une autre fonction pour afficher le gagnant.
                 //Code pour afficher qui est le gagnant
                 //string Winner = playerList[currentPlayer].Name; <- Pour le nom du gagnant.
@@ -48,6 +50,7 @@ namespace Capital_Avenue.Models
                 int newCoor = CLDice.DiceThrower();
                 CLPawn.locationUpdate(newCoor); //To launch the dice after clicking on the button
                                                 //Do Action after moving the Pawn, so either through GameManager or calling the OnAction() of CLCase
+                CLCase.OnAction(CLPawn.Index);
                 this.EndTurn();
                 
         }

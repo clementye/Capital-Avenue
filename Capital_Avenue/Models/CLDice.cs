@@ -23,4 +23,8 @@ namespace Capital_Avenue.Models
             return DiceResult;
         }
     }
+
+    //TODO:
+    // - Gestion du double
+    // - Gestion du cas où trois double se suivent
 }
