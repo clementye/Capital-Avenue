@@ -4,7 +4,7 @@
     {
         public string Name { get; set; }
 
-        public string Pawn { get; set; }
+        public int Pawn { get; set; }
 
         public int Capital { get; set; }
         List<string> OwnedProperties { get; set; }
@@ -12,7 +12,7 @@
         public List<string> Cards { get; private set; }
         public bool isBankrupt;
 
-        public CLPlayer(string name, string pawn, int capital)
+        public CLPlayer(string name, int pawn, int capital)
         {
             this.Name = name;
             this.Pawn = pawn;

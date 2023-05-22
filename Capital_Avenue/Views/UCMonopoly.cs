@@ -15,7 +15,11 @@ namespace Capital_Avenue.Views
 {
     public partial class UCMonopoly : UserControl
     {
+<<<<<<< HEAD
 
+=======
+       
+>>>>>>> feature/PlayerSetup
         private Game currentGame;
         private LeftUCPanel UCLeftPanel;
         private UCPawn UCPawn;
