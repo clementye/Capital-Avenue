@@ -39,6 +39,10 @@ namespace Capital_Avenue.Models
                 string card = "Sortir_de_Prison";
                 return card;
             }
+            else
+            {
+                return null;
+            }
             
         }
 
@@ -64,7 +68,7 @@ namespace Capital_Avenue.Models
                     throw new NotImplementedException(); //dans le cas où la carte dis d'aller vers une case autre que prison.
                 }
                 
-            } *
+            }
             else if (card.Contains("Donner"))
             {
                 throw new NotImplementedException(); //Dans le cas où une carte demande au joueur(s) de donner de l'argent à la banque/autre joueur

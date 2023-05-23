@@ -32,7 +32,7 @@ namespace Capital_Avenue.Views
             else
             {
                 Program.PageHome.NextPage(new UCEnterPlayer(int.Parse(this.NumberPlayer.SelectedItem.ToString())));
-               // System.Diagnostics.Debug.WriteLine(this.NumberPlayer.SelectedItem);
+                // System.Diagnostics.Debug.WriteLine(this.NumberPlayer.SelectedItem);
             }
 
         }

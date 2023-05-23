@@ -42,22 +42,19 @@ namespace Capital_Avenue.Views
             UserControl uc1 = new UserControl();
             Panel p1 = new Panel();
             Label l1 = new Label();
-<<<<<<< HEAD
+            //PictureBox picture = new PictureBox();
 
-=======
-            PictureBox picture = new PictureBox();
->>>>>>> feature/PlayerSetup
             l1.Text = player.Name;
             p1.Controls.Add(l1);
-            p1.Controls.Add(picture);
-            //p1.BackColor = ColorTranslator.FromHtml(color);
-            p1.Size = new Size(300, 120);
-            picture.Size = new Size(300, 110);
-            picture.Location = new Point(30, (p1.Height - picture.Height) / 2);
-            picture.Image =images[player.Pawn];
-            uc1.Controls.Add(p1);
+            ///p1.Controls.Add(picture);
+            p1.BackColor = ColorTranslator.FromHtml(color);
+            p1.Size = new Size(200, 100);
+            //picture.Size = new Size(300, 110);
+            //picture.Location = new Point(30, (p1.Height - picture.Height) / 2);
+            //picture.Image =images[player.Pawn];
             uc1.Location = new Point(0, position);
-            uc1.Size = new Size(1570,150);
+            uc1.Size = new Size(200, 100);
+            uc1.Controls.Add(p1);
             this.Controls.Add(uc1);
           
         }

@@ -24,7 +24,7 @@ namespace Capital_Avenue.Views
         {
             InitializeComponent();
             PlayerTextList = new List<PlayerTextbox>();
-            for (int i = 1; i <= NumberPlayer; i++)
+            for (int i = 1; i <=NumberPlayer; i++)
             {
                 this.addPlayerTex(i);
 
@@ -67,7 +67,6 @@ namespace Capital_Avenue.Views
            
             //System.Diagnostics.Debug.WriteLine(System.Drawing.Image.FromFile(PlayerTextList[0].comboBox.Text));
             return true;
-
         }
       
         private void button1_Click(object sender, EventArgs e)
@@ -79,19 +78,7 @@ namespace Capital_Avenue.Views
             // else : récupération des champs, et initialisation de la partie avec les valeurs fournis
 
             List<CLPlayer> playerList = new List<CLPlayer>();
-            if (this.ValidateForm())
-            {
-<<<<<<< HEAD
-                CLPlayer p = new CLPlayer(Player1.Text, "Voiture", 1);
-                CLPawn pa = new CLPawn("Voiture", Player1.Text);
-                CLPlayer p2 = new CLPlayer(Player2.Text, "Chaussure", 1);
-                List<CLPlayer> playerList = new List<CLPlayer>();
-                List<CLPawn> pawnList = new List<CLPawn>();
-                playerList.Add(p);
-                playerList.Add(p2);
-                pawnList.Add(pa);
-                Game newGame = new Game(playerList, pawnList);
-=======
+            if (this.ValidateForm()) { 
                 for (int i = 0; i < PlayerTextList.Count; i++)
                 {
                     if (PlayerTextList[i].Textbox.Text.Length != 0)
@@ -102,9 +89,7 @@ namespace Capital_Avenue.Views
                     }
                 }
                 Game newGame = new Game(playerList);
->>>>>>> feature/PlayerSetup
                 Program.PageHome.NextPage(new UCMonopoly(newGame));
-
             }
 
 

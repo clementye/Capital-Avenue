@@ -35,7 +35,7 @@
             // 
             // Valider
             // 
-            Valider.Location = new Point(430, 179);
+            Valider.Location = new Point(413, 178);
             Valider.Name = "Valider";
             Valider.Size = new Size(133, 45);
             Valider.TabIndex = 1;
@@ -46,9 +46,9 @@
             // NumberPlayer
             // 
             NumberPlayer.FormattingEnabled = true;
-            NumberPlayer.Location = new Point(421, 133);
+            NumberPlayer.Location = new Point(454, 133);
             NumberPlayer.Name = "NumberPlayer";
-            NumberPlayer.Size = new Size(142, 28);
+            NumberPlayer.Size = new Size(41, 28);
             NumberPlayer.TabIndex = 2;
             // 
             // label1

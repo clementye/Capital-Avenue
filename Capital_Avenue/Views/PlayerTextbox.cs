@@ -43,6 +43,7 @@ namespace Capital_Avenue.Views
             comboBox.Size = new Size(150, 100);
             Textbox.Size = new Size(150, 100);
             p1.Size = new Size(200, 150);
+            p1.BackColor = ColorTranslator.FromHtml(color);
             this.comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBox.DrawMode = DrawMode.OwnerDrawVariable;
             comboBox.Items.Clear();
