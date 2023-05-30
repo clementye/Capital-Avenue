@@ -41,6 +41,7 @@ namespace Capital_Avenue.Models
                 //string Winner = playerList[currentPlayer].Name; <- Pour le nom du gagnant.
                 System.Windows.Forms.Application.Exit(); //Fin du jeu, force la fermeture du jeu. Pourra être changé pour ramener à la page d'accueil.
             }*/
+            throw new NotImplementedException();
         }
 
         public void Action()
