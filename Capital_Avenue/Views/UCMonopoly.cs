@@ -1,5 +1,5 @@
 
-﻿using Capital_Avenue.Models;
+using Capital_Avenue.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,7 +24,7 @@ namespace Capital_Avenue.Views
             InitializeComponent();
             this.currentGame = game;
 
-            this.Dock = DockStyle.Fill;
+            //this.Dock = DockStyle.Fill;
             this.addPlayerPanel();
             //this.addPawnPanel();
 
@@ -77,6 +77,11 @@ namespace Capital_Avenue.Views
         }
 
         private void UCMonopoly_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }
