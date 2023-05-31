@@ -118,6 +118,126 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="case1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case13" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case13.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case14" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case14.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case15" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case15.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case17" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case17.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case18" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case18.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case19" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case19.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case20" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case21" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case21.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Case22" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\Case22.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case23" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case23.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case25" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case25.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case26" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case26.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case27" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case27.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case28" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case28.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case29" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case29.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case30" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case31" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case31.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case33" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case33.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case34" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case34.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case35" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case35.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case36" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case36.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case37" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case37.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case38" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case38.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case39" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case39.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="case9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\case9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Casedepart" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cases\Casedepart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Chapeau" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Chapeau.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

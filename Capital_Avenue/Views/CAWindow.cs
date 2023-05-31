@@ -7,7 +7,7 @@ namespace Capital_Avenue
         public CAWindow()
         {
             InitializeComponent();
-            this.Controls.Add(new UCHomePage());
+            this.Controls.Add(new HomePage());
         }
         public void NextPage(UserControl uc)
         {

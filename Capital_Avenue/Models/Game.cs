@@ -8,17 +8,17 @@ namespace Capital_Avenue.Models
 {
     public class Game
     {
-        public List<CLPlayer> playerList { get; private set; }
-        public List<CLPawn> pawnList { get; private set; }
+        public List<Player> playerList { get; private set; }
+        public List<Pawn> pawnList { get; private set; }
 
         public int currentPlayer = 0;
-        public List<CLPlayer> BankruptList { get; private set; }
+        public List<Player> BankruptList { get; private set; }
 
-        public CLDice CLDice { get; private set; }
-        public CLPawn CLPawn { get; private set; }
-        public CLCase CLCase { get; private set; }
+        public Dice CLDice { get; private set; }
+        public Pawn CLPawn { get; private set; }
+        public Case CLCase { get; private set; }
 
-        public Game(List<CLPlayer> pList)
+        public Game(List<Player> pList)
         {
             playerList = pList;
         }
