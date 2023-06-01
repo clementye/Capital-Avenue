@@ -11,7 +11,7 @@ namespace Capital_Avenue.Models
         public List<Player> playerList { get; private set; }
         public List<Pawn> pawnList { get; private set; }
 
-        public int currentPlayer = 0;
+        public Player currentPlayer;
         public List<Player> BankruptList { get; private set; }
 
         public Dice CLDice { get; private set; }
@@ -21,6 +21,7 @@ namespace Capital_Avenue.Models
         public Game(List<Player> pList)
         {
             playerList = pList;
+            currentPlayer = playerList[0];
         }
 
         public void Bankruptcy()
@@ -51,10 +52,10 @@ namespace Capital_Avenue.Models
                 CLPawn.locationUpdate(newCoor); //To launch the dice after clicking on the button
                                                 //Do Action after moving the Pawn, so either through GameManager or calling the OnAction() of CLCase
                 //CLCase.OnAction(CLPawn.Index);
-                this.EndTurn();
+                //this.EndTurn();
                 
         }
-
+        /*
         public void EndTurn()
         {
             if (currentPlayer < playerList.Count())
@@ -63,9 +64,9 @@ namespace Capital_Avenue.Models
             }
             else
             {
-                currentPlayer = 0;
+                currentPlayer;
             }
-        }
+        }*/
     }
 }
 

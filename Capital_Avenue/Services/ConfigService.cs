@@ -16,5 +16,18 @@ namespace Capital_Avenue.Services
                 "#401ad6"
             };
         }
+        public static Image[] GetPlayerImages()
+        {
+            Image[] images = new Image[]
+            {
+                Properties.Resources.face1,
+                Properties.Resources.face2,
+                Properties.Resources.Chapeau,
+                Properties.Resources.Cloche
+            };
+            return images;
+        }
+
+
     }
 }

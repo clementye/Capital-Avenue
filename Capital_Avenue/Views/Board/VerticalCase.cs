@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace Capital_Avenue.Views.Board
 {
-    public partial class VerticalCase : UserControl
+    public partial class VerticalCase : Case
     {
-        public VerticalCase()
+        public VerticalCase() : base()
         {
-            InitializeComponent();
+            this.Size = new Size(122, 73);
+            this.BorderStyle = BorderStyle.FixedSingle;
         }
     }
 }

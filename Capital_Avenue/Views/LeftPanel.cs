@@ -54,16 +54,6 @@ namespace Capital_Avenue.Views
             this.Controls.Add(uc1);
           
         }
-        Image[] images =
-          {
-                Properties.Resources.face1,
-                Properties.Resources.face2,
-                Properties.Resources.Chapeau,
-                Properties.Resources.Cloche,
-            };
-
-
-
 
         public void UpdateValues()
         {

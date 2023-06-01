@@ -23,13 +23,13 @@ namespace Capital_Avenue.Views
         {
             InitializeComponent();
             this.currentGame = game;
-
             //this.Dock = DockStyle.Fill;
             this.addPlayerPanel();
             //this.addPawnPanel();
 
             /*this.Size = Screen.PrimaryScreen.WorkingArea.Size;
             this.Location = Screen.PrimaryScreen.WorkingArea.Location; */
+            ucBoard1.InitPawns(game.playerList);
         }
 
         public void addPlayerPanel()
@@ -56,8 +56,13 @@ namespace Capital_Avenue.Views
         public void onDice_Click()
         {
             // je lance les dés, je réfresh l'affichage, je déplace l'icone du joueur, j'actualise le monde.
-            currentGame.Action();
-            UCLeftPanel.UpdateValues();
+            //currentGame.Action();
+            //UCLeftPanel.UpdateValues();
+
+            // launch a dice
+            int diceResult = 2; // TODO
+            ucBoard1.MovePawn(currentGame.currentPlayer, diceResult);
+            // do the cell action
         }
 
         public void onBankrupt_Click()
