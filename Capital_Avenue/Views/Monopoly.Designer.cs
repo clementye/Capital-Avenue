@@ -30,7 +30,11 @@
         {
             onDice = new Button();
             onBankrupt = new Button();
+            currentPlayerName = new Label();
+            DiceShow = new Label();
+            DiceResultShow = new Label();
             ucBoard1 = new Board.Board();
+            Test = new Label();
             SuspendLayout();
             // 
             // onDice
@@ -43,6 +47,7 @@
             onDice.TabIndex = 40;
             onDice.Text = "Lancer les dés";
             onDice.UseVisualStyleBackColor = true;
+            onDice.Click += onDice_Click;
             // 
             // onBankrupt
             // 
@@ -54,6 +59,33 @@
             onBankrupt.TabIndex = 41;
             onBankrupt.Text = "Faillite";
             onBankrupt.UseVisualStyleBackColor = true;
+            // 
+            // currentPlayerName
+            // 
+            currentPlayerName.AutoSize = true;
+            currentPlayerName.Location = new Point(857, 269);
+            currentPlayerName.Name = "currentPlayerName";
+            currentPlayerName.Size = new Size(50, 20);
+            currentPlayerName.TabIndex = 42;
+            currentPlayerName.Text = "label1";
+            // 
+            // DiceShow
+            // 
+            DiceShow.AutoSize = true;
+            DiceShow.Location = new Point(857, 301);
+            DiceShow.Name = "DiceShow";
+            DiceShow.Size = new Size(50, 20);
+            DiceShow.TabIndex = 43;
+            DiceShow.Text = "label2";
+            // 
+            // DiceResultShow
+            // 
+            DiceResultShow.AutoSize = true;
+            DiceResultShow.Location = new Point(857, 332);
+            DiceResultShow.Name = "DiceResultShow";
+            DiceResultShow.Size = new Size(50, 20);
+            DiceResultShow.TabIndex = 44;
+            DiceResultShow.Text = "label3";
             // 
             // ucBoard1
             // 
@@ -68,11 +100,24 @@
             ucBoard1.Size = new Size(900, 900);
             ucBoard1.TabIndex = 42;
             // 
+            // Test
+            // 
+            Test.AutoSize = true;
+            Test.Location = new Point(1186, 269);
+            Test.Name = "Test";
+            Test.Size = new Size(50, 20);
+            Test.TabIndex = 45;
+            Test.Text = "label1";
+            // 
             // Monopoly
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
+            Controls.Add(Test);
+            Controls.Add(DiceResultShow);
+            Controls.Add(DiceShow);
+            Controls.Add(currentPlayerName);
             Controls.Add(onBankrupt);
             Controls.Add(onDice);
             Controls.Add(ucBoard1);
@@ -80,11 +125,16 @@
             Size = new Size(1884, 1069);
             Load += UCMonopoly_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
         private Button onDice;
         private Button onBankrupt;
         private Board.Board ucBoard1;
+        private Label currentPlayerName;
+        private Label DiceShow;
+        private Label DiceResultShow;
+        private Label Test;
     }
 }

@@ -18,7 +18,9 @@ namespace Capital_Avenue.Views
 
         private Game currentGame;
         private LeftPanel UCLeftPanel;
-        private Pawn UCPawn;
+        private Dice d;
+        private int Ldice = 0;
+        private int NbDice = 2;
         public Monopoly(Game game)
         {
             InitializeComponent();
@@ -26,10 +28,27 @@ namespace Capital_Avenue.Views
             //this.Dock = DockStyle.Fill;
             this.addPlayerPanel();
             //this.addPawnPanel();
+            currentPlayerName.Text = "Joueur " + game.playerList[game.currentPlayer].Name + ", lancer vos dés";
+            d = new Dice();
+            d.addDice(Ldice, NbDice);
+            for (int i = 0; i < d.DiceList.Count; i++)
+            {
+                if (i == 0)
+                {
+                    DiceShow.Text = "Dés : " + d.DiceList[i].ToString();
+                }
+                else
+                {
+                    DiceShow.Text += " + " + d.DiceList[i].ToString();
+                }
+
+            }
+            DiceResultShow.Text = "Résultats " + d.ResultDice.ToString();
 
             /*this.Size = Screen.PrimaryScreen.WorkingArea.Size;
             this.Location = Screen.PrimaryScreen.WorkingArea.Location; */
             ucBoard1.InitPawns(game.playerList);
+
         }
 
         public void addPlayerPanel()
@@ -53,15 +72,21 @@ namespace Capital_Avenue.Views
             }
         }*/
 
-        public void onDice_Click()
+        public void diceShow()
+        {
+
+        }
+
+        public void onDice_Click(object sender, EventArgs e)
         {
             // je lance les dés, je réfresh l'affichage, je déplace l'icone du joueur, j'actualise le monde.
-            //currentGame.Action();
+            currentGame.Action();
+            Test.Text = "Hihi";
             //UCLeftPanel.UpdateValues();
 
             // launch a dice
-            int diceResult = 2; // TODO
-            ucBoard1.MovePawn(currentGame.currentPlayer, diceResult);
+            //int diceResult = 2; // TODO
+            //ucBoard1.MovePawn(currentGame.playerList[currentPlayer], diceResult);
             // do the cell action
         }
 
