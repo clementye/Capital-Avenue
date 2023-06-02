@@ -5,16 +5,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Capital_Avenue.Views.Board
 {
     public abstract class Case : UserControl
     {
         FlowLayoutPanel flow;
-
+       
         public Case()
         {
-            flow = new FlowLayoutPanel();
+           flow = new FlowLayoutPanel();
+            //flow.FlowDirection = FlowDirection.TopDown;
+            //flow.AutoScroll = false;
         }
 
         public void AddPawn(Player player)

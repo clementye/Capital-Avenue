@@ -20,10 +20,12 @@ namespace Capital_Avenue.Services
         {
             Image[] images = new Image[]
             {
-                Properties.Resources.face1,
-                Properties.Resources.face2,
-                Properties.Resources.Chapeau,
-                Properties.Resources.Cloche
+                //Properties.Resources.Transparant,
+                Properties.Resources.Chapeau1,
+                Properties.Resources.Diamant,
+                Properties.Resources.Chariot,
+                Properties.Resources.Voiture1
+
             };
             return images;
         }
