@@ -8,21 +8,25 @@ namespace Capital_Avenue.Models
 {
     public class Game
     {
+        Random rnd = new Random();
         public List<Player> playerList { get; private set; }
         public List<Pawn> pawnList { get; private set; }
 
-        public Player currentPlayer;
+        public int currentPlayer;
         public List<Player> BankruptList { get; private set; }
 
-        public Dice CLDice { get; private set; }
+        public Dice Dice { get; private set; }
         public Pawn CLPawn { get; private set; }
         public Case CLCase { get; private set; }
 
         public Game(List<Player> pList)
         {
             playerList = pList;
-            currentPlayer = playerList[0];
+            currentPlayer = 0;
+            Dice = new Dice();
         }
+
+        
 
         public void Bankruptcy()
         {
@@ -47,14 +51,62 @@ namespace Capital_Avenue.Models
 
         public void Action()
         {
-                throw new NotImplementedException();
-                int newCoor = CLDice.DiceThrower();
-                CLPawn.locationUpdate(newCoor); //To launch the dice after clicking on the button
+            //throw new NotImplementedException();
+                Dice.DiceThrower();
+                this.DiceResult();
+                //int newCoor = Dice.DiceThrower();
+                //CLPawn.locationUpdate(newCoor); //To launch the dice after clicking on the button
                                                 //Do Action after moving the Pawn, so either through GameManager or calling the OnAction() of CLCase
                 //CLCase.OnAction(CLPawn.Index);
                 //this.EndTurn();
                 
         }
+
+        public void DiceResult()
+        {
+            switch (Dice.isDouble)
+            {
+                case false:
+                    playerList[currentPlayer].TotalDouble = 0;
+                    for (int i = 0; Dice.DiceList.Count > 0; i++)
+                    {
+                        Dice.ResultDice += Dice.DiceList[i];
+                    }
+                    break;
+                case true:
+                    playerList[currentPlayer].TotalDouble++;
+                    if (playerList[currentPlayer].TotalDouble <= 2)
+                    {
+                        Dice.DoubleDice = rnd.Next(1, 7);
+                        for (int i = 0; Dice.DiceList.Count > 0; i++)
+                        {
+                            Dice.ResultDice += Dice.DiceList[i];
+                        }
+                        Dice.ResultDice += Dice.DoubleDice;
+                    }
+                    else
+                    {
+                        Dice.ResultDice = 0; //When the program for movement read a zero, will force the player to go to prison
+                        playerList[currentPlayer].TotalDouble = 0;
+                    }
+                    break;
+
+            }
+        }
+
+        // Code for when a player is in prison, reduce the time left in prison by one if no Double, and release them if they got a double
+        /*public void DicePrison()
+        {
+            switch (isDouble)
+            {
+                case false:
+                    Player.PrisonTime--;
+                    break;
+                case true:
+                    Player.PrisonTime = 0;
+                    break;
+            }
+        }*/
         /*
         public void EndTurn()
         {

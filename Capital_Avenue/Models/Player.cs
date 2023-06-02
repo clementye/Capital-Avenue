@@ -10,6 +10,8 @@
         List<string> OwnedProperties { get; set; }
 
         public List<string> Cards { get; private set; }
+        public int TotalDouble { get; set; }
+
         public bool isBankrupt;
 
         public Player(string name, int pawn, int capital)
@@ -20,6 +22,7 @@
             this.OwnedProperties = new List<string>();
             this.Cards = new List<string>();
             isBankrupt = false;
+            this.TotalDouble = 0; //Will be displaced into board or monopoly
         }
         public void AddCards(string Card)
         {
