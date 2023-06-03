@@ -33,6 +33,7 @@ namespace Capital_Avenue.Models
             {
                 DiceList.Add(dice);
             }
+          
         }
 
         public void DiceThrower()

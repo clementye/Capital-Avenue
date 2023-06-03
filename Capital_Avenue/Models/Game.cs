@@ -107,18 +107,15 @@ namespace Capital_Avenue.Models
                     break;
             }
         }*/
-        /*
+        
         public void EndTurn()
         {
-            if (currentPlayer < playerList.Count())
+            currentPlayer++;
+            if (currentPlayer >= playerList.Count)
             {
-                currentPlayer++;
+                currentPlayer = 0; 
             }
-            else
-            {
-                currentPlayer;
-            }
-        }*/
+        }
     }
 }
 
