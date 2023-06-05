@@ -12,6 +12,9 @@
         public List<string> Cards { get; private set; }
         public bool isBankrupt;
 
+        public int Money { get; set; }
+
+
         public Player(string name, int pawn, int capital)
         {
             this.Name = name;
@@ -24,6 +27,15 @@
         public void AddCards(string Card)
         {
             Cards.Add(Card);
+        }
+
+        public void DeductMoney(int amount)
+        {
+            Money -= amount;
+        }
+        public void AddMoney(int  amount)
+        {
+            Money += amount;
         }
     }
 }
