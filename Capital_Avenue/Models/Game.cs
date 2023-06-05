@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,7 +19,8 @@ namespace Capital_Avenue.Models
         public Dice Dice { get; private set; }
         public Pawn CLPawn { get; private set; }
         public Case CLCase { get; private set; }
-
+        private int Ldice = 0;
+        private int NbDice = 2;
         public Game(List<Player> pList)
         {
             playerList = pList;
@@ -61,7 +63,6 @@ namespace Capital_Avenue.Models
                 //this.EndTurn();
                 
         }
-
         public void DiceResult()
         {
             switch (Dice.isDouble)

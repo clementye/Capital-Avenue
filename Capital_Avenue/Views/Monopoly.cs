@@ -25,21 +25,15 @@ namespace Capital_Avenue.Views
         {
             InitializeComponent();
             this.currentGame = game;
-            //this.Dock = DockStyle.Fill;
             this.addPlayerPanel();
-            //this.addPawnPanel();
             currentPlayerName.Text = game.playerList[0].Name + ", lancer vos dés";
             this.InitializeDice();
-
-            /*this.Size = Screen.PrimaryScreen.WorkingArea.Size;
-            this.Location = Screen.PrimaryScreen.WorkingArea.Location; */
             ucBoard1.InitPawns(game.playerList);
         
-
         }
         public void InitializeDice()
         {
-            d = new Dice();
+            d= new Dice();
             d.addDice(Ldice, NbDice);
             pictureBox2.Enabled = false;
             pictureBox2.BackColor = Color.Red;
