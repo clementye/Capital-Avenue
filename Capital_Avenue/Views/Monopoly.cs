@@ -34,6 +34,7 @@ namespace Capital_Avenue.Views
             /*this.Size = Screen.PrimaryScreen.WorkingArea.Size;
             this.Location = Screen.PrimaryScreen.WorkingArea.Location; */
             ucBoard1.InitPawns(game.playerList);
+        
 
         }
         public void InitializeDice()
@@ -105,6 +106,9 @@ namespace Capital_Avenue.Views
             pictureBox1.BackColor = Color.Red;
             pictureBox2.Enabled = true;
             pictureBox2.BackColor = Color.Green;
+            int currentPlayerIndex = currentGame.currentPlayer;
+            Player currentPlayer = currentGame.playerList[currentPlayerIndex];
+            ucBoard1.MovePawn(currentPlayer, d.ResultDice) ; 
 
         }
         private void pictureBox2_Click(object sender, EventArgs e)

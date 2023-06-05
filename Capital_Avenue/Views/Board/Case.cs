@@ -12,12 +12,11 @@ namespace Capital_Avenue.Views.Board
     public abstract class Case : UserControl
     {
         FlowLayoutPanel flow;
-       
+
         public Case()
         {
-           flow = new FlowLayoutPanel();
-            //flow.FlowDirection = FlowDirection.TopDown;
-            //flow.AutoScroll = false;
+            flow = new FlowLayoutPanel();
+
         }
 
         public void AddPawn(Player player)
@@ -31,8 +30,13 @@ namespace Capital_Avenue.Views.Board
 
         public void RemovePawn(Player player)
         {
-            // TODO
+            Image[] images = ConfigService.GetPlayerImages();
+            PictureBox pictureBoxToRemove = flow.Controls.OfType<PictureBox>().FirstOrDefault(p => p.Image == images[player.Pawn]);
+            if (pictureBoxToRemove != null)
+            {
+                flow.Controls.Remove(pictureBoxToRemove);
+                pictureBoxToRemove.Dispose();
+            }
         }
-
     }
 }

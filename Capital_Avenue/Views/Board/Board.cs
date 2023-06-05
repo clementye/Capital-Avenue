@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,6 +14,7 @@ namespace Capital_Avenue.Views.Board
     public partial class Board : UserControl
     {
         List<Case> Cases;
+        Case Case;
         Dictionary<Player, int> PlayerPositions;
 
         public Board()
@@ -32,12 +34,22 @@ namespace Capital_Avenue.Views.Board
             }
         }
 
+        public void InitPawnOnePlayer(Player player, int newmove)
+        {
+            PlayerPositions[player] = newmove;
+            Cases[newmove].AddPawn(player);
+        }
+
         public void MovePawn(Player p, int move)
         {
-            // TODO move the pawn of player p by <move> step on the board
             int newCase = PlayerPositions[p] + move;
-            if (newCase > 39) newCase -= 40;
-            // TODO avertir qu'on est passé sur la case départ
+            //Case.RemovePawn(p);
+            if (newCase > 39) {
+                newCase -=40;
+                this.InitPawnOnePlayer(p, newCase);
+            };
+            this.InitPawnOnePlayer(p, newCase);
+           
         }
 
         public void CreateBoard()

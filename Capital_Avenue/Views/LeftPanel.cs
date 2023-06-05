@@ -14,9 +14,6 @@ namespace Capital_Avenue.Views
     using Capital_Avenue.Services;
     public class LeftPanel : UserControl
     {
- 
-        private string hexPlay1 = "#6AFF2D";
-        private string hexPlay2 = "#401ad6";
         private List<Player> PlayerList;
         public LeftPanel(List<Player> playerList)
         {
@@ -38,21 +35,31 @@ namespace Capital_Avenue.Views
             UserControl uc1 = new UserControl();
             Panel p1 = new Panel();
             Label l1 = new Label();
+            Label l2 = new Label();
+            Label l3 = new Label();
             //PictureBox picture = new PictureBox();
-
             l1.Text = player.Name;
             p1.Controls.Add(l1);
+            l2.Text ="Cartes : " + player.Cards.Count.ToString();
+            l2.Location = new Point(0, 30);
+            p1.Controls.Add(l2);
+            l3.Text ="M : " + player.Monney.ToString();
+            l3.Location = new Point(0,60);
+            p1.Controls.Add(l3);
+           
+
             ///p1.Controls.Add(picture);
             p1.BackColor = ColorTranslator.FromHtml(color);
             p1.Size = new Size(200, 100);
             //picture.Size = new Size(300, 110);
             //picture.Location = new Point(30, (p1.Height - picture.Height) / 2);
             //picture.Image =images[player.Pawn];
+
             uc1.Location = new Point(0, position);
             uc1.Size = new Size(200, 100);
             uc1.Controls.Add(p1);
             this.Controls.Add(uc1);
-          
+
         }
 
         public void UpdateValues()
