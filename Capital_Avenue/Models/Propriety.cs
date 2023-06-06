@@ -24,7 +24,6 @@ namespace Capital_Avenue.Models
         public float Rent { get; set; }
         public int MortgagedPrice { get; }
         public Player Owner { get; set; }
-        public Player Player { get; set; }
 
         public Propriety (int index, string name, PGroupe groupe, int price, int rent, int mortgaged) : base (index, name)
         {
@@ -49,50 +48,44 @@ namespace Capital_Avenue.Models
          * si le joueur se met dans uen case ou l'ensemble de la couleur  **/
 
 
-        public void Action(Propriety property, Player player)
+        public void Action(Player currentPlayer)
         {
-
-
-            Player = player;
-            Owner = property.Owner;
-
-            if (property.state == PState.free)
+            if (this.state == PState.free)
             {
                 //voir cette partie pour choix de l'affichage
-
+                this.BuyProp(currentPlayer);
                 Console.WriteLine("If you wanna buy it press yes");
             }
-            else if (property.state == PState.purchase)
+            else if (this.state == PState.purchase)
             {
-                Payrent(property); 
+                Payrent(currentPlayer); 
 
             }
 
-            if (property.state == PState.mortgage)
+            if (this.state == PState.mortgage)
             {
+                //while()
             }
-            if (property.Owner == Owner)
+            if (this.Owner == Owner)
             {
 
             } 
         }
         // a specifié pour faire la matérialisation du plateau si c'est acheté et/ou hypothéqué
-        public static void BuyProp(Propriety property, Player player)
+        public void BuyProp(Player currentPlayer)
         {
-            Player currentPlayer = property.Player;
-            int purchasePrice = property.PurchasePrice;
+            int purchasePrice = this.PurchasePrice;
 
             currentPlayer.DeductMoney(purchasePrice);
-            currentPlayer.AddProperty(property);
+            currentPlayer.AddProperty(this);
 
-            property.state = PState.purchase;
-            property.Owner = currentPlayer;
+            this.state = PState.purchase;
+            this.Owner = currentPlayer;
         }
-        public static void Payrent(Propriety property)
+        public void Payrent(Player currentPlayer)
         {
-            Player currentPlayer = property.Player;
-            Player owner = property.Owner;
-            int rentAmount = (int)property.Rent;
+            Player owner = this.Owner;
+            int rentAmount = (int)this.Rent;
 
             currentPlayer.DeductMoney(rentAmount);
             owner.AddMoney(rentAmount);
