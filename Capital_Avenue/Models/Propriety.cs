@@ -58,44 +58,46 @@ namespace Capital_Avenue.Models
 
             if (property.state == PState.free)
             {
+                //voir cette partie pour choix de l'affichage
 
                 Console.WriteLine("If you wanna buy it press yes");
             }
             else if (property.state == PState.purchase)
             {
-                if (player.Pawn = Owner.)
-                {
-
-                }
-                Player currentPlayer = property.Player;
-                Player owner = property.Owner;
-                int rentAmount = (int)property.Rent;
-
-                currentPlayer.DeductMoney(rentAmount);
-                owner.AddMoney(rentAmount);
-
-
+                Payrent(property); 
 
             }
 
             if (property.state == PState.mortgage)
             {
-                //if (player.Pawn =  )
             }
             if (property.Owner == Owner)
             {
 
             } 
         }
-        public static void Payrent(Propriety ownedProp)
+        // a specifié pour faire la matérialisation du plateau si c'est acheté et/ou hypothéqué
+        public static void BuyProp(Propriety property, Player player)
         {
-           if (ownedProp.state == PState.purchase)
-           {
+            Player currentPlayer = property.Player;
+            int purchasePrice = property.PurchasePrice;
 
-           }
+            currentPlayer.DeductMoney(purchasePrice);
+            currentPlayer.AddProperty(property);
 
-           if ((ownedProp.state == PState.free) && (ownedProp.state == )) ;
+            property.state = PState.purchase;
+            property.Owner = currentPlayer;
+        }
+        public static void Payrent(Propriety property)
+        {
+            Player currentPlayer = property.Player;
+            Player owner = property.Owner;
+            int rentAmount = (int)property.Rent;
 
+            currentPlayer.DeductMoney(rentAmount);
+            owner.AddMoney(rentAmount);
+
+            
         }
         
 
