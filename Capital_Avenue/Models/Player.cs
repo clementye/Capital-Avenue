@@ -7,26 +7,23 @@
         public int Pawn { get; set; }
 
         public int Capital { get; set; }
-        //List<string> OwnedProperties { get; set; }
         public List<Propriety> OwnedProperties { get; set; }
-
-
         public List<string> Cards { get; private set; }
+        public int TotalDouble { get; set; }
+
         public bool isBankrupt;
-
-        public int Money { get; set; }
-
 
         public Player(string name, int pawn, int capital)
         {
             this.Name = name;
             this.Pawn = pawn;
             this.Capital = capital;
-            //this.OwnedProperties = new List<string>();
+
             OwnedProperties = new List<Propriety>();
 
             this.Cards = new List<string>();
             isBankrupt = false;
+            this.TotalDouble = 0; //Will be displaced into board or monopoly
         }
         public void AddCards(string Card)
         {
@@ -34,11 +31,11 @@
         }
         public void DeductMoney(int amount)
         {
-            Money -= amount;
+            Capital -= amount;
         }
         public void AddMoney(int  amount)
         {
-            Money += amount;
+            Capital += amount;
         }
         public void AddProperty(Propriety property)
         {

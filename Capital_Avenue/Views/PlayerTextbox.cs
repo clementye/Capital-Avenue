@@ -1,4 +1,5 @@
 ﻿using Capital_Avenue.Models;
+using Capital_Avenue.Services;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -21,13 +22,7 @@ namespace Capital_Avenue.Views
         public ComboBox comboBox { get; set; }
         public PlayerTextbox(int position)
         {
-            List<string> colors = new List<string> {
-                "#6AFF2D",
-                "#401ad6",
-                "#6AFF2D",
-                "#6AFF2D",
-                "#6AFF2D",
-            };
+            List<string> colors = ConfigService.GetPlayerColors();
             int basePosition = 0;
             int space = 10;
             int pos = (basePosition + 250 * (position-1) ) + space * position;
@@ -63,13 +58,7 @@ namespace Capital_Avenue.Views
         }
       public void ImageShow()
         {
-            Image[] images =
-            {
-                Properties.Resources.face1,
-                Properties.Resources.face2,
-                Properties.Resources.Chapeau,
-                Properties.Resources.Cloche,
-            };
+            Image[] images = ConfigService.GetPlayerImages();
             comboBox.DisplayImages(images);
             comboBox.SelectedIndex = 0;
             comboBox.DropDownHeight = 200;
