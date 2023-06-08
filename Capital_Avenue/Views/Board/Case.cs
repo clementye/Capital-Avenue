@@ -12,11 +12,13 @@ namespace Capital_Avenue.Views.Board
     public abstract class Case : UserControl
     {
         FlowLayoutPanel flow;
+        List<PictureBox> pictureBoxes;
+
 
         public Case()
         {
             flow = new FlowLayoutPanel();
-
+            pictureBoxes = new();
         }
 
         public void AddPawn(Player player)
@@ -25,18 +27,25 @@ namespace Capital_Avenue.Views.Board
             flow.Controls.Add(picture);
             Image[] images = ConfigService.GetPlayerImages();
             picture.Image = images[player.Pawn];
+            pictureBoxes.Add(picture);
+
             this.Controls.Add(flow);
         }
 
         public void RemovePawn(Player player)
         {
             Image[] images = ConfigService.GetPlayerImages();
-            PictureBox pictureBoxToRemove = flow.Controls.OfType<PictureBox>().FirstOrDefault(p => p.Image == images[player.Pawn]);
-            if (pictureBoxToRemove != null)
+            for(int i =0;i<pictureBoxes.Count();i++)
             {
-                flow.Controls.Remove(pictureBoxToRemove);
-                pictureBoxToRemove.Dispose();
+                if (images[player.Pawn]  == images[player.Pawn])
+                {
+                    flow.Controls.Remove(pictureBoxes[i]);
+                    pictureBoxes[i].Controls.Clear();
+                    pictureBoxes.Remove(pictureBoxes[i]);
+                    break;
+                }
             }
+            
         }
     }
 }

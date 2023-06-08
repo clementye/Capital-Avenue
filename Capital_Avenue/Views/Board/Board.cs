@@ -14,7 +14,6 @@ namespace Capital_Avenue.Views.Board
     public partial class Board : UserControl
     {
         List<Case> Cases;
-        Case Case;
         Dictionary<Player, int> PlayerPositions;
 
         public Board()
@@ -38,21 +37,42 @@ namespace Capital_Avenue.Views.Board
         {
             PlayerPositions[player] = newmove;
             Cases[newmove].AddPawn(player);
+           
         }
 
         public void MovePawn(Player p, int move)
         {
+            int currentPosition = PlayerPositions[p];
             int newCase = PlayerPositions[p] + move;
             //Case.RemovePawn(p);
             if (newCase > 39) {
                 newCase -=40;
-                this.InitPawnOnePlayer(p, newCase);
             };
+            Cases[PlayerPositions[p]].RemovePawn(p);
             this.InitPawnOnePlayer(p, newCase);
-           
-        }
 
-        public void CreateBoard()
+        }
+      
+      
+   /* public void MovePawn(Player p, int move)
+       
+        int currentPosition = PlayerPositions[p];
+        int targetCase = currentPosition + move;
+
+        while (currentPosition != targetCase)
+        {
+            currentPosition = (currentPosition + 1) % 40; 
+            Cases[PlayerPositions[p]].RemovePawn(p);
+            PlayerPositions[p] = currentPosition;
+            this.InitPawnOnePlayer(p, currentPosition);
+            Thread.Sleep(200); 
+        }
+    }
+   */
+
+
+
+    public void CreateBoard()
         {
             // Configurer les propriétés de dimensionnement du UCBoard
             // AutoSize = true;

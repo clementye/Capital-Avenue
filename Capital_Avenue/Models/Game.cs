@@ -51,7 +51,7 @@ namespace Capital_Avenue.Models
             throw new NotImplementedException();
         }
 
-        public void Action()
+        /*public void Action()
         {
             //throw new NotImplementedException();
                 Dice.DiceThrower();
@@ -62,14 +62,15 @@ namespace Capital_Avenue.Models
                 //CLCase.OnAction(CLPawn.Index);
                 //this.EndTurn();
                 
-        }
+        }*/
+        
         public void DiceResult()
         {
-            switch (Dice.isDouble)
+            switch(Dice.isDouble)
             {
                 case false:
                     playerList[currentPlayer].TotalDouble = 0;
-                    for (int i = 0; Dice.DiceList.Count > 0; i++)
+                    for (int i = 0; Dice.DiceList.Count() > 0; i++)
                     {
                         Dice.ResultDice += Dice.DiceList[i];
                     }
@@ -79,10 +80,6 @@ namespace Capital_Avenue.Models
                     if (playerList[currentPlayer].TotalDouble <= 2)
                     {
                         Dice.DoubleDice = rnd.Next(1, 7);
-                        for (int i = 0; Dice.DiceList.Count > 0; i++)
-                        {
-                            Dice.ResultDice += Dice.DiceList[i];
-                        }
                         Dice.ResultDice += Dice.DoubleDice;
                     }
                     else
@@ -94,6 +91,7 @@ namespace Capital_Avenue.Models
 
             }
         }
+        
 
         // Code for when a player is in prison, reduce the time left in prison by one if no Double, and release them if they got a double
         /*public void DicePrison()

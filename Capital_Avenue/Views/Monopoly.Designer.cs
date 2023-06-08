@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Monopoly));
-            onDice = new Button();
             onBankrupt = new Button();
             currentPlayerName = new Label();
             DiceShow = new Label();
@@ -39,20 +39,11 @@
             PasserTour = new Button();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
+            onDice = new Button();
+            timer1 = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
-            // 
-            // onDice
-            // 
-            onDice.Anchor = AnchorStyles.Right;
-            onDice.Location = new Point(815, 626);
-            onDice.Margin = new Padding(3, 4, 3, 4);
-            onDice.Name = "onDice";
-            onDice.Size = new Size(83, 36);
-            onDice.TabIndex = 40;
-            onDice.Text = "Lancer les dés";
-            onDice.UseVisualStyleBackColor = true;
             // 
             // onBankrupt
             // 
@@ -136,12 +127,29 @@
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(1059, 458);
+            pictureBox2.Location = new Point(1059, 449);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(60, 55);
+            pictureBox2.Size = new Size(60, 70);
             pictureBox2.TabIndex = 48;
             pictureBox2.TabStop = false;
             pictureBox2.Click += pictureBox2_Click;
+            // 
+            // onDice
+            // 
+            onDice.Anchor = AnchorStyles.Right;
+            onDice.Location = new Point(815, 626);
+            onDice.Margin = new Padding(3, 4, 3, 4);
+            onDice.Name = "onDice";
+            onDice.Size = new Size(83, 36);
+            onDice.TabIndex = 40;
+            onDice.Text = "Lancer les dés";
+            onDice.UseVisualStyleBackColor = true;
+            // 
+            // timer1
+            // 
+            timer1.Enabled = true;
+            timer1.Interval = 20;
+            //timer1.Tick += Time;
             // 
             // Monopoly
             // 
@@ -160,7 +168,6 @@
             Controls.Add(ucBoard1);
             Name = "Monopoly";
             Size = new Size(1884, 1069);
-            Load += UCMonopoly_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
@@ -168,7 +175,6 @@
         }
 
         #endregion
-        private Button onDice;
         private Button onBankrupt;
         private Board.Board ucBoard1;
         private Label currentPlayerName;
@@ -178,5 +184,7 @@
         private Button PasserTour;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
+        private Button onDice;
+        private System.Windows.Forms.Timer timer1;
     }
 }

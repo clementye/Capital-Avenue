@@ -15,6 +15,7 @@ namespace Capital_Avenue.Views
         public HomePage()
         {
             InitializeComponent();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
