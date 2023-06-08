@@ -63,17 +63,20 @@ namespace Capital_Avenue.Models
                 //this.EndTurn();
                 
         }*/
+
+        public void DiceInit()
+        {
+            Dice.addDice(Ldice, NbDice);
+        }
         
         public void DiceResult()
         {
+            Dice.DiceThrower();
+            Dice.DoubleDice = 0;
             switch(Dice.isDouble)
             {
                 case false:
                     playerList[currentPlayer].TotalDouble = 0;
-                    for (int i = 0; Dice.DiceList.Count() > 0; i++)
-                    {
-                        Dice.ResultDice += Dice.DiceList[i];
-                    }
                     break;
                 case true:
                     playerList[currentPlayer].TotalDouble++;

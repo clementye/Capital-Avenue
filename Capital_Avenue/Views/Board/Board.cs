@@ -47,6 +47,7 @@ namespace Capital_Avenue.Views.Board
             //Case.RemovePawn(p);
             if (newCase > 39) {
                 newCase -=40;
+                p.Capital += 200;
             };
             Cases[PlayerPositions[p]].RemovePawn(p);
             this.InitPawnOnePlayer(p, newCase);
@@ -78,10 +79,21 @@ namespace Capital_Avenue.Views.Board
             // AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             // Dock = DockStyle.Fill;
+            /*TableLayoutPanel Table = new TableLayoutPanel();
+            Table.ColumnCount = 3;
+            Table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40));
+            Table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40));
+            Table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20));
+            Table.RowCount = 2;
+            Table.RowStyles.Add(new RowStyle(SizeType.Percent, 50));
+            Table.RowStyles.Add(new RowStyle(SizeType.Percent, 50));
+            this.Controls.Add(Table);*/
+            //Le code du dessus est une idée pour ajouter sans problème les pions, ainsi que si une propriété est acheté et le nombre de maison dessus si besoin
 
             Case StartCase = new SquareCase(); // Crée une instance de la case de départ
             StartCase.Location = new Point(782, 776); // Définit la position de la case de départ
             StartCase.BackgroundImage = Properties.Resources.Casedepart;
+            
             Controls.Add(StartCase);
            
 

@@ -8,6 +8,7 @@ namespace Capital_Avenue
         {
             InitializeComponent();
             this.Controls.Add(new HomePage());
+            
         }
         public void NextPage(UserControl uc)
         {
@@ -17,7 +18,9 @@ namespace Capital_Avenue
 
         private void CAWindow_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Normal;
+            //this.TopMost = true;
+            //this.FormBorderStyle = FormBorderStyle.None; // Activate only during presentation
+            this.WindowState = FormWindowState.Maximized;
             int x = (Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2;
             int y = (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2;
             this.SetDesktopLocation(x, y);

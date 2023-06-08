@@ -23,6 +23,7 @@ namespace Capital_Avenue.Views
         public EnterPlayer()
         {
             InitializeComponent();
+            this.Dock = DockStyle.Fill;
             PlayerTextList = new List<PlayerTextbox>();
             for (int i = 2; i <= 4; i++)
             {
@@ -96,7 +97,7 @@ namespace Capital_Avenue.Views
                     if (PlayerTextList[i].Textbox.Text.Length != 0)
 
                     {
-                        Player p = new Player(PlayerTextList[i].Textbox.Text, int.Parse(PlayerTextList[i].comboBox.SelectedIndex.ToString()), 1);
+                        Player p = new Player(PlayerTextList[i].Textbox.Text, int.Parse(PlayerTextList[i].comboBox.SelectedIndex.ToString()), 1200);
                         playerList.Add(p);
                     }
                 }

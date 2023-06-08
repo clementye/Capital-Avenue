@@ -19,9 +19,6 @@ namespace Capital_Avenue.Views
 
         private Game currentGame;
         private LeftPanel UCLeftPanel;
-        private Dice dice;
-        private int Ldice = 0;
-        private int NbDice = 2;
         public Monopoly(Game game)
         {
             InitializeComponent();
@@ -34,8 +31,7 @@ namespace Capital_Avenue.Views
         }
         public void InitializeDice()
         {
-            dice = new Dice();
-            dice.addDice(Ldice, NbDice);
+            currentGame.DiceInit();
             pictureBox2.Enabled = false;
             pictureBox2.BackColor = Color.Red;
             pictureBox1.BackColor = Color.Green;
@@ -52,25 +48,26 @@ namespace Capital_Avenue.Views
         public void DisplayDiceResult()
         {
 
-            for (int i = 0; i < dice.DiceList.Count; i++)
+            for (int i = 0; i < currentGame.Dice.DiceList.Count; i++)
             {
                 if (i == 0)
                 {
-                    DiceShow.Text = " Dés  :  " + dice.DiceList[i].ToString();
+                    DiceShow.Text = " Dés  :  " + currentGame.Dice.DiceList[i].ToString();
                 }
                 else
                 {
-                    DiceShow.Text += "  +  " + dice.DiceList[i].ToString();
+                    DiceShow.Text += "  +  " + currentGame.Dice.DiceList[i].ToString();
                 }
             }
-            DiceResultShow.Text = "Résultats  " + dice.ResultDice.ToString();
+            if (currentGame.Dice.DoubleDice > 0)
+            {
+                DiceShow.Text += " + " + currentGame.Dice.DoubleDice.ToString();
+            }
+            DiceResultShow.Text = "Résultats  " + currentGame.Dice.ResultDice.ToString();
         }
         public void diceShow()
         {
-           
-            dice.DiceThrower();
             currentGame.DiceResult();
-
             this.DisplayDiceResult();
 
         }
@@ -93,7 +90,8 @@ namespace Capital_Avenue.Views
             pictureBox2.BackColor = Color.Green;
             int currentPlayerIndex = currentGame.currentPlayer;
             Player currentPlayer = currentGame.playerList[currentPlayerIndex];
-            ucBoard1.MovePawn(currentPlayer, dice.ResultDice);
+            ucBoard1.MovePawn(currentPlayer, currentGame.Dice.ResultDice);
+            UCLeftPanel.UpdatePlayerUC(currentGame.playerList[currentGame.currentPlayer]);
 
         }
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -103,7 +101,10 @@ namespace Capital_Avenue.Views
             pictureBox1.BackColor = Color.Green;
             pictureBox2.BackColor = Color.Red;
             currentPlayerName.Text = currentGame.playerList[currentGame.currentPlayer].Name + ", lancer vos dés";
-            //this.InitializeDice();
+            //this.InitializeDice(); 
+            //TODO : 
+            // Change value of DiceList element to 0. Probably through currentGame.Dice.ResetDice().
+            // Also, if through this technic, then implement ResetDice.
         }
         /*
         public void PasserTour_Click(object sender, EventArgs e)
@@ -125,8 +126,12 @@ namespace Capital_Avenue.Views
         public void onBankrupt_Click()
         {
             currentGame.Bankruptcy();
-            UCLeftPanel.UpdateValues();
+            UCLeftPanel.UpdatePlayerUC(currentGame.playerList[currentGame.currentPlayer]);
         }
-     
+
+        /*private void Test_Click(object sender, EventArgs e)
+        {
+            
+        }*/
     }
 }

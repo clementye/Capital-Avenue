@@ -7,7 +7,6 @@
         public int Pawn { get; set; }
 
         public int Capital { get; set; }
-        public int Monney { get; set; }
        public  List<string> OwnedProperties { get; }
 
         public List<string> Cards { get; private set; }
@@ -20,7 +19,6 @@
             this.Name = name;
             this.Pawn = pawn;
             this.Capital = capital;
-            this.Monney = 1200;
             this.OwnedProperties = new List<string>();
             this.Cards = new List<string>();
             isBankrupt = false;

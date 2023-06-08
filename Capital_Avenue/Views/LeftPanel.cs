@@ -43,7 +43,7 @@ namespace Capital_Avenue.Views
             l2.Text ="Cartes : " + player.Cards.Count.ToString();
             l2.Location = new Point(0, 30);
             p1.Controls.Add(l2);
-            l3.Text ="M : " + player.Monney.ToString();
+            l3.Text ="M : " + player.Capital.ToString();
             l3.Location = new Point(0,60);
             p1.Controls.Add(l3);
            
@@ -62,9 +62,20 @@ namespace Capital_Avenue.Views
 
         }
 
-        public void UpdateValues()
+        public void UpdatePlayerUC(Player player)
         {
-
+            foreach (UserControl uc in this.Controls)
+            {
+                if (uc.Controls[0] is Panel p)
+                {
+                    if (p.Controls[0].Text == player.Name)
+                    {
+                        // Update the player's labels
+                        //p.Controls[1].Text = "Cartes : " + player.Cards.Count.ToString();
+                        p.Controls[2].Text = "M : " + player.Capital.ToString();
+                    }
+                }
+            }
         }
     }
 }

@@ -36,10 +36,8 @@
             DiceResultShow = new Label();
             ucBoard1 = new Board.Board();
             Test = new Label();
-            PasserTour = new Button();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
-            onDice = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -104,15 +102,7 @@
             Test.Size = new Size(50, 20);
             Test.TabIndex = 45;
             Test.Text = "label1";
-            // 
-            // PasserTour
-            // 
-            PasserTour.Location = new Point(947, 626);
-            PasserTour.Name = "PasserTour";
-            PasserTour.Size = new Size(128, 34);
-            PasserTour.TabIndex = 46;
-            PasserTour.Text = "passer";
-            PasserTour.UseVisualStyleBackColor = true;
+            //Test.Click += Test_Click;
             // 
             // pictureBox1
             // 
@@ -134,22 +124,10 @@
             pictureBox2.TabStop = false;
             pictureBox2.Click += pictureBox2_Click;
             // 
-            // onDice
-            // 
-            onDice.Anchor = AnchorStyles.Right;
-            onDice.Location = new Point(815, 626);
-            onDice.Margin = new Padding(3, 4, 3, 4);
-            onDice.Name = "onDice";
-            onDice.Size = new Size(83, 36);
-            onDice.TabIndex = 40;
-            onDice.Text = "Lancer les dés";
-            onDice.UseVisualStyleBackColor = true;
-            // 
             // timer1
             // 
             timer1.Enabled = true;
             timer1.Interval = 20;
-            //timer1.Tick += Time;
             // 
             // Monopoly
             // 
@@ -158,13 +136,11 @@
             BackColor = SystemColors.ButtonHighlight;
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
-            Controls.Add(PasserTour);
             Controls.Add(Test);
             Controls.Add(DiceResultShow);
             Controls.Add(DiceShow);
             Controls.Add(currentPlayerName);
             Controls.Add(onBankrupt);
-            Controls.Add(onDice);
             Controls.Add(ucBoard1);
             Name = "Monopoly";
             Size = new Size(1884, 1069);
@@ -181,10 +157,8 @@
         private Label DiceShow;
         private Label DiceResultShow;
         private Label Test;
-        private Button PasserTour;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
-        private Button onDice;
         private System.Windows.Forms.Timer timer1;
     }
 }
