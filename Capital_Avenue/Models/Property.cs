@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Windows.Forms.AxHost;
@@ -64,7 +65,7 @@ namespace Capital_Avenue.Models
 
             if (this.state == PState.mortgage)
             {
-                //while()
+                
             }
             if (this.Owner == Owner)
             {
@@ -91,6 +92,14 @@ namespace Capital_Avenue.Models
             owner.AddMoney(rentAmount);
 
             
+        }
+        public void CheckMortgage(Player currentPlayer)
+        {
+             CanPropertyBeUnmortgaged;
+            if (CanPropertyBeUnmortgaged(this)) {
+            int requiredAmount = (int)(currentPlayer.Capital * 1.1); // Montant requis pour racheter la propriété (par exemple, 10% supplémentaires)
+            return currentPlayer.Capital >= requiredAmount;
+            }
         }
         
 
