@@ -33,7 +33,7 @@ namespace Capital_Avenue.Models
             this.Index = index;
             this.PurchasePrice = price;
             this.Rent = rent;
-            MortgagedPrice = mortgaged;
+            MortgagedPrice = mortgaged; 
             //state = PState.free;
             PurchasePrice = price;
         }
@@ -93,14 +93,7 @@ namespace Capital_Avenue.Models
 
             
         }
-        public void CheckMortgage(Player currentPlayer)
-        {
-             CanPropertyBeUnmortgaged;
-            if (CanPropertyBeUnmortgaged(this)) {
-            int requiredAmount = (int)(currentPlayer.Capital * 1.1); // Montant requis pour racheter la propriété (par exemple, 10% supplémentaires)
-            return currentPlayer.Capital >= requiredAmount;
-            }
-        }
+        
         
 
     }

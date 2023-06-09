@@ -13,9 +13,9 @@ namespace Capital_Avenue.Models
         Random rnd = new Random();
 
         public List<int> DiceList;
-        public int DoubleDice { get; set; }
         public bool isDouble { get; set; }
         public int ResultDice { get; set; }
+        public int DoubleDice { get; set; }
         
         public Dice()
         {
@@ -39,9 +39,11 @@ namespace Capital_Avenue.Models
         public void DiceThrower()
         {
             isDouble = false;
+            ResultDice = 0;
             for (int i = 0;i < DiceList.Count; i++)
             {
                 DiceList[i] = rnd.Next(1, 7);
+                ResultDice += DiceList[i];
             }
             if (DiceList.Distinct().Count() == 1) 
             {

@@ -14,7 +14,6 @@ namespace Capital_Avenue.Views.Board
     public partial class Board : UserControl
     {
         List<Case> Cases;
-        Case Case;
         Dictionary<Player, int> PlayerPositions;
 
         public Board()
@@ -38,30 +37,63 @@ namespace Capital_Avenue.Views.Board
         {
             PlayerPositions[player] = newmove;
             Cases[newmove].AddPawn(player);
+           
         }
 
         public void MovePawn(Player p, int move)
         {
+            int currentPosition = PlayerPositions[p];
             int newCase = PlayerPositions[p] + move;
             //Case.RemovePawn(p);
             if (newCase > 39) {
                 newCase -=40;
-                this.InitPawnOnePlayer(p, newCase);
+                p.Capital += 200;
             };
+            Cases[PlayerPositions[p]].RemovePawn(p);
             this.InitPawnOnePlayer(p, newCase);
-           
-        }
 
-        public void CreateBoard()
+        }
+      
+      
+   /* public void MovePawn(Player p, int move)
+       
+        int currentPosition = PlayerPositions[p];
+        int targetCase = currentPosition + move;
+
+        while (currentPosition != targetCase)
+        {
+            currentPosition = (currentPosition + 1) % 40; 
+            Cases[PlayerPositions[p]].RemovePawn(p);
+            PlayerPositions[p] = currentPosition;
+            this.InitPawnOnePlayer(p, currentPosition);
+            Thread.Sleep(200); 
+        }
+    }
+   */
+
+
+
+    public void CreateBoard()
         {
             // Configurer les propriétés de dimensionnement du UCBoard
             // AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             // Dock = DockStyle.Fill;
+            /*TableLayoutPanel Table = new TableLayoutPanel();
+            Table.ColumnCount = 3;
+            Table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40));
+            Table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40));
+            Table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20));
+            Table.RowCount = 2;
+            Table.RowStyles.Add(new RowStyle(SizeType.Percent, 50));
+            Table.RowStyles.Add(new RowStyle(SizeType.Percent, 50));
+            this.Controls.Add(Table);*/
+            //Le code du dessus est une idée pour ajouter sans problème les pions, ainsi que si une propriété est acheté et le nombre de maison dessus si besoin
 
             Case StartCase = new SquareCase(); // Crée une instance de la case de départ
             StartCase.Location = new Point(782, 776); // Définit la position de la case de départ
             StartCase.BackgroundImage = Properties.Resources.Casedepart;
+            
             Controls.Add(StartCase);
            
 

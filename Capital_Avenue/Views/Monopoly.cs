@@ -1,5 +1,6 @@
 
 using Capital_Avenue.Models;
+using Capital_Avenue.Views.Board;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,9 +19,6 @@ namespace Capital_Avenue.Views
 
         private Game currentGame;
         private LeftPanel UCLeftPanel;
-        private Dice d;
-        private int Ldice = 0;
-        private int NbDice = 2;
         public Monopoly(Game game)
         {
             InitializeComponent();
@@ -29,28 +27,15 @@ namespace Capital_Avenue.Views
             currentPlayerName.Text = game.playerList[0].Name + ", lancer vos dés";
             this.InitializeDice();
             ucBoard1.InitPawns(game.playerList);
-        
+
         }
         public void InitializeDice()
         {
-            d= new Dice();
-            d.addDice(Ldice, NbDice);
+            currentGame.DiceInit();
             pictureBox2.Enabled = false;
             pictureBox2.BackColor = Color.Red;
             pictureBox1.BackColor = Color.Green;
-            for (int i = 0; i < d.DiceList.Count; i++)
-            {
-                if (i == 0)
-                {
-                    DiceShow.Text = "Dés : " + d.DiceList[i].ToString();
-                }
-                else
-                {
-                    DiceShow.Text += " + " + d.DiceList[i].ToString();
-                }
-
-            }
-            DiceResultShow.Text = "Résultats  :" + d.ResultDice.ToString();
+            this.DisplayDiceResult();
         }
 
         public void addPlayerPanel()
@@ -60,28 +45,30 @@ namespace Capital_Avenue.Views
             this.Controls.Add(UCLeftPanel);
 
         }
-        public void CalculeDice()
+        public void DisplayDiceResult()
         {
-            d.ResultDice = 0;
 
-            for (int i = 0; i < d.DiceList.Count; i++)
+            for (int i = 0; i < currentGame.Dice.DiceList.Count; i++)
             {
                 if (i == 0)
                 {
-                    DiceShow.Text = " Dés  :  " + d.DiceList[i].ToString();
+                    DiceShow.Text = " Dés  :  " + currentGame.Dice.DiceList[i].ToString();
                 }
                 else
                 {
-                    DiceShow.Text += "  +  " + d.DiceList[i].ToString();
+                    DiceShow.Text += "  +  " + currentGame.Dice.DiceList[i].ToString();
                 }
-                d.ResultDice += d.DiceList[i];
             }
-            DiceResultShow.Text = "Résultats  " + d.ResultDice.ToString();
+            if (currentGame.Dice.DoubleDice > 0)
+            {
+                DiceShow.Text += " + " + currentGame.Dice.DoubleDice.ToString();
+            }
+            DiceResultShow.Text = "Résultats  " + currentGame.Dice.ResultDice.ToString();
         }
         public void diceShow()
         {
-            d.DiceThrower();
-            this.CalculeDice();
+            currentGame.DiceResult();
+            this.DisplayDiceResult();
 
         }
 
@@ -94,6 +81,7 @@ namespace Capital_Avenue.Views
          }*/
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+
             this.diceShow();
             pictureBox1.Enabled = false;
             //pictureBox1.Enabled = false;
@@ -102,22 +90,21 @@ namespace Capital_Avenue.Views
             pictureBox2.BackColor = Color.Green;
             int currentPlayerIndex = currentGame.currentPlayer;
             Player currentPlayer = currentGame.playerList[currentPlayerIndex];
-            ucBoard1.MovePawn(currentPlayer, d.ResultDice) ; 
+            ucBoard1.MovePawn(currentPlayer, currentGame.Dice.ResultDice);
+            UCLeftPanel.UpdatePlayerUC(currentGame.playerList[currentGame.currentPlayer]);
 
         }
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            int currentPlayerIndex = currentGame.currentPlayer;
-            if (currentPlayerIndex > currentGame.playerList.Count)
-            {
-                currentPlayerIndex = 0;
-            }
             currentGame.EndTurn();
             pictureBox1.Enabled = true;
             pictureBox1.BackColor = Color.Green;
-
-            this.InitializeDice();
-            currentPlayerName.Text = currentGame.playerList[currentPlayerIndex].Name + ", lancer vos dés";
+            pictureBox2.BackColor = Color.Red;
+            currentPlayerName.Text = currentGame.playerList[currentGame.currentPlayer].Name + ", lancer vos dés";
+            //this.InitializeDice(); 
+            //TODO : 
+            // Change value of DiceList element to 0. Probably through currentGame.Dice.ResetDice().
+            // Also, if through this technic, then implement ResetDice.
         }
         /*
         public void PasserTour_Click(object sender, EventArgs e)
@@ -139,13 +126,12 @@ namespace Capital_Avenue.Views
         public void onBankrupt_Click()
         {
             currentGame.Bankruptcy();
-            UCLeftPanel.UpdateValues();
+            UCLeftPanel.UpdatePlayerUC(currentGame.playerList[currentGame.currentPlayer]);
         }
-        private void UCMonopoly_Load(object sender, EventArgs e)
+
+        /*private void Test_Click(object sender, EventArgs e)
         {
-
-        }
-
-
+            
+        }*/
     }
 }
