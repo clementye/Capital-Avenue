@@ -1,4 +1,3 @@
-
 using Capital_Avenue.Models;
 using Capital_Avenue.Views.Board;
 using System;
@@ -67,18 +66,12 @@ namespace Capital_Avenue.Views
         }
         public void diceShow()
         {
+
             currentGame.DiceResult();
             this.DisplayDiceResult();
 
         }
 
-        /* public void onDice_Click(object sender, EventArgs e)
-         {
-             this.diceShow();
-             onDice.Enabled = false;
-             PasserTour.Enabled = true;
-
-         }*/
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
@@ -93,6 +86,8 @@ namespace Capital_Avenue.Views
             ucBoard1.MovePawn(currentPlayer, currentGame.Dice.ResultDice);
             UCLeftPanel.UpdatePlayerUC(currentGame.playerList[currentGame.currentPlayer]);
 
+
+
         }
         private void pictureBox2_Click(object sender, EventArgs e)
         {
@@ -100,28 +95,14 @@ namespace Capital_Avenue.Views
             pictureBox1.Enabled = true;
             pictureBox1.BackColor = Color.Green;
             pictureBox2.BackColor = Color.Red;
+            pictureBox2.Enabled = false;
             currentPlayerName.Text = currentGame.playerList[currentGame.currentPlayer].Name + ", lancer vos dés";
+            UCLeftPanel.UpdatePlayerUC(currentGame.playerList[currentGame.currentPlayer]);
             //this.InitializeDice(); 
             //TODO : 
             // Change value of DiceList element to 0. Probably through currentGame.Dice.ResetDice().
             // Also, if through this technic, then implement ResetDice.
         }
-        /*
-        public void PasserTour_Click(object sender, EventArgs e)
-        {
-            int currentPlayerIndex = currentGame.currentPlayer;
-            if (currentPlayerIndex > currentGame.playerList.Count)
-            {
-                currentPlayerIndex = 0;
-            }
-            currentGame.EndTurn();
-            pictureBox1.Enabled = true;
-            pictureBox1.BackColor = Color.Green;
-
-            this.InitializeDice();
-            currentPlayerName.Text = currentGame.playerList[currentPlayerIndex].Name + ", lancer vos dés";
-
-        }*/
 
         public void onBankrupt_Click()
         {

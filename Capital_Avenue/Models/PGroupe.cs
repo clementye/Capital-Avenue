@@ -6,18 +6,19 @@ using System.Threading.Tasks;
 
 namespace Capital_Avenue.Models
 {
-    public enum PGroupe //proprieté groupe
+    public enum PGroupe
     {
         //Sera utilisé pour organisé les rues, et vérif si un joueur les à tous.
-        //Initialise by colour
-
-        Grey,
-        Cyan,
-        Pink,
+        Rose,
+        Rouge,
+        Marron,
+        BleauC,
+        Aucun,
         Orange,
-        Red,
-        Yellow,
-        Green,
-        Blue,
+        rouge,
+        RougeOrange,
+        Jaune,
+        Vert,
+        Bleu,
     }
 }

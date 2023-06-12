@@ -4,99 +4,54 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
-using static System.Windows.Forms.AxHost;
 
 namespace Capital_Avenue.Models
 {
     public class Propriety : Case
     {
-        //On va devoir se décider si on met dans Player ou dans CLPropriety la notion de possession.
-        //Je pensais l'ajouter dans CLPropriety, et ajouter un élément InBank pour dire si c'est dans la banque ou non.
-        public PGroupe PGroupe { get; set;}
-        public enum PState //état propriete
-        {
-            free,
-            purchase,
-            mortgage,
-        }
-        public PGroupe StreetG { get; set; }
-        public PState state { get; set; }
-        public int PurchasePrice { get; }
-        public float Rent { get; set; }
-        public int MortgagedPrice { get; }
-        public Player Owner { get; set; }
+        public PGroupe PGroupe { get; set; }
+        public int Prix { get; set; }
+        public int Loyer { get; set; }
+        private Dictionary<Player, string> PropertyBy = new Dictionary<Player, string>();
 
-        public Propriety (int index, string name, PGroupe groupe, int price, int rent, int mortgaged) : base (index, name)
+        public Propriety(int index, string name, PGroupe groupe, int prix, int loyer) : base(index, name)
         {
             this.PGroupe = groupe;
             this.Name = name;
             this.Index = index;
-            this.PurchasePrice = price;
-            this.Rent = rent;
-            MortgagedPrice = mortgaged; 
-            //state = PState.free;
-            PurchasePrice = price;
-        }
-        public override string ToString()
-        {
-            return $"Propriety: {Name} (Index: {Index}), Group: {StreetG}, State: {state}, Purchase Price: {PurchasePrice}, Rent: {Rent}, Mortgaged Price: {MortgagedPrice}, Owner: {(Owner != null ? Owner.Name : "None")}";
-
+            this.Prix = prix;
+            this.Loyer = loyer;
         }
 
-        /*
-         * si le proprietaire est dans sa case passez 
-         * si un joueur se met danss la case du owner faut payer
-         * si le joueur se met dans uen case ou l'ensemble de la couleur  **/
-
-
-        public void Action(Player currentPlayer)
+        public void ValiderProperty(Player currentPlayer, Propriety propriety)
         {
-            if (this.state == PState.free)
+            PropertyBy.Add(currentPlayer, propriety.Name);
+            currentPlayer.Capital -= propriety.Prix;
+            MessageBox.Show($" La Propriété {propriety.Name}  vous appartient {currentPlayer.Name}");
+            currentPlayer.OwnedProperties.Add(propriety);
+        }
+        public bool VerificationProperty(Propriety propriety)
+        {
+            if (PropertyBy.ContainsValue(propriety.Name))
             {
-                //voir cette partie pour choix de l'affichage
-                this.BuyProp(currentPlayer);
-                Console.WriteLine("If you wanna buy it press yes");
+                return true;
             }
-            else if (this.state == PState.purchase)
-            {
-                Payrent(currentPlayer); 
-
-            }
-
-            if (this.state == PState.mortgage)
-            {
-                
-            }
-            if (this.Owner == Owner)
-            {
-
-            } 
+            return false;
         }
-        // a specifié pour faire la matérialisation du plateau si c'est acheté et/ou hypothéqué
-        public void BuyProp(Player currentPlayer)
+        public void TaxProperty(Player currentPlayer, Propriety propriety)
         {
-            int purchasePrice = this.PurchasePrice;
-
-            currentPlayer.DeductMoney(purchasePrice);
-            currentPlayer.AddProperty(this);
-
-            this.state = PState.purchase;
-            this.Owner = currentPlayer;
+            Player owner = PropertyBy.FirstOrDefault(x => x.Value == propriety.Name).Key;
+            if (owner.Name == currentPlayer.Name)
+            {
+                MessageBox.Show($" la propriété {propriety.Name} vous appartient");
+            }
+            else
+            {
+                currentPlayer.Capital -= propriety.Loyer;
+                MessageBox.Show($"{currentPlayer.Name} a été preléver {propriety.Loyer}");
+                owner.Capital += propriety.Loyer;
+                MessageBox.Show($"{currentPlayer.Name} est sur une propiéte achéte par {owner.Name} et doit payer {propriety.Loyer} euros de loyer");
+            }
         }
-        public void Payrent(Player currentPlayer)
-        {
-            Player owner = this.Owner;
-            int rentAmount = (int)this.Rent;
-
-            currentPlayer.DeductMoney(rentAmount);
-            owner.AddMoney(rentAmount);
-
-            
-        }
-        
-        
-
     }
 }
-
-﻿
