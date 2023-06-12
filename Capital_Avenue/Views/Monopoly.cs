@@ -1,3 +1,4 @@
+
 using Capital_Avenue.Models;
 using Capital_Avenue.Views.Board;
 using System;
@@ -10,7 +11,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace Capital_Avenue.Views
 {
     public partial class Monopoly : UserControl
@@ -26,7 +26,6 @@ namespace Capital_Avenue.Views
             currentPlayerName.Text = game.playerList[0].Name + ", lancer vos dés";
             this.InitializeDice();
             ucBoard1.InitPawns(game.playerList);
-
         }
         public void InitializeDice()
         {
@@ -86,8 +85,6 @@ namespace Capital_Avenue.Views
             ucBoard1.MovePawn(currentPlayer, currentGame.Dice.ResultDice);
             UCLeftPanel.UpdatePlayerUC(currentGame.playerList[currentGame.currentPlayer]);
 
-
-
         }
         private void pictureBox2_Click(object sender, EventArgs e)
         {
@@ -98,21 +95,14 @@ namespace Capital_Avenue.Views
             pictureBox2.Enabled = false;
             currentPlayerName.Text = currentGame.playerList[currentGame.currentPlayer].Name + ", lancer vos dés";
             UCLeftPanel.UpdatePlayerUC(currentGame.playerList[currentGame.currentPlayer]);
-            //this.InitializeDice(); 
-            //TODO : 
-            // Change value of DiceList element to 0. Probably through currentGame.Dice.ResetDice().
-            // Also, if through this technic, then implement ResetDice.
+
         }
 
         public void onBankrupt_Click()
         {
             currentGame.Bankruptcy();
             UCLeftPanel.UpdatePlayerUC(currentGame.playerList[currentGame.currentPlayer]);
-        }
 
-        /*private void Test_Click(object sender, EventArgs e)
-        {
-            
-        }*/
+        }
     }
 }

@@ -41,7 +41,6 @@ namespace Capital_Avenue.Views.Board
             PlayerPositions[player] = newmove;
             Cases[newmove].AddPawn(player);
 
-
         }
 
         public void MovePawn(Player p, int move)
@@ -111,8 +110,7 @@ namespace Capital_Avenue.Views.Board
         */
 
 
-
-        public void CreateBoard()
+    public void CreateBoard()
         {
             // Configurer les propriétés de dimensionnement du UCBoard
             // AutoSize = true;

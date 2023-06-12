@@ -84,6 +84,7 @@ namespace Capital_Avenue.Views
                     {
                         // Update the player's labels
                         p.Controls[1].Text = "Propriété : " + player.OwnedProperties.Count.ToString();
+
                         p.Controls[2].Text = "M : " + player.Capital.ToString();
                     }
                 }
