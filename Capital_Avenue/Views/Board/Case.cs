@@ -21,6 +21,7 @@ namespace Capital_Avenue.Views.Board
             pictureBoxes = new();
         }
 
+
         public void AddPawn(Player player)
         {
             PictureBox picture = new PictureBox();

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
@@ -14,9 +15,14 @@ namespace Capital_Avenue.Views.Board
 {
     public partial class Board : UserControl
     {
-        List<Case> Cases;
+        private List<Case> Cases;
+        private CardChance CardChance;
+        private CardCommunity CardCommunity;
         Dictionary<Player, int> PlayerPositions;
         private Dictionary<int, Propriety> Proprie = new Dictionary<int, Propriety>();
+        
+
+
 
         public Board()
         {
@@ -24,6 +30,8 @@ namespace Capital_Avenue.Views.Board
             Cases = new List<Case>();
             PlayerPositions = new();
             CreateBoard();
+            CardChance = new CardChance();
+            CardCommunity = new CardCommunity();
         }
 
         public void InitPawns(List<Player> players)
@@ -57,8 +65,7 @@ namespace Capital_Avenue.Views.Board
             Cases[PlayerPositions[p]].RemovePawn(p);
             this.InitPawnOnePlayer(p, newCase);
             this.ProprietyEvent(p, newCase);
-
-
+            
         }
         public void ProprietyEvent(Player player, int move)
         {
@@ -82,51 +89,26 @@ namespace Capital_Avenue.Views.Board
                     if (result == DialogResult.Yes)
                     {
                         p.ValiderProperty(player, Proprie[move]);
-
-
                     }
+
                 }
-
             }
-
+            else if (move == 7 || move == 22 || move == 36)
+            {
+                //Exécuter une action de carte "Chance" (parmi 8 actions de ton choix)
+                 
+                 CardChance.ExecuteChanceCardAction(player);
+            }
+            else if (move == 2 || move == 17 || move == 33)
+            {
+                // Exécuter une action de carte "Chance" (parmi 8 actions de ton choix)
+                 CardCommunity.ExecuteCommunityCardAction(player);
+            }
         }
 
-
-
-        /* public void MovePawn(Player p, int move)
-
-             int currentPosition = PlayerPositions[p];
-             int targetCase = currentPosition + move;
-
-             while (currentPosition != targetCase)
-             {
-                 currentPosition = (currentPosition + 1) % 40; 
-                 Cases[PlayerPositions[p]].RemovePawn(p);
-                 PlayerPositions[p] = currentPosition;
-                 this.InitPawnOnePlayer(p, currentPosition);
-                 Thread.Sleep(200); 
-             }
-         }
-        */
-
-
-    public void CreateBoard()
+        public void CreateBoard()
         {
-            // Configurer les propriétés de dimensionnement du UCBoard
-            // AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            // Dock = DockStyle.Fill;
-            /*TableLayoutPanel Table = new TableLayoutPanel();
-            Table.ColumnCount = 3;
-            Table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40));
-            Table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40));
-            Table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20));
-            Table.RowCount = 2;
-            Table.RowStyles.Add(new RowStyle(SizeType.Percent, 50));
-            Table.RowStyles.Add(new RowStyle(SizeType.Percent, 50));
-            this.Controls.Add(Table);*/
-            //Le code du dessus est une idée pour ajouter sans problème les pions, ainsi que si une propriété est acheté et le nombre de maison dessus si besoin
-
             Case StartCase = new SquareCase(); // Crée une instance de la case de départ
             StartCase.Location = new Point(782, 776); // Définit la position de la case de départ
             StartCase.BackgroundImage = Properties.Resources.Casedepart;
@@ -134,7 +116,6 @@ namespace Capital_Avenue.Views.Board
             Controls.Add(StartCase);
 
 
-            // Crée et configure la case de prison
             Case PrisonCase = new SquareCase();
             PrisonCase.Location = new Point(0, 776); // Définit la position de la case de prison
             PrisonCase.BackgroundImage = Properties.Resources.case10;
@@ -336,11 +317,13 @@ namespace Capital_Avenue.Views.Board
             Controls.Add(HorizontaldownCase9);
 
 
+
             //Ajouter les case dans la liste des cases
             Cases.Add(StartCase);
             Cases.Add(HorizontaldownCase9);
             Proprie[1] = new Propriety(1, "GHANA", PGroupe.Marron, 60, 120);
             Cases.Add(HorizontaldownCase8);
+
             Cases.Add(HorizontaldownCase7);
             Proprie[3] = new Propriety(3, "UGUANDA", PGroupe.Marron, 60, 120);
             Cases.Add(HorizontaldownCase6);
@@ -409,5 +392,6 @@ namespace Capital_Avenue.Views.Board
 
             // TODO 39 autres dans l'ordre !!!
         }
+       
     }
 }
