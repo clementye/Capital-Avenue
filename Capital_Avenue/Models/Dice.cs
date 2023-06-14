@@ -8,8 +8,6 @@ namespace Capital_Avenue.Models
 {
     public class Dice
     {
-        //réaliser un élément pour enregistrer une valeur aléatoire entre 1 et 6.
-        //faire une fonction lançant deux dés aléatoire et, dans la partie test, voir si c'est bien aléatoire.
         Random rnd = new Random();
 
         public List<int> DiceList;
@@ -20,10 +18,8 @@ namespace Capital_Avenue.Models
         public Dice()
         {
             this.DiceList = new List<int>();
-            this.DoubleDice = 0;
-            this.ResultDice = 0; //Value that dictate the movement.
-            //Simply put, if player is a case 0 and RD is 9, the player will go to case 9. 
-            //Similar, if at 36 and value of RD is 6, will go to 36+6=42, then minus 40 to find the real case, being 2 in this exemple
+            this.DoubleDice = 0; // Change for actual rule of Double later
+            this.ResultDice = 0;
             this.isDouble = false;
         }
 
@@ -53,8 +49,4 @@ namespace Capital_Avenue.Models
 
         
     }
-
-    //TODO:
-    // - Gestion du double
-    // - Gestion du cas où trois double se suivent
 }

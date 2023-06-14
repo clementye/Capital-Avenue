@@ -37,8 +37,8 @@ namespace Capital_Avenue.Views
             Label l1 = new Label();
             Label l2 = new Label();
             Label l3 = new Label();
-            FlowLayoutPanel Flow = new FlowLayoutPanel(); // FlowLayoutPanel pour les propriétés
-            Flow.FlowDirection = FlowDirection.TopDown; // Définir la direction d'écoulement vers le bas
+            FlowLayoutPanel Flow = new FlowLayoutPanel();
+            Flow.FlowDirection = FlowDirection.TopDown; 
             Flow.AutoSize = true;
 
             //PictureBox picture = new PictureBox();
@@ -50,23 +50,8 @@ namespace Capital_Avenue.Views
             l3.Text = "M : " + player.Capital.ToString();
             l3.Location = new Point(0, 60);
             p1.Controls.Add(l3);
-            /* foreach (var property in player.OwnedProperties)
-             {
-                 Label propertyLabel = new Label();
-                 propertyLabel.Text = property.Name;
-                 Flow.Controls.Add(propertyLabel); // Ajouter le label de propriété au FlowLayoutPanel
-             }
-
-             p1.Controls.Add(Flow);
-            */
-
-            ///p1.Controls.Add(picture);
             p1.BackColor = ColorTranslator.FromHtml(color);
             p1.Size = new Size(200, 100);
-            //picture.Size = new Size(300, 110);
-            //picture.Location = new Point(30, (p1.Height - picture.Height) / 2);
-            //picture.Image =images[player.Pawn];
-
             uc1.Location = new Point(0, position);
             uc1.Size = new Size(200, 100);
             uc1.Controls.Add(p1);
@@ -82,7 +67,6 @@ namespace Capital_Avenue.Views
                 {
                     if (p.Controls[0].Text == player.Name)
                     {
-                        // Update the player's labels
                         p.Controls[1].Text = "Propriété : " + player.OwnedProperties.Count.ToString();
 
                         p.Controls[2].Text = "M : " + player.Capital.ToString();

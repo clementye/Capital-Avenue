@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Capital_Avenue.Models
 {
-    public static class ComboBoxTools
+    public static class PawnPrinter
     {
         private const int MarginWidth = 3;
         private const int MarginHeight = 3;

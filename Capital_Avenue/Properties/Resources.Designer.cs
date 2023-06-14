@@ -493,6 +493,16 @@ namespace Capital_Avenue.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap k {
+            get {
+                object obj = ResourceManager.GetObject("k", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Micro {
             get {
                 object obj = ResourceManager.GetObject("Micro", resourceCulture);

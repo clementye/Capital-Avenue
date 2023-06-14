@@ -32,7 +32,7 @@ namespace Capital_Avenue.Views
             }
         }
 
-        private void OnMyComboBoxChanged(object sender, EventArgs e)
+        private void OnMyPawnPrinterChanged(object sender, EventArgs e)
         {     
             leftPlayerPanel.Controls.Clear();
             PlayerTextList.Clear();
@@ -76,19 +76,11 @@ namespace Capital_Avenue.Views
                 }
 
             }
-
-            //System.Diagnostics.Debug.WriteLine(System.Drawing.Image.FromFile(PlayerTextList[0].comboBox.Text));
             return true;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // j'appuie sur ENTER après avoir remplis les champs
-            // je dois :
-            // => valider les champs !
-            // si NOK : affichage des erreurs (par une fonction dédié)
-            // else : récupération des champs, et initialisation de la partie avec les valeurs fournis
-
             List<Player> playerList = new List<Player>();
             if (this.ValidateForm())
             {
@@ -104,25 +96,6 @@ namespace Capital_Avenue.Views
                 Game newGame = new Game(playerList);
                 Program.PageHome.NextPage(new Monopoly(newGame));
             }
-
-
-
-            /*
-           if (Player1.Text.Length > 0) // TODO add other test to validate view
-           {
-
-               CLPlayer p = new CLPlayer(Player1.Text, "Voiture", 1);
-               CLPlayer p2 = new CLPlayer(Player2.Text, "Chaussure", 1);
-               List<CLPlayer> playerList = new List<CLPlayer>();
-               playerList.Add(p);
-               playerList.Add(p2);
-               Game newGame = new Game(playerList);
-               Program.PageHome.NextPage(new UCMonopoly(newGame));
-           }
-           else
-           {
-               MessageBox.Show("Remplisez les champs vides");
-           }  */
         }
     }
 }

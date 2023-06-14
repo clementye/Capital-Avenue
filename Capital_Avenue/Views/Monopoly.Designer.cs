@@ -102,7 +102,6 @@
             Test.Size = new Size(50, 20);
             Test.TabIndex = 45;
             Test.Text = "label1";
-            //Test.Click += Test_Click;
             // 
             // pictureBox1
             // 
@@ -142,6 +141,7 @@
             Controls.Add(currentPlayerName);
             Controls.Add(onBankrupt);
             Controls.Add(ucBoard1);
+            DoubleBuffered = true;
             Name = "Monopoly";
             Size = new Size(1884, 1069);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

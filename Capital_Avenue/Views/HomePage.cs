@@ -15,7 +15,10 @@ namespace Capital_Avenue.Views
         public HomePage()
         {
             InitializeComponent();
-
+            this.BackgroundImage = Properties.Resources.k;
+            this.BackgroundImageLayout = ImageLayout.Stretch;
+            this.Dock = DockStyle.Fill;
+            button1.Location = new Point(800, 800);
         }
 
         private void button1_Click(object sender, EventArgs e)

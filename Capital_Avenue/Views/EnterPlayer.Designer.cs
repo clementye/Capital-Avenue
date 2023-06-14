@@ -68,7 +68,7 @@
             NumberPlayer.Name = "NumberPlayer";
             NumberPlayer.Size = new Size(74, 28);
             NumberPlayer.TabIndex = 2;
-            NumberPlayer.SelectionChangeCommitted += OnMyComboBoxChanged;
+            NumberPlayer.SelectionChangeCommitted += OnMyPawnPrinterChanged;
             // 
             // EnterPlayer
             // 

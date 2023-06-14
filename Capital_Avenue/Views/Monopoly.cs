@@ -22,10 +22,10 @@ namespace Capital_Avenue.Views
         {
             InitializeComponent();
             this.currentGame = game;
-            this.addPlayerPanel();
-            currentPlayerName.Text = game.playerList[0].Name + ", lancer vos dés";
+            this.AddPlayerPanel();
+            currentPlayerName.Text = game.PlayerList[0].Name + ", lancer vos dés";
             this.InitializeDice();
-            ucBoard1.InitPawns(game.playerList);
+            ucBoard1.InitPawns(game.PlayerList);
         }
         public void InitializeDice()
         {
@@ -36,9 +36,9 @@ namespace Capital_Avenue.Views
             this.DisplayDiceResult();
         }
 
-        public void addPlayerPanel()
+        public void AddPlayerPanel()
         {
-            UCLeftPanel = new LeftPanel(currentGame.playerList);
+            UCLeftPanel = new LeftPanel(currentGame.PlayerList);
             UCLeftPanel.Size = new Size(500, 840);
             this.Controls.Add(UCLeftPanel);
 
@@ -63,7 +63,7 @@ namespace Capital_Avenue.Views
             }
             DiceResultShow.Text = "Résultats  " + currentGame.Dice.ResultDice.ToString();
         }
-        public void diceShow()
+        public void ShowDice()
         {
 
             currentGame.DiceResult();
@@ -74,16 +74,16 @@ namespace Capital_Avenue.Views
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
-            this.diceShow();
+            this.ShowDice();
             pictureBox1.Enabled = false;
             //pictureBox1.Enabled = false;
             pictureBox1.BackColor = Color.Red;
             pictureBox2.Enabled = true;
             pictureBox2.BackColor = Color.Green;
-            int currentPlayerIndex = currentGame.currentPlayer;
-            Player currentPlayer = currentGame.playerList[currentPlayerIndex];
+            int currentPlayerIndex = currentGame.CurrentPlayer;
+            Player currentPlayer = currentGame.PlayerList[currentPlayerIndex];
             ucBoard1.MovePawn(currentPlayer, currentGame.Dice.ResultDice);
-            UCLeftPanel.UpdatePlayerUC(currentGame.playerList[currentGame.currentPlayer]);
+            UCLeftPanel.UpdatePlayerUC(currentGame.PlayerList[currentGame.CurrentPlayer]);
 
         }
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -93,15 +93,15 @@ namespace Capital_Avenue.Views
             pictureBox1.BackColor = Color.Green;
             pictureBox2.BackColor = Color.Red;
             pictureBox2.Enabled = false;
-            currentPlayerName.Text = currentGame.playerList[currentGame.currentPlayer].Name + ", lancer vos dés";
-            UCLeftPanel.UpdatePlayerUC(currentGame.playerList[currentGame.currentPlayer]);
+            currentPlayerName.Text = currentGame.PlayerList[currentGame.CurrentPlayer].Name + ", lancer vos dés";
+            UCLeftPanel.UpdatePlayerUC(currentGame.PlayerList[currentGame.CurrentPlayer]);
 
         }
 
         public void onBankrupt_Click()
         {
             currentGame.Bankruptcy();
-            UCLeftPanel.UpdatePlayerUC(currentGame.playerList[currentGame.currentPlayer]);
+            UCLeftPanel.UpdatePlayerUC(currentGame.PlayerList[currentGame.CurrentPlayer]);
 
         }
     }

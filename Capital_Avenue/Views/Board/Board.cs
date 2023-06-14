@@ -19,7 +19,7 @@ namespace Capital_Avenue.Views.Board
         private CardChance CardChance;
         private CardCommunity CardCommunity;
         Dictionary<Player, int> PlayerPositions;
-        private Dictionary<int, Propriety> Proprie = new Dictionary<int, Propriety>();
+        private Dictionary<int, Property> Property = new Dictionary<int, Property>();
         
 
 
@@ -43,65 +43,57 @@ namespace Capital_Avenue.Views.Board
             }
         }
 
-        public void InitPawnOnePlayer(Player player, int newmove)
+        public void PawnOnePlayer(Player player, int indexCase)
         {
-
-            PlayerPositions[player] = newmove;
-            Cases[newmove].AddPawn(player);
+            PlayerPositions[player] = indexCase;
+            Cases[indexCase].AddPawn(player);
 
         }
 
-        public void MovePawn(Player p, int move)
+        public void MovePawn(Player p, int diceValue)
         {
-            int currentPosition = PlayerPositions[p];
-            int newCase = PlayerPositions[p] + move;
-            //Case.RemovePawn(p);
-            if (newCase > 39)
+            int NewPosition = PlayerPositions[p] + diceValue;
+            if (NewPosition > 39)
             {
-                newCase -= 40;
+                NewPosition -= 40;
                 p.Capital += 200;
                 MessageBox.Show($"vous  Avez réçu 200 euros {p.Name}");
             };
             Cases[PlayerPositions[p]].RemovePawn(p);
-            this.InitPawnOnePlayer(p, newCase);
-            this.ProprietyEvent(p, newCase);
+            this.PawnOnePlayer(p, NewPosition);
+            this.CheckStatusProperty(p, NewPosition);
             
         }
-        public void ProprietyEvent(Player player, int move)
+        public void CheckStatusProperty(Player player, int indexCase)
         {
 
-            if (Proprie.ContainsKey(move))
+            if (Property.ContainsKey(indexCase))
             {
-                Propriety p = Proprie[move];
-                //p.GetOwnerOfProperty(Proprie[move]);
-                if (p.VerificationProperty(Proprie[move]) == true)
+                Property pro = Property[indexCase];
+                if (pro.CheckPropietorship(Property[indexCase]) == true)
                 {
-                    p.TaxProperty(player, Proprie[move]);
+                    pro.TaxProperty(player, Property[indexCase]);
                 }
                 else
                 {
                     string message =
-                     $"{player.Name} Voulez vous payer la Propiéte : {p.Name}  \n" +
-                     $" qui cout {p.Prix} Euros \n";
+                     $"{player.Name} Voulez vous payer la Propiéte : {pro.Name}  \n" +
+                     $" qui cout {pro.Price} Euros \n";
                     DialogResult result = MessageBox.Show(message, " Information Propiété ",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        p.ValiderProperty(player, Proprie[move]);
+                        pro.BuyProperty(player, Property[indexCase]);
                     }
-
                 }
             }
-            else if (move == 7 || move == 22 || move == 36)
+            else if (indexCase == 7 || indexCase == 22 || indexCase == 36)
             {
-                //Exécuter une action de carte "Chance" (parmi 8 actions de ton choix)
-                 
                  CardChance.ExecuteChanceCardAction(player);
             }
-            else if (move == 2 || move == 17 || move == 33)
+            else if (indexCase == 2 || indexCase == 17 || indexCase == 33)
             {
-                // Exécuter une action de carte "Chance" (parmi 8 actions de ton choix)
                  CardCommunity.ExecuteCommunityCardAction(player);
             }
         }
@@ -115,7 +107,7 @@ namespace Capital_Avenue.Views.Board
 
             Controls.Add(StartCase);
 
-
+            
             Case PrisonCase = new SquareCase();
             PrisonCase.Location = new Point(0, 776); // Définit la position de la case de prison
             PrisonCase.BackgroundImage = Properties.Resources.case10;
@@ -321,76 +313,76 @@ namespace Capital_Avenue.Views.Board
             //Ajouter les case dans la liste des cases
             Cases.Add(StartCase);
             Cases.Add(HorizontaldownCase9);
-            Proprie[1] = new Propriety(1, "GHANA", PGroupe.Marron, 60, 120);
+            Property[1] = new Property(1, "GHANA", ColorProperty.Marron, 60, 120);
             Cases.Add(HorizontaldownCase8);
 
             Cases.Add(HorizontaldownCase7);
-            Proprie[3] = new Propriety(3, "UGUANDA", PGroupe.Marron, 60, 120);
+            Property[3] = new Property(3, "UGANDA", ColorProperty.Marron, 60, 120);
             Cases.Add(HorizontaldownCase6);
             Cases.Add(HorizontaldownCase5);
-            Proprie[5] = new Propriety(5, "READING RAILROAD", PGroupe.Aucun, 200, 400);
+            Property[5] = new Property(5, "READING RAILROAD", ColorProperty.Station, 200, 400);
             Cases.Add(HorizontaldownCase4);
-            Proprie[6] = new Propriety(6, "KENYA", PGroupe.BleauC, 100, 200);
+            Property[6] = new Property(6, "KENYA", ColorProperty.BleauC, 100, 200);
             Cases.Add(HorizontaldownCase3);
             Cases.Add(HorizontaldownCase2);
-            Proprie[8] = new Propriety(8, "MADAGASCAR", PGroupe.BleauC, 100, 200);
+            Property[8] = new Property(8, "MADAGASCAR", ColorProperty.BleauC, 100, 200);
             Cases.Add(HorizontaldownCase1);
-            Proprie[9] = new Propriety(9, "MYANNAR", PGroupe.BleauC, 120, 240);
+            Property[9] = new Property(9, "MYANNAR", ColorProperty.BleauC, 120, 240);
             Cases.Add(PrisonCase); //10
             Cases.Add(VerticalLeftCase9);//11
-            Proprie[11] = new Propriety(11, "NIGERIA", PGroupe.Rose, 140, 280);
+            Property[11] = new Property(11, "NIGERIA", ColorProperty.Rose, 140, 280);
             Cases.Add(VerticalLeftCase8);//12
-            Proprie[12] = new Propriety(12, "DISTRIBUTION COMPANY", PGroupe.Aucun, 150, 300);
+            Property[12] = new Property(12, "DISTRIBUTION COMPANY", ColorProperty.Aucun, 150, 300);
             Cases.Add(VerticalLeftCase7);//13
-            Proprie[13] = new Propriety(13, "BANGLADESH", PGroupe.Rose, 140, 280);
+            Property[13] = new Property(13, "BANGLADESH", ColorProperty.Rose, 140, 280);
             Cases.Add(VerticalLeftCase6);
-            Proprie[14] = new Propriety(14, "PHILIPPINES", PGroupe.Rose, 160, 320);
+            Property[14] = new Property(14, "PHILIPPINES", ColorProperty.Rose, 160, 320);
             Cases.Add(VerticalLeftCase5);
-            Proprie[15] = new Propriety(15, "PENNSYVALIA ARWAYS", PGroupe.Aucun, 200, 400);
+            Property[15] = new Property(15, "PENNSYVALIA ARWAYS", ColorProperty.Station, 200, 400);
             Cases.Add(VerticalLeftCase4);//16
-            Proprie[16] = new Propriety(16, "VET MAN", PGroupe.Orange, 180, 360);
+            Property[16] = new Property(16, "VIETNAM", ColorProperty.Orange, 180, 360);
             Cases.Add(VerticalLeftCase3);
             Cases.Add(VerticalLeftCase2);//18
-            Proprie[18] = new Propriety(18, "RUSIA", PGroupe.Orange, 180, 360);
+            Property[18] = new Property(18, "RUSSIA", ColorProperty.Orange, 180, 360);
             Cases.Add(VerticalLeftCase1);//19
-            Proprie[19] = new Propriety(19, "MALAYSIA", PGroupe.Orange, 200, 400);
+            Property[19] = new Property(19, "MALAYSIA", ColorProperty.Orange, 200, 400);
             Cases.Add(GotojailCase);//20
             Cases.Add(HorizontalupCase1);
-            Proprie[21] = new Propriety(21, "INDONESIA", PGroupe.RougeOrange, 220, 440);
+            Property[21] = new Property(21, "INDONESIA", ColorProperty.RougeOrange, 220, 440);
             Cases.Add(HorizontalupCase2);//22
             Cases.Add(HorizontalupCase3);
-            Proprie[23] = new Propriety(23, "FRANCE", PGroupe.RougeOrange, 220, 440);
+            Property[23] = new Property(23, "FRANCE", ColorProperty.RougeOrange, 220, 440);
             Cases.Add(HorizontalupCase4);//24
-            Proprie[24] = new Propriety(24, "COLOMBIA", PGroupe.RougeOrange, 240, 480);
+            Property[24] = new Property(24, "COLOMBIA", ColorProperty.RougeOrange, 240, 480);
             Cases.Add(HorizontalupCase5);
-            Proprie[25] = new Propriety(25, "B & O CARGO", PGroupe.Aucun, 240, 480);
+            Property[25] = new Property(25, "B & O CARGO", ColorProperty.Station, 200, 25);
             Cases.Add(HorizontalupCase6);//26
-            Proprie[26] = new Propriety(26, "GERMANY", PGroupe.Jaune, 260, 520);
+            Property[26] = new Property(26, "GERMANY", ColorProperty.Jaune, 260, 520);
             Cases.Add(HorizontalupCase7);
-            Proprie[27] = new Propriety(27, "THAILAND", PGroupe.Jaune, 260, 520);
+            Property[27] = new Property(27, "THAILAND", ColorProperty.Jaune, 260, 520);
             Cases.Add(HorizontalupCase8);//28
-            Proprie[28] = new Propriety(28, "STORAGE WORKS", PGroupe.Aucun, 150, 300);
+            Property[28] = new Property(28, "STORAGE WORKS", ColorProperty.Aucun, 150, 300);
             Cases.Add(HorizontalupCase9);
-            Proprie[29] = new Propriety(29, "MEXICO", PGroupe.Aucun, 280, 560);
+            Property[29] = new Property(29, "MEXICO", ColorProperty.Aucun, 280, 560);
             Cases.Add(FreeParkingCase);//30
             Cases.Add(VerticalRightCase1);
-            Proprie[31] = new Propriety(31, "ARGENTINA", PGroupe.Vert, 300, 600);
+            Property[31] = new Property(31, "ARGENTINA", ColorProperty.Vert, 300, 600);
             Cases.Add(VerticalRightCase2);//32
-            Proprie[32] = new Propriety(32, "INDIA", PGroupe.Vert, 300, 600);
+            Property[32] = new Property(32, "INDIA", ColorProperty.Vert, 300, 600);
             Cases.Add(VerticalRightCase3);
             Cases.Add(VerticalRightCase4);
-            Proprie[34] = new Propriety(34, "BRAZIL", PGroupe.Vert, 320, 640);
+            Property[34] = new Property(34, "BRAZIL", ColorProperty.Vert, 320, 640);
             Cases.Add(VerticalRightCase5);//35
-            Proprie[35] = new Propriety(35, "SHORT TRUCIS", PGroupe.Aucun, 200, 400);
+            Property[35] = new Property(35, "SHORT TRUCIS", ColorProperty.Station, 200, 400);
             Cases.Add(VerticalRightCase6);
             Cases.Add(VerticalRightCase7);//37
-            Proprie[37] = new Propriety(37, "USA", PGroupe.Bleu, 350, 700);
+            Property[37] = new Property(37, "USA", ColorProperty.Bleu, 350, 700);
             Cases.Add(VerticalRightCase8);
-            Proprie[38] = new Propriety(38, "SALES TAXE", PGroupe.Aucun, 75, 150);
+            Property[38] = new Property(38, "SALES TAXE", ColorProperty.Aucun, 75, 150);
             Cases.Add(VerticalRightCase9);
-            Proprie[39] = new Propriety(39, "CHINA", PGroupe.Bleu, 400, 800);
+            Property[39] = new Property(39, "CHINA", ColorProperty.Bleu, 400, 800);
 
-            // TODO 39 autres dans l'ordre !!!
+            
         }
        
     }

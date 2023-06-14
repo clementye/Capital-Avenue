@@ -7,50 +7,50 @@ using System.Threading.Tasks;
 
 namespace Capital_Avenue.Models
 {
-    public class Propriety : Case
+    public class Property : Case
     {
-        public PGroupe PGroupe { get; set; }
-        public int Prix { get; set; }
-        public int Loyer { get; set; }
-        private Dictionary<Player, string> PropertyBy = new Dictionary<Player, string>();
+        public ColorProperty Groupe { get; set; }
+        public int Price { get; set; }
+        public int Rent { get; set; }
+        private Dictionary<Player, string> PropertyBought = new Dictionary<Player, string>();
 
-        public Propriety(int index, string name, PGroupe groupe, int prix, int loyer) : base(index, name)
+        public Property(int index, string name, ColorProperty groupe, int prix, int loyer) : base(index, name)
         {
-            this.PGroupe = groupe;
+            this.Groupe = groupe;
             this.Name = name;
             this.Index = index;
-            this.Prix = prix;
-            this.Loyer = loyer;
+            this.Price = prix;
+            this.Rent= loyer;
         }
 
-        public void ValiderProperty(Player currentPlayer, Propriety propriety)
+        public void BuyProperty(Player currentPlayer, Property property)
         {
-            PropertyBy.Add(currentPlayer, propriety.Name);
-            currentPlayer.Capital -= propriety.Prix;
-            MessageBox.Show($" La Propriété {propriety.Name}  vous appartient {currentPlayer.Name}");
-            currentPlayer.OwnedProperties.Add(propriety);
+            PropertyBought.Add(currentPlayer, property.Name);
+            currentPlayer.Capital -= property.Price;
+            MessageBox.Show($" La Propriété {property.Name}  vous appartient {currentPlayer.Name}");
+            currentPlayer.OwnedProperties.Add(property);
         }
-        public bool VerificationProperty(Propriety propriety)
+        public bool CheckPropietorship(Property propriety)
         {
-            if (PropertyBy.ContainsValue(propriety.Name))
+            if (PropertyBought.ContainsValue(propriety.Name))
             {
                 return true;
             }
             return false;
         }
-        public void TaxProperty(Player currentPlayer, Propriety propriety)
+        public void TaxProperty(Player currentPlayer, Property propriety)
         {
-            Player owner = PropertyBy.FirstOrDefault(x => x.Value == propriety.Name).Key;
+            Player owner = PropertyBought.FirstOrDefault(x => x.Value == propriety.Name).Key;
             if (owner.Name == currentPlayer.Name)
             {
                 MessageBox.Show($" la propriété {propriety.Name} vous appartient");
             }
             else
             {
-                currentPlayer.Capital -= propriety.Loyer;
-                MessageBox.Show($"{currentPlayer.Name} a été preléver {propriety.Loyer}");
-                owner.Capital += propriety.Loyer;
-                MessageBox.Show($"{currentPlayer.Name} est sur une propiéte achéte par {owner.Name} et doit payer {propriety.Loyer} euros de loyer");
+                currentPlayer.Capital -= propriety.Rent;
+                MessageBox.Show($"{currentPlayer.Name} a été preléver {propriety.Rent}");
+                owner.Capital += propriety.Rent;
+                MessageBox.Show($"{currentPlayer.Name} est sur une propiéte achéte par {owner.Name} et doit payer {propriety.Rent} euros de loyer");
             }
         }
     }

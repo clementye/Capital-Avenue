@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Capital_Avenue.Views.Board;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -111,6 +112,7 @@ namespace Capital_Avenue.Models
         public void GoBackThreeSpaces(Player player)
         {
             MessageBox.Show($"Reculez de trois cases, {player.Name}!");
+            //Board.MovePawn(player, -3);
 
         }
 

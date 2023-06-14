@@ -22,12 +22,6 @@ namespace Capital_Avenue.Views.Board
         {
             this.Size = new Size(122, 122);
             this.BorderStyle = BorderStyle.FixedSingle;
-
-            XmlDocument MyXmlFile = new XmlDocument();
-            //parcouris les elements du fichiers
-            //MyXmlFile.LoadXml("C:/capital - avenue/Capital_Avenue/Resources/BoardXML");
-            //XmlNode xmlValueItem = MyXmlFile.GetElementsByTagName("terrain")[37];
-            //string position = xmlValueItem.Attributes["id"].InnerText;
         }
     }
 }
