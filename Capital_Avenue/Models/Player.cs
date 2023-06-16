@@ -12,6 +12,7 @@
         public int TotalDouble { get; set; }
 
         public bool isBankrupt;
+        public bool isInJail;
 
         public Player(string name, int pawn, int capital)
         {
@@ -22,6 +23,7 @@
             this.Cards = new List<string>();
             isBankrupt = false;
             this.TotalDouble = 0; //Will be displaced into board or monopoly
+            isInJail = false;
         }
     }
 }

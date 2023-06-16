@@ -13,12 +13,10 @@ namespace Capital_Avenue.Models
         public List<int> DiceList;
         public bool isDouble { get; set; }
         public int ResultDice { get; set; }
-        public int DoubleDice { get; set; }
         
         public Dice()
         {
             this.DiceList = new List<int>();
-            this.DoubleDice = 0; // Change for actual rule of Double later
             this.ResultDice = 0;
             this.isDouble = false;
         }
