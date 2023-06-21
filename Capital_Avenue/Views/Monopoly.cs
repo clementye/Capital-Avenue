@@ -97,11 +97,19 @@ namespace Capital_Avenue.Views
 
         }
 
+        private void onBankruptButton_Click(object sender, EventArgs e)
+        {
+            onBankrupt_Click();
+        }
         public void onBankrupt_Click()
         {
-            currentGame.Bankruptcy();
-            UCLeftPanel.UpdatePlayerUC(currentGame.PlayerList[currentGame.CurrentPlayer]);
-
+            DialogResult result = MessageBox.Show($"{char.ToUpper(currentGame.PlayerList[currentGame.CurrentPlayer].Name[0]) + currentGame.PlayerList[currentGame.CurrentPlayer].Name.Substring(1)} are you sure you want to declare bankruptcy?", "Confirm Bankruptcy", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                currentGame.Bankruptcy();
+                UCLeftPanel.UpdatePlayerUC(currentGame.PlayerList[currentGame.CurrentPlayer]);
+            }
         }
+
     }
 }

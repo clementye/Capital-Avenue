@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Capital_Avenue.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -20,13 +21,6 @@ namespace Capital_Avenue.Models
             PlayerList = pList;
             CurrentPlayer = 0;
             Dice = new Dice();
-        }
-
-        
-
-        public void Bankruptcy()
-        {
-            throw new NotImplementedException();
         }
 
         public void DiceInit()
@@ -55,14 +49,48 @@ namespace Capital_Avenue.Models
 
             }
         }
-        
+
         public void EndTurn()
         {
+            Player currentPlayer = PlayerList[CurrentPlayer];
+
+            if (currentPlayer.isBankrupt || currentPlayer.Capital < 0)
+            {
+                PlayerList.Remove(currentPlayer);
+            }
+
             CurrentPlayer++;
+
             if (CurrentPlayer >= PlayerList.Count)
             {
-                CurrentPlayer = 0; 
+                CurrentPlayer = 0;
             }
+
+            if (PlayerList.Count == 1)
+            {
+                Player winner = PlayerList[0];
+                MessageBox.Show($"Player {winner.Name} has won the game!", "Game Over", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+        }
+
+        public void Bankruptcy()
+        {
+            Player currentPlayer = PlayerList[CurrentPlayer];
+            currentPlayer.isBankrupt = true;
+
+            foreach (Property property in currentPlayer.OwnedProperties)
+            {
+                //TODO : Add the property back to the game pool or perform any other necessary actions/reset number property
+            }
+            currentPlayer.OwnedProperties.Clear();
+
+            currentPlayer.Capital = 0;
+
+            MessageBox.Show($"Player {currentPlayer.Name} has gone bankrupt!", "Bankruptcy Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            EndTurn(); 
         }
     }
 }

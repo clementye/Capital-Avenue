@@ -30,7 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Monopoly));
-            onBankrupt = new Button();
+            onBankruptButton = new Button();
             currentPlayerName = new Label();
             DiceShow = new Label();
             DiceResultShow = new Label();
@@ -43,16 +43,17 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
-            // onBankrupt
+            // onBankruptButton
             // 
-            onBankrupt.Anchor = AnchorStyles.Right;
-            onBankrupt.Location = new Point(1123, 626);
-            onBankrupt.Margin = new Padding(3, 4, 3, 4);
-            onBankrupt.Name = "onBankrupt";
-            onBankrupt.Size = new Size(86, 36);
-            onBankrupt.TabIndex = 41;
-            onBankrupt.Text = "Faillite";
-            onBankrupt.UseVisualStyleBackColor = true;
+            onBankruptButton.Anchor = AnchorStyles.Right;
+            onBankruptButton.Location = new Point(1123, 626);
+            onBankruptButton.Margin = new Padding(3, 4, 3, 4);
+            onBankruptButton.Name = "onBankruptButton";
+            onBankruptButton.Size = new Size(86, 36);
+            onBankruptButton.TabIndex = 41;
+            onBankruptButton.Text = "Faillite";
+            onBankruptButton.UseVisualStyleBackColor = true;
+            onBankruptButton.Click += onBankruptButton_Click;
             // 
             // currentPlayerName
             // 
@@ -139,7 +140,7 @@
             Controls.Add(DiceResultShow);
             Controls.Add(DiceShow);
             Controls.Add(currentPlayerName);
-            Controls.Add(onBankrupt);
+            Controls.Add(onBankruptButton);
             Controls.Add(ucBoard1);
             DoubleBuffered = true;
             Name = "Monopoly";
@@ -151,7 +152,7 @@
         }
 
         #endregion
-        private Button onBankrupt;
+        private Button onBankruptButton;
         private Board.Board ucBoard1;
         private Label currentPlayerName;
         private Label DiceShow;
