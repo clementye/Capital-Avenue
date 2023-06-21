@@ -19,7 +19,7 @@ namespace Capital_Avenue.Views
         {
             this.PlayerList = playerList;
             List<string> colors = ConfigService.GetPlayerColors();
-            int basePosition = 100;
+            int basePosition = 120;
             int space = 25;
             for (int i = 0; i < playerList.Count; i++)
             {
@@ -37,26 +37,42 @@ namespace Capital_Avenue.Views
             Label l1 = new Label();
             Label l2 = new Label();
             Label l3 = new Label();
-            FlowLayoutPanel Flow = new FlowLayoutPanel();
-            Flow.FlowDirection = FlowDirection.TopDown; 
-            Flow.AutoSize = true;
+            Button propertiesButton = new Button(); // Nouveau bouton "Propriétés"
+            
 
-            //PictureBox picture = new PictureBox();
             l1.Text = player.Name;
             p1.Controls.Add(l1);
-            l2.Text = "Propriété : " + player.OwnedProperties.Count.ToString();
-            l2.Location = new Point(0, 30);
-            p1.Controls.Add(l2);
-            l3.Text = "M : " + player.Capital.ToString();
-            l3.Location = new Point(0, 60);
+
+
+            l3.Text = "Argent : " + player.Capital.ToString();
+            l3.Location = new Point(0, 30);
             p1.Controls.Add(l3);
+
+            propertiesButton.Text = "Propriétés";
+            propertiesButton.Location = new Point(0, 60);
+            propertiesButton.Size = new Size(110,50);
+            propertiesButton.Click += (sender, e) => PropertiesButton_Click(player);
+            p1.Controls.Add(propertiesButton);
+
             p1.BackColor = ColorTranslator.FromHtml(color);
-            p1.Size = new Size(200, 100);
+            p1.Size = new Size(200, 130); // Ajustement de la hauteur pour accommoder le bouton
             uc1.Location = new Point(0, position);
-            uc1.Size = new Size(200, 100);
+            uc1.Size = new Size(200, 130); // Ajustement de la hauteur pour accommoder le bouton
             uc1.Controls.Add(p1);
             this.Controls.Add(uc1);
+        }
 
+        private void PropertiesButton_Click(Player player)
+        {
+            StringBuilder ListeProperties = new StringBuilder();
+       
+            ListeProperties.AppendLine($"Propriétés de {player.Name}:");
+            foreach (var property in player.OwnedProperties)
+            {
+                ListeProperties.AppendLine(property.Name);
+            }
+
+            MessageBox.Show(ListeProperties.ToString(), "Propriétés du joueur");
         }
 
         public void UpdatePlayerUC(Player player)
@@ -67,9 +83,8 @@ namespace Capital_Avenue.Views
                 {
                     if (p.Controls[0].Text == player.Name)
                     {
-                        p.Controls[1].Text = "Propriété : " + player.OwnedProperties.Count.ToString();
-
-                        p.Controls[2].Text = "M : " + player.Capital.ToString();
+                        p.Controls[1].Text = "M : " + player.Capital.ToString();
+                        
                     }
                 }
             }

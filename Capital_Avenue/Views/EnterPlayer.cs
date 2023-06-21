@@ -47,6 +47,7 @@ namespace Capital_Avenue.Views
             PlayerTextbox playerTextbox = new PlayerTextbox(position);
             PlayerTextList.Add(playerTextbox);
             leftPlayerPanel.Size = new Size(500, 850);
+            leftPlayerPanel.Location = new Point(0, 20);
             leftPlayerPanel.Controls.Add(playerTextbox);
 
         }
@@ -91,6 +92,7 @@ namespace Capital_Avenue.Views
                     {
                         Player p = new Player(PlayerTextList[i].Textbox.Text, int.Parse(PlayerTextList[i].comboBox.SelectedIndex.ToString()), 1200);
                         playerList.Add(p);
+                       
                     }
                 }
                 Game newGame = new Game(playerList);

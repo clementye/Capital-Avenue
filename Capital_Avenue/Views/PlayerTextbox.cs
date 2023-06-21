@@ -24,9 +24,9 @@ namespace Capital_Avenue.Views
         {
             List<string> colors = ConfigService.GetPlayerColors();
             int basePosition = 0;
-            int space = 10;
-            int pos = (basePosition + 250 * (position-1) ) + space * position;
-            this.AddTexbox(position, colors[position-1], pos);
+            int space = 4;
+            int pos = (basePosition + 250 * (position - 1)) + space * position;
+            this.AddTexbox(position, colors[position - 1], pos);
         }
 
         public void AddTexbox(int numberChoice,string color, int position)
@@ -37,7 +37,7 @@ namespace Capital_Avenue.Views
             comboBox = new ComboBox();
             comboBox.Size = new Size(150, 100);
             Textbox.Size = new Size(150, 100);
-            p1.Size = new Size(200, 150);
+            p1.Size = new Size(200, 110);
             p1.BackColor = ColorTranslator.FromHtml(color);
             this.comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBox.DrawMode = DrawMode.OwnerDrawVariable;
@@ -54,7 +54,7 @@ namespace Capital_Avenue.Views
             Textbox.Top = Height / 2 - Textbox.Height / 2 - comboBox.Height - 2;
             comboBox.Top = Textbox.Bottom +1;
             this.Location = new Point(0, position);
-            this.Size = new Size(250,250);
+            this.Size = new Size(250,130);
         }
       public void ImageShow()
         {
