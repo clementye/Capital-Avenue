@@ -34,10 +34,9 @@ namespace Capital_Avenue.Models
             Dice.addDice(Ldice, NbDice);
         }
         
-        public void DiceResult()
+       public void DiceResult()
         { //Change it to actual double rule
             Dice.DiceThrower();
-            Dice.DoubleDice = 0;
             switch(Dice.isDouble)
             {
                 case false: 
@@ -45,15 +44,12 @@ namespace Capital_Avenue.Models
                     break;
                 case true:
                     PlayerList[CurrentPlayer].TotalDouble++;
-                    if (PlayerList[CurrentPlayer].TotalDouble <= 2)
-                    {
-                        Dice.DoubleDice = rnd.Next(1, 7);
-                        Dice.ResultDice += Dice.DoubleDice;
-                    }
-                    else
+                    if (PlayerList[CurrentPlayer].TotalDouble > 2)
                     {
                         Dice.ResultDice = 0;
                         PlayerList[CurrentPlayer].TotalDouble = 0;
+                        MessageBox.Show($"Trois Double à la suite. En Prison.");
+                        PlayerList[CurrentPlayer].isInJail = true;
                     }
                     break;
 
