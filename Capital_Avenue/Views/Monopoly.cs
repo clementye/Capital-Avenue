@@ -57,10 +57,6 @@ namespace Capital_Avenue.Views
                     DiceShow.Text += "  +  " + currentGame.Dice.DiceList[i].ToString();
                 }
             }
-            if (currentGame.Dice.DoubleDice > 0)
-            {
-                DiceShow.Text += " + " + currentGame.Dice.DoubleDice.ToString();
-            }
             DiceResultShow.Text = "Résultats  " + currentGame.Dice.ResultDice.ToString();
         }
         public void ShowDice()
@@ -75,11 +71,14 @@ namespace Capital_Avenue.Views
         {
 
             this.ShowDice();
-            pictureBox1.Enabled = false;
-            //pictureBox1.Enabled = false;
-            pictureBox1.BackColor = Color.Red;
-            pictureBox2.Enabled = true;
-            pictureBox2.BackColor = Color.Green;
+            if (currentGame.Dice.isDouble == false)
+            {
+                pictureBox1.Enabled = false;
+                //pictureBox1.Enabled = false;
+                pictureBox1.BackColor = Color.Red;
+                pictureBox2.Enabled = true;
+                pictureBox2.BackColor = Color.Green;
+            }
             int currentPlayerIndex = currentGame.CurrentPlayer;
             Player currentPlayer = currentGame.PlayerList[currentPlayerIndex];
             ucBoard1.MovePawn(currentPlayer, currentGame.Dice.ResultDice);
