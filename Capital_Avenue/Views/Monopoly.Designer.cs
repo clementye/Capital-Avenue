@@ -32,21 +32,25 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Monopoly));
             onBankrupt = new Button();
             currentPlayerName = new Label();
-            DiceShow = new Label();
-            DiceResultShow = new Label();
             ucBoard1 = new Board.Board();
-            Test = new Label();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             timer1 = new System.Windows.Forms.Timer(components);
+            Dice_lef = new PictureBox();
+            dice_right = new PictureBox();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Dice_lef).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dice_right).BeginInit();
             SuspendLayout();
             // 
             // onBankrupt
             // 
             onBankrupt.Anchor = AnchorStyles.Right;
-            onBankrupt.Location = new Point(1123, 626);
+            onBankrupt.Location = new Point(958, 707);
             onBankrupt.Margin = new Padding(3, 4, 3, 4);
             onBankrupt.Name = "onBankrupt";
             onBankrupt.Size = new Size(86, 36);
@@ -56,30 +60,16 @@
             // 
             // currentPlayerName
             // 
+            currentPlayerName.AllowDrop = true;
             currentPlayerName.AutoSize = true;
-            currentPlayerName.Location = new Point(857, 269);
+            currentPlayerName.BackColor = SystemColors.ButtonHighlight;
+            currentPlayerName.Font = new Font("Rockwell Extra Bold", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            currentPlayerName.Location = new Point(1031, 237);
             currentPlayerName.Name = "currentPlayerName";
-            currentPlayerName.Size = new Size(50, 20);
-            currentPlayerName.TabIndex = 42;
-            currentPlayerName.Text = "label1";
-            // 
-            // DiceShow
-            // 
-            DiceShow.AutoSize = true;
-            DiceShow.Location = new Point(857, 301);
-            DiceShow.Name = "DiceShow";
-            DiceShow.Size = new Size(50, 20);
-            DiceShow.TabIndex = 43;
-            DiceShow.Text = "label2";
-            // 
-            // DiceResultShow
-            // 
-            DiceResultShow.AutoSize = true;
-            DiceResultShow.Location = new Point(857, 332);
-            DiceResultShow.Name = "DiceResultShow";
-            DiceResultShow.Size = new Size(50, 20);
-            DiceResultShow.TabIndex = 44;
-            DiceResultShow.Text = "label3";
+            currentPlayerName.Size = new Size(215, 27);
+            currentPlayerName.TabIndex = 45;
+            currentPlayerName.Text = "Nom du joueur";
+            currentPlayerName.UseWaitCursor = true;
             // 
             // ucBoard1
             // 
@@ -94,19 +84,10 @@
             ucBoard1.Size = new Size(900, 900);
             ucBoard1.TabIndex = 42;
             // 
-            // Test
-            // 
-            Test.AutoSize = true;
-            Test.Location = new Point(1186, 269);
-            Test.Name = "Test";
-            Test.Size = new Size(50, 20);
-            Test.TabIndex = 45;
-            Test.Text = "label1";
-            // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(840, 449);
+            pictureBox1.Location = new Point(862, 491);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(60, 64);
             pictureBox1.TabIndex = 47;
@@ -116,28 +97,75 @@
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(1059, 449);
+            pictureBox2.Location = new Point(1084, 485);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(60, 70);
             pictureBox2.TabIndex = 48;
             pictureBox2.TabStop = false;
             pictureBox2.Click += pictureBox2_Click;
             // 
-            // timer1
+            // Dice_lef
             // 
-            timer1.Enabled = true;
-            timer1.Interval = 20;
+            Dice_lef.BackColor = SystemColors.ButtonHighlight;
+            Dice_lef.Location = new Point(804, 315);
+            Dice_lef.Name = "Dice_lef";
+            Dice_lef.Size = new Size(134, 111);
+            Dice_lef.TabIndex = 49;
+            Dice_lef.TabStop = false;
+            // 
+            // dice_right
+            // 
+            dice_right.BackColor = SystemColors.ControlLightLight;
+            dice_right.Location = new Point(1060, 315);
+            dice_right.Name = "dice_right";
+            dice_right.Size = new Size(132, 111);
+            dice_right.TabIndex = 50;
+            dice_right.TabStop = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = SystemColors.ActiveCaption;
+            label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(836, 573);
+            label1.Name = "label1";
+            label1.Size = new Size(117, 23);
+            label1.TabIndex = 51;
+            label1.Text = "Lancés les dés";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = SystemColors.ActiveCaption;
+            label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(1073, 573);
+            label2.Name = "label2";
+            label2.Size = new Size(105, 23);
+            label2.TabIndex = 52;
+            label2.Text = "Fin de partie";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Emoji", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(847, 233);
+            label3.Name = "label3";
+            label3.Size = new Size(178, 31);
+            label3.TabIndex = 53;
+            label3.Text = "Joueur Actuel :";
             // 
             // Monopoly
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(dice_right);
+            Controls.Add(Dice_lef);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
-            Controls.Add(Test);
-            Controls.Add(DiceResultShow);
-            Controls.Add(DiceShow);
             Controls.Add(currentPlayerName);
             Controls.Add(onBankrupt);
             Controls.Add(ucBoard1);
@@ -146,6 +174,8 @@
             Size = new Size(1884, 1069);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Dice_lef).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dice_right).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -154,11 +184,13 @@
         private Button onBankrupt;
         private Board.Board ucBoard1;
         private Label currentPlayerName;
-        private Label DiceShow;
-        private Label DiceResultShow;
-        private Label Test;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
         private System.Windows.Forms.Timer timer1;
+        private PictureBox Dice_lef;
+        private PictureBox dice_right;
+        private Label label1;
+        private Label label2;
+        private Label label3;
     }
 }

@@ -49,8 +49,12 @@ namespace Capital_Avenue.Views
             p1.Controls.Add(l3);
 
             propertiesButton.Text = "Propriétés";
-            propertiesButton.Location = new Point(0, 60);
-            propertiesButton.Size = new Size(110,50);
+            propertiesButton.Location = new Point(1, 60);
+            propertiesButton.Size = new Size(100,40);
+            propertiesButton.FlatStyle = FlatStyle.Flat; // Utilise un style de bouton plat
+            //propertiesButton.FlatAppearance.BorderSize = 1;
+
+
             propertiesButton.Click += (sender, e) => PropertiesButton_Click(player);
             p1.Controls.Add(propertiesButton);
 

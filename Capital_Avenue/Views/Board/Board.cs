@@ -72,16 +72,21 @@ namespace Capital_Avenue.Views.Board
                 Property pro = Property[indexCase];
                 if (pro.CheckPropietorship(Property[indexCase]) == true)
                 {
-                    pro.TaxProperty(player, Property[indexCase]);
+                     pro.TaxProperty(player, Property[indexCase]);
                 }
                 else
-                {
-                    string message =
+                {   
+                    Carte c = new Carte(pro);
+                    DialogResult result = c.ShowDialog();
+ 
+                    
+                    /*string message =
                      $"{player.Name} Voulez vous payer la Propiéte : {pro.Name}  \n" +
                      $" qui cout {pro.Price} Euros \n";
                     DialogResult result = MessageBox.Show(message, " Information Propiété ",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question);
+                    */
                     if (result == DialogResult.Yes)
                     {
                         pro.BuyProperty(player, Property[indexCase]);
