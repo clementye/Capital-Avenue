@@ -45,8 +45,7 @@ namespace Capital_Avenue.Views.Board
                     pictureBoxes.Remove(pictureBoxes[i]);
                     break;
                 }
-            }
-            
+            }           
         }
     }
 }

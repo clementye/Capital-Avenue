@@ -46,7 +46,6 @@ namespace Capital_Avenue.Models
                         PlayerList[CurrentPlayer].isInJail = true;
                     }
                     break;
-
             }
         }
 

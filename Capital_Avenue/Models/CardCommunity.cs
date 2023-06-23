@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Capital_Avenue.Views.Board;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,12 @@ namespace Capital_Avenue.Models
 {
     public class CardCommunity
     {
+        private Board board;
+
+        public CardCommunity(Board board)
+        {
+            this.board = board;
+        }
         public int GetRandomCommunityCardAction()
         {
             Random random = new Random();
@@ -16,7 +23,7 @@ namespace Capital_Avenue.Models
             return action;
         }
 
-        public void ExecuteCommunityCardAction(Player player)
+        public void ExecuteCommunityCardAction(Player player, List<Player> players)
         {
             int action = GetRandomCommunityCardAction(); // Obtenir une action aléatoire pour la carte Communauté
 
@@ -26,7 +33,7 @@ namespace Capital_Avenue.Models
                     ReceiveAnnualIncome(player);
                     break;
                 case 1:
-                    BirthdayGift(player);
+                    BirthdayGift(player, players);
                     break;
                 case 2:
                     RefundContributions(player);
@@ -41,7 +48,7 @@ namespace Capital_Avenue.Models
                     PayFine(player);
                     break;
                 case 6:
-                    GoToNearestStation(player);
+                    GoBackThreeCase(player);
                     break;
                 case 7:
                     BeautyContestSecondPrize(player);
@@ -61,11 +68,20 @@ namespace Capital_Avenue.Models
             // Ajoutez ici le code pour effectuer d'autres opérations liées à la réception du revenu annuel
         }
 
-        public void BirthdayGift(Player player)
+        public void BirthdayGift(Player player, List<Player> players)
         {
             MessageBox.Show($"C'est votre anniversaire ! Chaque joueur doit vous donner 100, {player.Name}!");
-            // Ajoutez ici le code pour demander à chaque joueur de donner 100 au joueur actuel
+
+            foreach (Player otherPlayer in players)
+            {
+                if (otherPlayer != player)
+                {
+                    otherPlayer.Capital -= 100; // Retirez 100 au joueur actuel
+                    player.Capital += 100; // Ajoutez 100 au joueur célébrant son anniversaire
+                }
+            }
         }
+
 
         public void RefundContributions(Player player)
         {
@@ -83,7 +99,7 @@ namespace Capital_Avenue.Models
 
         public void PayInsurancePremium(Player player)
         {
-            MessageBox.Show($"Payez votre Police d'Assurance à 320, {player.Name}!");
+            MessageBox.Show($"Payez votre Police d'Assurance à 120, {player.Name}!");
             player.Capital -= 320;
             // Ajoutez ici le code pour effectuer d'autres opérations liées au paiement de la police d'assurance
         }
@@ -95,12 +111,24 @@ namespace Capital_Avenue.Models
             // Ajoutez ici le code pour effectuer d'autres opérations liées au paiement de l'amende
         }
 
-        public void GoToNearestStation(Player player)
+        public void GoBackThreeCase(Player player)
         {
-            MessageBox.Show($"Rendez-vous à la gare la plus proche, {player.Name}!");
-            // Ajoutez ici le code pour déplacer le joueur vers la gare la plus proche
-            // Si le joueur passe par la case départ, recevoir 200
+            MessageBox.Show($"Reculez de trois cases, {player.Name}!");
+
+            int currentPosition = board.PlayerPositions[player];
+            int newPosition = currentPosition - 3;
+
+            if (newPosition < 0)
+            {
+                newPosition += board.Cases.Count; // Si la nouvelle position est inférieure à 0, on la fait revenir à la fin du plateau
+            }
+
+            board.Cases[currentPosition].RemovePawn(player);
+            board.PawnOnePlayer(player, newPosition);
+            board.PlayerPositions[player] = newPosition;
+            board.CheckStatusProperty(player, newPosition);
         }
+
 
         public void BeautyContestSecondPrize(Player player)
         {

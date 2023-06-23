@@ -20,7 +20,6 @@ namespace Capital_Avenue.Models
             this.ResultDice = 0;
             this.isDouble = false;
         }
-
         public void addDice(int dice, int nbDice)
         {
             for (int i = 0; i < nbDice; i++)
@@ -29,7 +28,6 @@ namespace Capital_Avenue.Models
             }
           
         }
-
         public void DiceThrower()
         {
             isDouble = false;
@@ -43,8 +41,6 @@ namespace Capital_Avenue.Models
             {
                 isDouble = true;
             }
-        }
-
-        
+        }       
     }
 }
