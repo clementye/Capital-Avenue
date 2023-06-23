@@ -16,20 +16,26 @@ namespace Capital_Avenue
     public partial class Carte : Form
     {
         private Models.Property property;
+        private Game currentGame;
         public Carte(Models.Property p)
         {
             InitializeComponent();
             property = p;
             Nom_propiéte.Text = p.Name;
-            Nom_propiéte.BackColor = Color.Orange;
-            pictureBox1.BackColor = Color.Orange;
-            label1.BackColor = Color.Orange;
+            Nom_propiéte.BackColor = p.color;
+            pictureBox1.BackColor = p.color;
+            label1.BackColor = p.color;
             price.Text = p.Price.ToString() + "€";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-           //property.BuyProperty(Player p,)
+            int currentPlayerIndex = currentGame.CurrentPlayer;
+            Player currentPlayer = currentGame.PlayerList[currentPlayerIndex];
+            //property.BuyProperty(, p)
+            // Does it fetch PlayerList[CurrentPlayer]?
+            // If not, how can it fetch it?
+            //this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -12,14 +12,16 @@ namespace Capital_Avenue.Models
         public ColorProperty Groupe { get; set; }
         public int Price { get; set; }
         public int Rent { get; set; }
+        public Color color { get; }
         private Dictionary<Player, string> PropertyBought = new Dictionary<Player, string>();
 
-        public Property(int index, string name, ColorProperty groupe,Color color ,int prix, int loyer) : base(index, name)
+        public Property(int index, string name, ColorProperty groupe,Color color, int prix, int loyer) : base(index, name)
         {
             this.Groupe = groupe;
             this.Name = name;
             this.Index = index;
             this.Price = prix;
+            this.color = color;
             this.Rent= loyer;
         }
 
