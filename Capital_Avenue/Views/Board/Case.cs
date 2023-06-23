@@ -36,16 +36,16 @@ namespace Capital_Avenue.Views.Board
         public void RemovePawn(Player player)
         {
             Image[] images = ConfigService.GetPlayerImages();
-            for(int i =0;i<pictureBoxes.Count();i++)
+            for (int i = 0; i < pictureBoxes.Count(); i++)
             {
-                if (images[player.Pawn]  == images[player.Pawn])
+                if (images[player.Pawn] == images[player.Pawn])
                 {
                     flow.Controls.Remove(pictureBoxes[i]);
                     pictureBoxes[i].Controls.Clear();
                     pictureBoxes.Remove(pictureBoxes[i]);
                     break;
                 }
-            }           
+            }
         }
     }
 }

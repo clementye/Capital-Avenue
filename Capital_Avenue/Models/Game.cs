@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Capital_Avenue.Views.Board;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -15,11 +16,14 @@ namespace Capital_Avenue.Models
         public Dice Dice { get; private set; }
         private int Ldice = 0;
         private int NbDice = 2;
+        public Board GameBoard { get; private set; }
         public Game(List<Player> pList)
         {
             PlayerList = pList;
             CurrentPlayer = 0;
             Dice = new Dice();
+            GameBoard = new Board();
+
         }
 
         
@@ -50,6 +54,7 @@ namespace Capital_Avenue.Models
                         PlayerList[CurrentPlayer].TotalDouble = 0;
                         MessageBox.Show($"Trois Double à la suite. En Prison.");
                         PlayerList[CurrentPlayer].isInJail = true;
+                        GameBoard.MovePlayerToJail(PlayerList[CurrentPlayer]);
                     }
                     break;
             }

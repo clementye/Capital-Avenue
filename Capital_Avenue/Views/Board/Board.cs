@@ -27,7 +27,7 @@ namespace Capital_Avenue.Views.Board
             Cases = new List<Case>();
             PlayerPositions = new();
             CreateBoard();
-            CardChance = new CardChance(this);           
+            CardChance = new CardChance(this);
             CardCommunity = new CardCommunity(this);
             Players = new List<Player>();
         }
@@ -50,6 +50,7 @@ namespace Capital_Avenue.Views.Board
             PlayerPositions[player] = indexCase;
             Cases[indexCase].AddPawn(player);
         }
+
         public void MovePawn(Player p, int diceValue)
         {
             int NewPosition = PlayerPositions[p] + diceValue;
@@ -63,9 +64,10 @@ namespace Capital_Avenue.Views.Board
             PawnOnePlayer(p, NewPosition);
             CheckStatusProperty(p, NewPosition);
         }
+
+
         public void CheckStatusProperty(Player player, int indexCase)
         {
-
             if (Property.ContainsKey(indexCase))
             {
                 Property pro = Property[indexCase];
@@ -89,29 +91,30 @@ namespace Capital_Avenue.Views.Board
             }
             else if (indexCase == 7 || indexCase == 22 || indexCase == 36)
             {
-                 CardChance.ExecuteChanceCardAction(player);
+                CardChance.ExecuteChanceCardAction(player);
             }
             else if (indexCase == 2 || indexCase == 17 || indexCase == 33)
             {
-                 CardCommunity.ExecuteCommunityCardAction(player, Players);
+                CardCommunity.ExecuteCommunityCardAction(player);
             }
             else if (indexCase == 30)
             {
                 MovePlayerToJail(player);
             }
         }
+
         public void MovePlayerToJail(Player player)
         {
             int jailPosition = 10;
-
             Cases[PlayerPositions[player]].RemovePawn(player);
             PawnOnePlayer(player, jailPosition);
             PlayerPositions[player] = jailPosition;
+            MessageBox.Show($"Vous allez en prison, {player.Name} !");
         }
+
         public void MovePawnToPosition(Player player, int newPosition)
         {
             int currentPosition = PlayerPositions[player];
-
             if (newPosition != currentPosition)
             {
                 Cases[currentPosition].RemovePawn(player);
