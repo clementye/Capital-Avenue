@@ -109,17 +109,7 @@ namespace Capital_Avenue.Models
         {
             MessageBox.Show($"Reculez de trois cases, {player.Name}!");
 
-            int currentPosition = board.PlayerPositions[player];
-            int newPosition = currentPosition - 3;
-
-            if (newPosition < 0)
-            {
-                newPosition += board.Cases.Count;
-            }
-            board.Cases[currentPosition].RemovePawn(player);
-            board.PawnOnePlayer(player, newPosition);
-            board.PlayerPositions[player] = newPosition;
-            board.CheckStatusProperty(player, newPosition);
+            board.MovePawn(player, -3);
         }
         public void BeautyContestSecondPrize(Player player)
         {
