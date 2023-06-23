@@ -15,20 +15,28 @@ namespace Capital_Avenue.Views.Board
 {
     public partial class Board : UserControl
     {
-        private List<Case> Cases;
+        public List<Case> Cases;
         private CardChance CardChance;
         private CardCommunity CardCommunity;
-        Dictionary<Player, int> PlayerPositions;
+        public Dictionary<Player, int> PlayerPositions;
         private Dictionary<int, Property> Property = new Dictionary<int, Property>();
+        private List<Player> Players;
         public Board()
         {
             InitializeComponent();
             Cases = new List<Case>();
             PlayerPositions = new();
             CreateBoard();
-            CardChance = new CardChance(this);
-            CardCommunity = new CardCommunity();
+            CardChance = new CardChance(this);           
+            CardCommunity = new CardCommunity(this);
+            Players = new List<Player>();
         }
+        public void InitializePlayers(List<Player> players)
+        {
+            Players = players;
+            InitPawns(players);
+        }
+
         public void InitPawns(List<Player> players)
         {
             foreach (Player player in players)
@@ -85,7 +93,34 @@ namespace Capital_Avenue.Views.Board
             }
             else if (indexCase == 2 || indexCase == 17 || indexCase == 33)
             {
-                 CardCommunity.ExecuteCommunityCardAction(player);
+                 CardCommunity.ExecuteCommunityCardAction(player, Players);
+            }
+            else if (indexCase == 30)
+            {
+                MovePlayerToJail(player);
+            }
+        }
+        public void MovePlayerToJail(Player player)
+        {
+            int jailPosition = 10;
+
+            Cases[PlayerPositions[player]].RemovePawn(player);
+            PawnOnePlayer(player, jailPosition);
+            PlayerPositions[player] = jailPosition;
+ 
+        }
+
+
+        public void MovePawnToPosition(Player player, int newPosition)
+        {
+            int currentPosition = PlayerPositions[player];
+
+            if (newPosition != currentPosition)
+            {
+                Cases[currentPosition].RemovePawn(player);
+                PawnOnePlayer(player, newPosition);
+                PlayerPositions[player] = newPosition;
+                CheckStatusProperty(player, newPosition);
             }
         }
 

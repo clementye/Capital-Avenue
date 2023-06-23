@@ -69,20 +69,23 @@ namespace Capital_Avenue.Models
 
         public void MoveToStart(Player player)
         {
+            int startCase = 0;
             MessageBox.Show($"Vous avez été déplacé à la case départ, {player.Name}!");
-            board.MovePawn(player, 0);
+            board.MovePawnToPosition(player, startCase);
         }
 
         public void GoToColombia(Player player)
         {
+            int colombiaIndex = 24;
             MessageBox.Show($"Rendez-vous à Colombia, {player.Name}!");
-            board.MovePawn(player, 24);
+            board.MovePawnToPosition(player, colombiaIndex);
         }
 
         public void GoToNigeria(Player player)
         {
+            int nigeriaIndex = 11;
             MessageBox.Show($"Avancez au Nigeria, {player.Name}!");
-            board.MovePawn(player, 11);
+            board.MovePawnToPosition(player, nigeriaIndex);
         }
 
         public void RoadRepairs(Player player)
@@ -92,8 +95,9 @@ namespace Capital_Avenue.Models
 
         public void GoToShortTrucks(Player player)
         {
+            int shortTruckIndex = 35;
             MessageBox.Show($"Avancez jusqu'à ShortTrucks, {player.Name}!");
-            board.MovePawn(player, 35);
+            board.MovePawnToPosition(player, shortTruckIndex);
         }
 
         public void WinCrosswordPrize(Player player)
