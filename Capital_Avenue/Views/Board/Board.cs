@@ -107,10 +107,7 @@ namespace Capital_Avenue.Views.Board
             Cases[PlayerPositions[player]].RemovePawn(player);
             PawnOnePlayer(player, jailPosition);
             PlayerPositions[player] = jailPosition;
- 
         }
-
-
         public void MovePawnToPosition(Player player, int newPosition)
         {
             int currentPosition = PlayerPositions[player];
