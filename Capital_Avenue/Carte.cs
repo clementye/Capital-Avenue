@@ -16,8 +16,9 @@ namespace Capital_Avenue
     public partial class Carte : Form
     {
         private Models.Property property;
-        private Game currentGame;
-        public Carte(Models.Property p)
+        private Player currentPlayer;
+
+        public Carte(Models.Property p, Player player)
         {
             InitializeComponent();
             property = p;
@@ -26,16 +27,16 @@ namespace Capital_Avenue
             pictureBox1.BackColor = p.color;
             label1.BackColor = p.color;
             price.Text = p.Price.ToString() + "€";
+            this.currentPlayer = player;
+            //this.game = game;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int currentPlayerIndex = currentGame.CurrentPlayer;
-            Player currentPlayer = currentGame.PlayerList[currentPlayerIndex];
-            //property.BuyProperty(, p)
-            // Does it fetch PlayerList[CurrentPlayer]?
-            // If not, how can it fetch it?
-            //this.Close();
+            currentPlayer.Capital -= property.Price;
+            property.Owner = currentPlayer;
+            currentPlayer.AddCard(property);
+            this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)

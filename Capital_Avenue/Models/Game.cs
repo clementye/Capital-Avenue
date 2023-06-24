@@ -20,15 +20,14 @@ namespace Capital_Avenue.Models
             PlayerList = pList;
             CurrentPlayer = 0;
             Dice = new Dice();
+            //this.PropertyBought = new();
+
         }
-
-        
-
         public void Bankruptcy()
         {
             throw new NotImplementedException();
         }
-
+        
         public void DiceInit()
         {
             Dice.addDice(Ldice, NbDice);

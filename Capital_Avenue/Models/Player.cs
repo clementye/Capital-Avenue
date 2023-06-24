@@ -25,5 +25,9 @@
             this.TotalDouble = 0; //Will be displaced into board or monopoly
             isInJail = false;
         }
+        public void AddCard(Property p)
+        {
+            this.OwnedProperties.Add(p);
+        }
     }
 }
