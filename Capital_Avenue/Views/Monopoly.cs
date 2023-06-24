@@ -1,4 +1,3 @@
-
 using Capital_Avenue.Models;
 using Capital_Avenue.Services;
 using Capital_Avenue.Views.Board;
@@ -30,10 +29,10 @@ namespace Capital_Avenue.Views
             InitializeComponent();
             this.currentGame = game;
             this.AddPlayerPanel();
-            currentPlayerName.Text =currentGame.PlayerList[0].Name.ToUpper();
+            currentPlayerName.Text = currentGame.PlayerList[0].Name.ToUpper();
             currentPlayerName.Font = new Font(Label.DefaultFont, FontStyle.Bold);
             this.InitializeDice();
-            ucBoard1.InitPawns(game.PlayerList);
+            ucBoard1.Init(game);
 
             diceIndex = 0;
 
@@ -41,6 +40,7 @@ namespace Capital_Avenue.Views
             diceTimer.Interval = 70;
             diceTimer.Tick += DiceTimer_Tick;
         }
+
 
         public void InitializeDice()
         {
