@@ -28,8 +28,8 @@ namespace Capital_Avenue.Views
             for (int i = 2; i <= 4; i++)
             {
                 this.NumberPlayer.Items.Add(i);
-
             }
+            this.NumberPlayer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
         }
 
         private void OnMyPawnPrinterChanged(object sender, EventArgs e)
