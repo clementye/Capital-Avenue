@@ -40,7 +40,7 @@ namespace Capital_Avenue.Views.Board
             {
                 if (images[player.Pawn] == images[player.Pawn])
                 {
-                    flow.Controls.Remove(pictureBoxes[i]);
+                    flow.Controls.Clear();
                     pictureBoxes[i].Controls.Clear();
                     pictureBoxes.Remove(pictureBoxes[i]);
                     break;

@@ -52,7 +52,7 @@ namespace Capital_Avenue.Models
                         MessageBox.Show($"Trois Double à la suite. En Prison.");
                         PlayerList[CurrentPlayer].isInJail = true;
                         PlayerList[CurrentPlayer].JailTurn = 3;
-                        GameBoard.MovePlayerToJail(PlayerList[CurrentPlayer]);
+                        //GameBoard.MovePlayerToJail(PlayerList[CurrentPlayer]);
                     }
                     break;
             }

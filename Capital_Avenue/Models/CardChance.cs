@@ -63,7 +63,7 @@ namespace Capital_Avenue.Models
 
         public void StockSell(Player player)
         {
-            MessageBox.Show($"Recevez votre intérêt sur l’emprunt 160$,{player.Name}!");
+            MessageBox.Show($"Recevez votre intérêt sur l’emprunt 160€,{player.Name}!");
             player.Capital += 160;
         }
 
@@ -90,7 +90,7 @@ namespace Capital_Avenue.Models
 
         public void RoadRepairs(Player player)
         {
-            MessageBox.Show($"Vous êtes imposé pour les réparations de voirie. Payez 100$ par maison et 200$ par hôtel, {player.Name}!");
+            MessageBox.Show($"Vous êtes imposé pour les réparations de voirie. Payez 100€ par maison et 200€ par hôtel, {player.Name}!");
         }
 
         public void GoToShortTrucks(Player player)
@@ -102,20 +102,20 @@ namespace Capital_Avenue.Models
 
         public void WinCrosswordPrize(Player player)
         {
-            MessageBox.Show($"Vous avez gagné le prix de mots croisés. Recevez 200$ {player.Name}!");
+            MessageBox.Show($"Vous avez gagné le prix de mots croisés. Recevez 200€ {player.Name}!");
             player.Capital += 200;
 
         }
 
         public void BankDividend(Player player)
         {
-            MessageBox.Show($"La banque vous verse un dividende de 250$ {player.Name}!");
+            MessageBox.Show($"La banque vous verse un dividende de 250€ {player.Name}!");
             player.Capital += 250;
         }
 
         public void PayTuitionFee(Player player)
         {
-            MessageBox.Show($"Payez pour frais de scolarité 150$ {player.Name}!");
+            MessageBox.Show($"Payez pour frais de scolarité 150€ {player.Name}!");
             player.Capital -= 150;
                       
         }

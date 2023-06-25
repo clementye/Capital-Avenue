@@ -48,11 +48,11 @@ namespace Capital_Avenue.Models
             }
             return false;
         }
-/*
+       
         public void TaxProperty(Player currentPlayer, Property propriety)
         {
-            Player owner = PropertyBought.FirstOrDefault(x => x.Value == propriety.Name).Key;
-            if (owner.Name == currentPlayer.Name)
+           
+            if (propriety.Owner.Name == currentPlayer.Name)
             {
                 MessageBox.Show($"La propriété {propriety.Name} vous appartient.");
             }
@@ -60,10 +60,9 @@ namespace Capital_Avenue.Models
             {
                 currentPlayer.Capital -= propriety.Rent;
                 MessageBox.Show($"{currentPlayer.Name} a été prélevé de {propriety.Rent} euros.");
-                owner.Capital += propriety.Rent;
-                MessageBox.Show($"{currentPlayer.Name} est sur une propriété achetée par {owner.Name} et doit payer {propriety.Rent} euros de loyer.");
+              propriety.Owner.Capital += propriety.Rent;
+                MessageBox.Show($"{currentPlayer.Name} est sur une propriété achetée par {Owner.Name} et doit payer {propriety.Rent} euros de loyer.");
             }
         }
-*/
     }
 }

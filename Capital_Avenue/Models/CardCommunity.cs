@@ -62,13 +62,13 @@ namespace Capital_Avenue.Models
         }
         public void ReceiveAnnualIncome(Player player)
         {
-            MessageBox.Show($"Recevez votre revenu annuel de 150$ {player.Name}!");
+            MessageBox.Show($"Recevez votre revenu annuel de 150€ {player.Name}!");
             player.Capital += 150;
         }
 
         public void BirthdayGift(Player player)
         {
-            MessageBox.Show($"C'est votre anniversaire ! Chaque joueur doit vous donner 100$ {player.Name}!");
+            MessageBox.Show($"C'est votre anniversaire ! Chaque joueur doit vous donner 100€ {player.Name}!");
             /*
             foreach (Player otherPlayer in pList)
             {
@@ -82,26 +82,26 @@ namespace Capital_Avenue.Models
 
         public void RefundContributions(Player player)
         {
-            MessageBox.Show($"Les contributions vous remboursent la somme de 200$ {player.Name}!");
+            MessageBox.Show($"Les contributions vous remboursent la somme de 200€ {player.Name}!");
             player.Capital += 200;
             // Ajoutez ici le code pour effectuer d'autres opérations liées au remboursement des contributions
         }
         public void ReceiveLoanInterest(Player player)
         {
-            MessageBox.Show($"Recevez votre intérêt sur l'emprunt à 250$ {player.Name}!");
+            MessageBox.Show($"Recevez votre intérêt sur l'emprunt à 250€ {player.Name}!");
             player.Capital += 250;
             // Ajoutez ici le code pour effectuer d'autres opérations liées à la réception de l'intérêt sur l'emprunt
         }
         public void PayInsurancePremium(Player player)
         {
-            MessageBox.Show($"Payez votre Police d'Assurance à 120$ {player.Name}!");
+            MessageBox.Show($"Payez votre Police d'Assurance à 120€ {player.Name}!");
             player.Capital -= 120;
             // Ajoutez ici le code pour effectuer d'autres opérations liées au paiement de la police d'assurance
         }
 
         public void PayFine(Player player)
         {
-            MessageBox.Show($"Payez une amende de 180$ {player.Name}!");
+            MessageBox.Show($"Payez une amende de 180€ {player.Name}!");
             player.Capital -= 180;
             // Ajoutez ici le code pour effectuer d'autres opérations liées au paiement de l'amende
         }
@@ -113,13 +113,13 @@ namespace Capital_Avenue.Models
         }
         public void BeautyContestSecondPrize(Player player)
         {
-            MessageBox.Show($"Vous avez remporté le deuxième prix de beauté ! Recevez 270$ {player.Name}!");
+            MessageBox.Show($"Vous avez remporté le deuxième prix de beauté ! Recevez 270€ {player.Name}!");
             player.Capital += 270;
         }
 
         public void Inheritance(Player player)
         {
-            MessageBox.Show($"Vous héritez de 270, {player.Name}!");
+            MessageBox.Show($"Vous héritez de 270€, {player.Name}!");
             player.Capital += 270;
         }
     }

@@ -44,7 +44,7 @@ namespace Capital_Avenue.Views
             p1.Controls.Add(l1);
 
 
-            l3.Text = "Argent : " + player.Capital.ToString();
+            l3.Text = "Argent:" + player.Capital.ToString()+"€";
             l3.Location = new Point(0, 30);
             p1.Controls.Add(l3);
 
@@ -87,8 +87,8 @@ namespace Capital_Avenue.Views
                 {
                     if (p.Controls[0].Text == player.Name)
                     {
-                        p.Controls[1].Text = "M : " + player.Capital.ToString();
-                        
+                        p.Controls[1].Text = "Argent:"+player.Capital.ToString()+"€";
+
                     }
                 }
             }

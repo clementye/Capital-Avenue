@@ -79,9 +79,9 @@
             ucBoard1.BackgroundImageLayout = ImageLayout.None;
             ucBoard1.BorderStyle = BorderStyle.FixedSingle;
             ucBoard1.ForeColor = Color.Transparent;
-            ucBoard1.Location = new Point(549, 55);
+            ucBoard1.Location = new Point(566, 56);
             ucBoard1.Name = "ucBoard1";
-            ucBoard1.Size = new Size(900, 900);
+            ucBoard1.Size = new Size(887, 900);
             ucBoard1.TabIndex = 42;
             // 
             // pictureBox1

@@ -27,8 +27,12 @@ namespace Capital_Avenue
             pictureBox1.BackColor = p.color;
             label1.BackColor = p.color;
             price.Text = p.Price.ToString() + "€";
+            PriceOneHouse.Text = p.PriceOneHome.ToString() + "€";
+            PriceTowHouse.Text = p.PriceTwoHome.ToString() + "€";
+            PriceThreeHouse.Text = p.PriceThreeHome.ToString() + "€";
+            PriceFourHouse.Text = p.PriceFourHome.ToString() + "€";
             this.currentPlayer = player;
-            //this.game = game;
+          
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -36,12 +40,15 @@ namespace Capital_Avenue
             currentPlayer.Capital -= property.Price;
             property.Owner = currentPlayer;
             currentPlayer.AddCard(property);
-            this.Close();
+            ButtonQuitter.Enabled = true;
+            button1.Enabled = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+
     }
 }
