@@ -12,13 +12,14 @@ namespace Capital_Avenue.Views.Board
     public abstract class Case : UserControl
     {
         FlowLayoutPanel flow;
-        List<PictureBox> pictureBoxes;
-
+        private Dictionary<Player, PictureBox> pictureBoxes;
 
         public Case()
         {
             flow = new FlowLayoutPanel();
-            pictureBoxes = new();
+            this.Controls.Add(flow);
+
+            pictureBoxes = new Dictionary<Player, PictureBox>();
         }
 
 
@@ -28,25 +29,14 @@ namespace Capital_Avenue.Views.Board
             flow.Controls.Add(picture);
             Image[] images = ConfigService.GetPlayerImages();
             picture.Image = images[player.Pawn];
-            pictureBoxes.Add(picture);
+            pictureBoxes[player] = picture;
 
-            this.Controls.Add(flow);
         }
 
         public void RemovePawn(Player player)
         {
-            Image[] images = ConfigService.GetPlayerImages();
-            for (int i = 0; i < pictureBoxes.Count(); i++)
-            {
-                if (images[player.Pawn] == images[player.Pawn])
-
-                {
-                    flow.Controls.Clear();
-                    pictureBoxes[i].Controls.Clear();
-                    pictureBoxes.Remove(pictureBoxes[i]);
-                    break;
-                }
-            }
+            if (pictureBoxes.ContainsKey(player))
+                flow.Controls.Remove(pictureBoxes[player]);
         }
     }
 }

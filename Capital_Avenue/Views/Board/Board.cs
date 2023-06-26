@@ -33,6 +33,7 @@ namespace Capital_Avenue.Views.Board
 
         public void Init(Game game)
         {
+            game.GameBoard = this;
             foreach (Player player in game.PlayerList)
             {
                 Cases[0].AddPawn(player);
@@ -57,6 +58,7 @@ namespace Capital_Avenue.Views.Board
                 }
                 
             }
+            
             Cases[p.Position].RemovePawn(p);
             p.Position = NewPosition;
             Cases[p.Position].AddPawn(p);

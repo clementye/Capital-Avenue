@@ -63,6 +63,16 @@ namespace Capital_Avenue.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bankruptcy {
+            get {
+                object obj = ResourceManager.GetObject("bankruptcy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap case1 {
             get {
                 object obj = ResourceManager.GetObject("case1", resourceCulture);
@@ -603,9 +613,9 @@ namespace Capital_Avenue.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Ima {
+        internal static System.Drawing.Bitmap jail_cell {
             get {
-                object obj = ResourceManager.GetObject("Ima", resourceCulture);
+                object obj = ResourceManager.GetObject("jail_cell", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

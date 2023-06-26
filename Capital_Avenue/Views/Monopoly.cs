@@ -119,16 +119,28 @@ namespace Capital_Avenue.Views
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.ShowDice();
-            if (currentGame.Dice.isDouble == false)
+            switch (currentGame.PlayerList[currentGame.CurrentPlayer].isInJail)
             {
-                pictureBox1.Enabled = false;
-                pictureBox1.BackColor = Color.Red;
-                pictureBox2.Enabled = true;
-                pictureBox2.BackColor = Color.Green;
+                case true:
+                    pictureBox1.Enabled = false;
+                    pictureBox1.BackColor = Color.Red;
+                    pictureBox2.Enabled = true;
+                    pictureBox2.BackColor = Color.Green;
+                    currentGame.JailDice();
+                    break;
+                case false:
+                    if (currentGame.Dice.isDouble == false)
+                    {
+                        pictureBox1.Enabled = false;
+                        pictureBox1.BackColor = Color.Red;
+                        pictureBox2.Enabled = true;
+                        pictureBox2.BackColor = Color.Green;
+                    }
+                    int currentPlayerIndex = currentGame.CurrentPlayer;
+                    Player currentPlayer = currentGame.PlayerList[currentPlayerIndex];
+                    ucBoard1.MovePawn(currentPlayer, currentGame.Dice.ResultDice);
+                    break;
             }
-            int currentPlayerIndex = currentGame.CurrentPlayer;
-            Player currentPlayer = currentGame.PlayerList[currentPlayerIndex];
-            ucBoard1.MovePawn(currentPlayer, currentGame.Dice.ResultDice);
             UCLeftPanel.UpdatePlayerUC(currentGame.PlayerList[currentGame.CurrentPlayer]);
         }
 
@@ -139,17 +151,31 @@ namespace Capital_Avenue.Views
             pictureBox1.BackColor = Color.Green;
             pictureBox2.BackColor = Color.Red;
             pictureBox2.Enabled = false;
-            currentPlayerName.Text = currentGame.PlayerList[currentGame.CurrentPlayer].Name;
-            //currentPlayerName.Font = new Font("Arial", currentPlayerName.Font.Size);
+            switch (currentGame.PlayerList[currentGame.CurrentPlayer].isInJail)
+            {
+                case true:
+                    currentGame.JailAction();
+                    break;
+                case false:
+                    currentPlayerName.Text = currentGame.PlayerList[currentGame.CurrentPlayer].Name;
+                    break;
+            }
             UCLeftPanel.UpdatePlayerUC(currentGame.PlayerList[currentGame.CurrentPlayer]);
         }
 
+        private void onBankruptButton_Click(object sender, EventArgs e)
+        {
+            onBankrupt_Click();
+        }
         public void onBankrupt_Click()
         {
-            currentGame.Bankruptcy();
-            UCLeftPanel.UpdatePlayerUC(currentGame.PlayerList[currentGame.CurrentPlayer]);
+            DialogResult result = MessageBox.Show($"{char.ToUpper(currentGame.PlayerList[currentGame.CurrentPlayer].Name[0]) + currentGame.PlayerList[currentGame.CurrentPlayer].Name.Substring(1)} are you sure you want to declare bankruptcy?", "Confirm Bankruptcy", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                currentGame.Bankruptcy();
+                UCLeftPanel.UpdatePlayerUC(currentGame.PlayerList[currentGame.CurrentPlayer]);
+            }
         }
-
 
     }
 }
