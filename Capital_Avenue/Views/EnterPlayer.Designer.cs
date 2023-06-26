@@ -30,21 +30,10 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EnterPlayer));
-            button1 = new Button();
             leftPlayerPanel = new FlowLayoutPanel();
             imageList1 = new ImageList(components);
             NumberPlayer = new ComboBox();
             SuspendLayout();
-            // 
-            // button1
-            // 
-            button1.Location = new Point(516, 473);
-            button1.Name = "button1";
-            button1.Size = new Size(160, 50);
-            button1.TabIndex = 0;
-            button1.Text = "Confirmer";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
             // 
             // leftPlayerPanel
             // 
@@ -73,7 +62,6 @@
             // EnterPlayer
             // 
             Controls.Add(NumberPlayer);
-            Controls.Add(button1);
             Controls.Add(leftPlayerPanel);
             Name = "EnterPlayer";
             Size = new Size(1178, 638);
@@ -81,8 +69,6 @@
         }
 
         #endregion
-
-        private Button button1;
         private FlowLayoutPanel leftPlayerPanel;
         private ImageList imageList1;
         private ComboBox NumberPlayer;
