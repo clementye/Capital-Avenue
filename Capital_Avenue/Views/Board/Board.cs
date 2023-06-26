@@ -18,54 +18,45 @@ namespace Capital_Avenue.Views.Board
         public List<Case> Cases;
         private CardChance CardChance;
         private CardCommunity CardCommunity;
-        public Dictionary<Player, int> PlayerPositions;
         private Dictionary<int, Property> Property = new Dictionary<int, Property>();
-        private List<Player> Players;
         public Board()
         {
             InitializeComponent();
             Cases = new List<Case>();
-            PlayerPositions = new();
             CreateBoard();
-            CardChance = new CardChance(this);           
+            CardChance = new CardChance(this);
             CardCommunity = new CardCommunity(this);
-            Players = new List<Player>();
         }
-        public void InitializePlayers(List<Player> players)
+  
+        public void Init(Game game)
         {
-            Players = players;
-            InitPawns(players);
-        }
-
-        public void InitPawns(List<Player> players)
-        {
-            foreach (Player player in players)
+            foreach (Player player in game.PlayerList)
             {
                 Cases[0].AddPawn(player);
-                PlayerPositions[player] = 0;
             }
         }
-        public void PawnOnePlayer(Player player, int indexCase)
+        public void MovePawn(Player p, int diceValue, bool isGoingToJail = false)
         {
-            PlayerPositions[player] = indexCase;
-            Cases[indexCase].AddPawn(player);
-        }
-        public void MovePawn(Player p, int diceValue)
-        {
-            int NewPosition = PlayerPositions[p] + diceValue;
+            int NewPosition = p.Position + diceValue;
             if (NewPosition > 39)
             {
                 NewPosition -= 40;
-                p.Capital += 200;
-                MessageBox.Show($"Vous avez reçu 200 euros, {p.Name}!");
+                if (!isGoingToJail)
+                {
+                    p.Capital += 200;
+                    MessageBox.Show($"Vous avez reçu 200 euros, {p.Name}!");
+                }
+                
             }
-            Cases[PlayerPositions[p]].RemovePawn(p);
-            PawnOnePlayer(p, NewPosition);
+            Cases[p.Position].RemovePawn(p);
+            p.Position = NewPosition;
+            Cases[p.Position].AddPawn(p);
             CheckStatusProperty(p, NewPosition);
         }
+
+
         public void CheckStatusProperty(Player player, int indexCase)
         {
-
             if (Property.ContainsKey(indexCase))
             {
                 Property pro = Property[indexCase];
@@ -89,36 +80,30 @@ namespace Capital_Avenue.Views.Board
             }
             else if (indexCase == 7 || indexCase == 22 || indexCase == 36)
             {
-                 CardChance.ExecuteChanceCardAction(player);
+                CardChance.ExecuteChanceCardAction(player);
             }
             else if (indexCase == 2 || indexCase == 17 || indexCase == 33)
             {
-                 CardCommunity.ExecuteCommunityCardAction(player, Players);
+                CardCommunity.ExecuteCommunityCardAction(player);
             }
             else if (indexCase == 30)
             {
                 MovePlayerToJail(player);
             }
         }
+
         public void MovePlayerToJail(Player player)
         {
-            int jailPosition = 10;
-
-            Cases[PlayerPositions[player]].RemovePawn(player);
-            PawnOnePlayer(player, jailPosition);
-            PlayerPositions[player] = jailPosition;
+            int move = player.Position > 10 ? 50 - player.Position : 10 - player.Position;
+            MovePawn(player, move, true);
+            player.isInJail = true;
+            MessageBox.Show($"Vous allez en prison, {player.Name} !");
         }
+
         public void MovePawnToPosition(Player player, int newPosition)
         {
-            int currentPosition = PlayerPositions[player];
-
-            if (newPosition != currentPosition)
-            {
-                Cases[currentPosition].RemovePawn(player);
-                PawnOnePlayer(player, newPosition);
-                PlayerPositions[player] = newPosition;
-                CheckStatusProperty(player, newPosition);
-            }
+            int move = newPosition > player.Position ? newPosition - player.Position : 40 - newPosition - player.Position;
+            MovePawn(player, move);
         }
 
         public void CreateBoard()

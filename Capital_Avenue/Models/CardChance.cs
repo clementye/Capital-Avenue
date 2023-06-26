@@ -30,7 +30,7 @@ namespace Capital_Avenue.Models
             switch (action)
             {
                 case 0:
-                    GetMoney(player);
+                    StockSell(player);
                     break;
                 case 1:
                     MoveToStart(player);
@@ -61,36 +61,36 @@ namespace Capital_Avenue.Models
             }
         }
 
-        public void GetMoney(Player player)
+        public void StockSell(Player player)
         {
-            MessageBox.Show($"Vous avez reçu 300 euros, {player.Name}!");
-            player.Capital += 300;
+            MessageBox.Show($"Recevez votre intérêt sur l’emprunt 160$,{player.Name}!");
+            player.Capital += 160;
         }
 
         public void MoveToStart(Player player)
         {
             int startCase = 0;
-            MessageBox.Show($"Vous avez été déplacé à la case départ, {player.Name}!");
+            MessageBox.Show($"Vous avez été déplacé à la case départ. {player.Name}!");
             board.MovePawnToPosition(player, startCase);
         }
 
         public void GoToColombia(Player player)
         {
             int colombiaIndex = 24;
-            MessageBox.Show($"Rendez-vous à Colombia, {player.Name}!");
+            MessageBox.Show($"Rendez-vous à Colombia. {player.Name}!");
             board.MovePawnToPosition(player, colombiaIndex);
         }
 
         public void GoToNigeria(Player player)
         {
             int nigeriaIndex = 11;
-            MessageBox.Show($"Avancez au Nigeria, {player.Name}!");
+            MessageBox.Show($"Avancez au Nigeria. {player.Name}!");
             board.MovePawnToPosition(player, nigeriaIndex);
         }
 
         public void RoadRepairs(Player player)
         {
-            MessageBox.Show($"Vous êtes imposé pour les réparations de voirie. Payez 200 par maison et 400 par hôtel, {player.Name}!");
+            MessageBox.Show($"Vous êtes imposé pour les réparations de voirie. Payez 100$ par maison et 200$ par hôtel, {player.Name}!");
         }
 
         public void GoToShortTrucks(Player player)
@@ -102,20 +102,20 @@ namespace Capital_Avenue.Models
 
         public void WinCrosswordPrize(Player player)
         {
-            MessageBox.Show($"Vous avez gagné le prix de mots croisés. Recevez 400, {player.Name}!");
-            player.Capital += 400;
+            MessageBox.Show($"Vous avez gagné le prix de mots croisés. Recevez 200$ {player.Name}!");
+            player.Capital += 200;
 
         }
 
         public void BankDividend(Player player)
         {
-            MessageBox.Show($"La banque vous verse un dividende de 350, {player.Name}!");
-            player.Capital += 350;
+            MessageBox.Show($"La banque vous verse un dividende de 250$ {player.Name}!");
+            player.Capital += 250;
         }
 
         public void PayTuitionFee(Player player)
         {
-            MessageBox.Show($"Payez pour frais de scolarité 150, {player.Name}!");
+            MessageBox.Show($"Payez pour frais de scolarité 150$ {player.Name}!");
             player.Capital -= 150;
                       
         }

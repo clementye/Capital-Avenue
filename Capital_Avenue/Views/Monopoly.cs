@@ -25,7 +25,7 @@ namespace Capital_Avenue.Views
             this.AddPlayerPanel();
             currentPlayerName.Text = game.PlayerList[0].Name + ", lancer vos dés";
             this.InitializeDice();
-            ucBoard1.InitPawns(game.PlayerList);
+            ucBoard1.Init(game);
         }
         public void InitializeDice()
         {
@@ -71,17 +71,28 @@ namespace Capital_Avenue.Views
         {
 
             this.ShowDice();
-            if (currentGame.Dice.isDouble == false)
+            switch (currentGame.PlayerList[currentGame.CurrentPlayer].isInJail)
             {
-                pictureBox1.Enabled = false;
-                //pictureBox1.Enabled = false;
-                pictureBox1.BackColor = Color.Red;
-                pictureBox2.Enabled = true;
-                pictureBox2.BackColor = Color.Green;
+                case true:
+                    pictureBox1.Enabled = false;
+                    pictureBox1.BackColor = Color.Red;
+                    pictureBox2.Enabled = true;
+                    pictureBox2.BackColor = Color.Green;
+                    currentGame.JailDice();
+                    break;
+                case false:
+                    if (currentGame.Dice.isDouble == false)
+                    {
+                        pictureBox1.Enabled = false;
+                        pictureBox1.BackColor = Color.Red;
+                        pictureBox2.Enabled = true;
+                        pictureBox2.BackColor = Color.Green;
+                    }
+                    int currentPlayerIndex = currentGame.CurrentPlayer;
+                    Player currentPlayer = currentGame.PlayerList[currentPlayerIndex];
+                    ucBoard1.MovePawn(currentPlayer, currentGame.Dice.ResultDice);
+                    break;
             }
-            int currentPlayerIndex = currentGame.CurrentPlayer;
-            Player currentPlayer = currentGame.PlayerList[currentPlayerIndex];
-            ucBoard1.MovePawn(currentPlayer, currentGame.Dice.ResultDice);
             UCLeftPanel.UpdatePlayerUC(currentGame.PlayerList[currentGame.CurrentPlayer]);
 
         }
@@ -92,7 +103,16 @@ namespace Capital_Avenue.Views
             pictureBox1.BackColor = Color.Green;
             pictureBox2.BackColor = Color.Red;
             pictureBox2.Enabled = false;
-            currentPlayerName.Text = currentGame.PlayerList[currentGame.CurrentPlayer].Name + ", lancer vos dés";
+            switch (currentGame.PlayerList[currentGame.CurrentPlayer].isInJail)
+            {
+                case true:
+                    currentGame.JailAction();
+                    break;
+                case false:
+                    currentPlayerName.Text = currentGame.PlayerList[currentGame.CurrentPlayer].Name + ", lancer vos dés";
+                    break;
+            }
+
             UCLeftPanel.UpdatePlayerUC(currentGame.PlayerList[currentGame.CurrentPlayer]);
 
         }
