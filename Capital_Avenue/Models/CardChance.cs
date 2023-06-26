@@ -60,62 +60,77 @@ namespace Capital_Avenue.Models
                     break;
             }
         }
+        public void ErrorMessage(Image image, string Message)
+        {
+            Card c = new Card(image, Message, "Chance");
+            c.ShowDialog();
+        }
 
         public void StockSell(Player player)
         {
-            MessageBox.Show($"Recevez votre intérêt sur l’emprunt 160€,{player.Name}!");
+           
+            string Message = $"Recevez votre intérêt\n sur l’emprunt 160€,{player.Name}!";
+            this.ErrorMessage(Properties.Resources.Emojy, Message);
             player.Capital += 160;
         }
 
         public void MoveToStart(Player player)
         {
             int startCase = 0;
-            MessageBox.Show($"Vous avez été déplacé à la case départ. {player.Name}!");
+            string Message = $"Vous avez été déplacé \nà la case départ. {player.Name}!";
+            this.ErrorMessage(Properties.Resources.Enjoy3, Message);
             board.MovePawnToPosition(player, startCase);
         }
 
         public void GoToColombia(Player player)
         {
             int colombiaIndex = 24;
-            MessageBox.Show($"Rendez-vous à Colombia. {player.Name}!");
+            string Message =$"Rendez-vous à Colombia\n. {player.Name}!";
+            this.ErrorMessage(Properties.Resources.Enjoy3, Message);
             board.MovePawnToPosition(player, colombiaIndex);
         }
 
         public void GoToNigeria(Player player)
         {
             int nigeriaIndex = 11;
-            MessageBox.Show($"Avancez au Nigeria. {player.Name}!");
+            string Message =$"Avancez au Nigeria\n. {player.Name}!";
+            this.ErrorMessage(Properties.Resources.Enjoy3, Message);
             board.MovePawnToPosition(player, nigeriaIndex);
         }
 
         public void RoadRepairs(Player player)
         {
-            MessageBox.Show($"Vous êtes imposé pour les réparations de voirie. Payez 100€ par maison et 200€ par hôtel, {player.Name}!");
+            string Message = $"Vous êtes imposé \n pour les réparations\n de voirie. \nPayez 100€ par maison \n et 200€ par hôtel, {player.Name}!";
+            this.ErrorMessage(Properties.Resources.Emojy, Message);
         }
 
         public void GoToShortTrucks(Player player)
         {
             int shortTruckIndex = 35;
-            MessageBox.Show($"Avancez jusqu'à ShortTrucks, {player.Name}!");
+            string Message =$"Avancez jusqu'à ShortTrucks\n, {player.Name}!";
+            this.ErrorMessage(Properties.Resources.Enjoy3, Message);
             board.MovePawnToPosition(player, shortTruckIndex);
         }
 
         public void WinCrosswordPrize(Player player)
         {
-            MessageBox.Show($"Vous avez gagné le prix de mots croisés. Recevez 200€ {player.Name}!");
+            string Message =$"Vous avez gagné le prix de mots \ncroisés. Recevez 200€ {player.Name}!";
+            this.ErrorMessage(Properties.Resources.Emojy, Message);
             player.Capital += 200;
 
         }
 
         public void BankDividend(Player player)
         {
-            MessageBox.Show($"La banque vous verse un dividende de 250€ {player.Name}!");
+            string Message = $"La banque vous verse \n un dividende de 250€\n {player.Name}!";
+            this.ErrorMessage(Properties.Resources.Emojy, Message);
             player.Capital += 250;
         }
 
         public void PayTuitionFee(Player player)
         {
-            MessageBox.Show($"Payez pour frais de scolarité 150€ {player.Name}!");
+            string Message=$"Payez pour frais \n de scolarité 150€ {player.Name}!";
+            this.ErrorMessage(Properties.Resources.Emojy2, Message);
             player.Capital -= 150;
                       
         }

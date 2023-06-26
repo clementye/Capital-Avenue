@@ -20,7 +20,7 @@ namespace Capital_Avenue.Models
         public int GetRandomCommunityCardAction()
         {
             Random random = new Random();
-            int action = random.Next(0, 9);
+            int action = random.Next(0, 8);
             return action;
         }
         public void ExecuteCommunityCardAction(Player player)
@@ -60,15 +60,24 @@ namespace Capital_Avenue.Models
                     break;
             }
         }
+        public void ErrorMessage(Image image, string Message)
+        {
+            Card c = new Card(image, Message, "Carte Caumunauté");
+            c.ShowDialog();
+        }
         public void ReceiveAnnualIncome(Player player)
         {
-            MessageBox.Show($"Recevez votre revenu annuel de 150€ {player.Name}!");
+
+            string Message = $"Recevez votre revenu\n annuel de 150€\n{player.Name}!";
+            this.ErrorMessage(Properties.Resources.Emojy, Message);
             player.Capital += 150;
+
         }
+       
 
         public void BirthdayGift(Player player)
         {
-            MessageBox.Show($"C'est votre anniversaire ! Chaque joueur doit vous donner 100€ {player.Name}!");
+            MessageBox.Show($"C'est votre anniversaire!\n Chaque joueur doit vous\n donner 100€ {player.Name}!");
             /*
             foreach (Player otherPlayer in pList)
             {
@@ -82,44 +91,56 @@ namespace Capital_Avenue.Models
 
         public void RefundContributions(Player player)
         {
-            MessageBox.Show($"Les contributions vous remboursent la somme de 200€ {player.Name}!");
+
+
+          
+            string Message = $"Les contributions vous\n remboursent la somme\n de 200€ {player.Name}!";
+            this.ErrorMessage(Properties.Resources.Emojy, Message);
             player.Capital += 200;
             // Ajoutez ici le code pour effectuer d'autres opérations liées au remboursement des contributions
         }
         public void ReceiveLoanInterest(Player player)
         {
-            MessageBox.Show($"Recevez votre intérêt sur l'emprunt à 250€ {player.Name}!");
+
+            string Message = $"Recevez votre intérêt \n sur l'emprunt à 250€\n{player.Name}!";
+            this.ErrorMessage(Properties.Resources.Emojy, Message);
             player.Capital += 250;
+           
             // Ajoutez ici le code pour effectuer d'autres opérations liées à la réception de l'intérêt sur l'emprunt
         }
         public void PayInsurancePremium(Player player)
         {
-            MessageBox.Show($"Payez votre Police d'Assurance à 120€ {player.Name}!");
+            string Message =$"Payez votre \nPolice d'Assurance\n à 120€ {player.Name}!";
+            this.ErrorMessage(Properties.Resources.Emojy2, Message);
             player.Capital -= 120;
             // Ajoutez ici le code pour effectuer d'autres opérations liées au paiement de la police d'assurance
         }
 
         public void PayFine(Player player)
         {
-            MessageBox.Show($"Payez une amende de 180€ {player.Name}!");
+          
+            string Message =$"Payez une amende \n de 180€ \n{player.Name}!";
+            this.ErrorMessage(Properties.Resources.Emojy2, Message);
             player.Capital -= 180;
             // Ajoutez ici le code pour effectuer d'autres opérations liées au paiement de l'amende
         }
         public void GoBackThreeCase(Player player)
         {
-            MessageBox.Show($"Reculez de trois cases, {player.Name}!");
-
+            string Message = $"Reculez de trois \n cases, {player.Name}!";
+            this.ErrorMessage(Properties.Resources.Enjoy3, Message);
             board.MovePawn(player, -3);
         }
         public void BeautyContestSecondPrize(Player player)
         {
-            MessageBox.Show($"Vous avez remporté le deuxième prix de beauté ! Recevez 270€ {player.Name}!");
+            string Message = $"Vous avez remporté \nle deuxième prix de beauté\n ! Recevez 270€ {player.Name}!";
+            this.ErrorMessage(Properties.Resources.Emojy, Message);
             player.Capital += 270;
         }
 
         public void Inheritance(Player player)
         {
-            MessageBox.Show($"Vous héritez de 270€, {player.Name}!");
+            string Message = $"Vous héritez de 270€\n, {player.Name}!";
+            this.ErrorMessage(Properties.Resources.Emojy, Message); 
             player.Capital += 270;
         }
     }

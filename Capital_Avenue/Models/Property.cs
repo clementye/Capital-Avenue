@@ -52,16 +52,12 @@ namespace Capital_Avenue.Models
         public void TaxProperty(Player currentPlayer, Property propriety)
         {
            
-            if (propriety.Owner.Name == currentPlayer.Name)
-            {
-                MessageBox.Show($"La propriété {propriety.Name} vous appartient.");
-            }
-            else
+            if (propriety.Owner.Name != currentPlayer.Name)
             {
                 currentPlayer.Capital -= propriety.Rent;
-                MessageBox.Show($"{currentPlayer.Name} a été prélevé de {propriety.Rent} euros.");
-              propriety.Owner.Capital += propriety.Rent;
-                MessageBox.Show($"{currentPlayer.Name} est sur une propriété achetée par {Owner.Name} et doit payer {propriety.Rent} euros de loyer.");
+                MessageBox.Show($"{currentPlayer.Name} a été prélevé de {propriety.Rent}€.");
+                propriety.Owner.Capital += propriety.Rent;
+                MessageBox.Show($"{currentPlayer.Name} est sur une propriété achetée par {Owner.Name} et doit payer {propriety.Rent}€ de loyer.");
             }
         }
     }

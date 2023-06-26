@@ -49,8 +49,11 @@ namespace Capital_Avenue.Views.Board
                 NewPosition -= 40;
                 if (!isGoingToJail)
                 {
+                    string Message = $"Vous avez reçu \n 200 euros,\n {p.Name}!";
+                    Card c = new Card(Properties.Resources.Emojy_Depart, Message,"Bonus");
+                    c.ShowDialog();
                     p.Capital += 200;
-                    MessageBox.Show($"Vous avez reçu 200 euros, {p.Name}!");
+
                 }
                 
             }
@@ -72,14 +75,14 @@ namespace Capital_Avenue.Views.Board
                 }
                 else
                 {   
-                    Carte c = new Carte(pro,player);
+                    PropertyCard c = new PropertyCard(pro,player);
                     c.ShowDialog();
 
                 }
             }
             else if (indexCase == 7 || indexCase == 22 || indexCase == 36)
             {
-                CardChance.ExecuteChanceCardAction(player);
+               CardChance.ExecuteChanceCardAction(player);
             }
             else if (indexCase == 2 || indexCase == 17 || indexCase == 33)
             {

@@ -39,6 +39,7 @@ namespace Capital_Avenue.Views.Board
             for (int i = 0; i < pictureBoxes.Count(); i++)
             {
                 if (images[player.Pawn] == images[player.Pawn])
+
                 {
                     flow.Controls.Clear();
                     pictureBoxes[i].Controls.Clear();
