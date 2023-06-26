@@ -15,7 +15,7 @@ namespace Capital_Avenue.Views.Board
 {
     public partial class Board : UserControl
     {
-        public List<Case> Cases;
+        private List<Case> Cases;
         private CardChance CardChance;
         private CardCommunity CardCommunity;
         private Dictionary<int, Property> Property = new Dictionary<int, Property>();
@@ -30,6 +30,7 @@ namespace Capital_Avenue.Views.Board
   
         public void Init(Game game)
         {
+            game.GameBoard = this;
             foreach (Player player in game.PlayerList)
             {
                 Cases[0].AddPawn(player);
@@ -48,6 +49,7 @@ namespace Capital_Avenue.Views.Board
                 }
                 
             }
+            
             Cases[p.Position].RemovePawn(p);
             p.Position = NewPosition;
             Cases[p.Position].AddPawn(p);
