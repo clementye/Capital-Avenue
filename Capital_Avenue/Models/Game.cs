@@ -16,14 +16,12 @@ namespace Capital_Avenue.Models
         public Dice Dice { get; private set; }
         private int Ldice = 0;
         private int NbDice = 2;
-        public Board GameBoard { get; private set; }
+        public Board GameBoard { get; set; }
         public Game(List<Player> pList)
         {
             PlayerList = pList;
             CurrentPlayer = 0;
             Dice = new Dice();
-            GameBoard = new Board();
-
         }
 
         public void DiceInit()
@@ -41,7 +39,7 @@ namespace Capital_Avenue.Models
                     break;
                 case true:
                     PlayerList[CurrentPlayer].TotalDouble++;
-                    if (PlayerList[CurrentPlayer].TotalDouble > 0)
+                    if (PlayerList[CurrentPlayer].TotalDouble > 2)
                     {
                         Dice.ResultDice = 0;
                         PlayerList[CurrentPlayer].TotalDouble = 0;
@@ -66,10 +64,9 @@ namespace Capital_Avenue.Models
                 PlayerList[CurrentPlayer].Capital -= 50;
                 PlayerList[CurrentPlayer].isInJail = false;
             }
+            // TODO :
             // Check if Player have the Card "GetOutOfJail"
             //If yes, show message asking if he want to play it.
-            //If not, will ask if want to pay.
-            //If do not want to pay, then let him play the dice and try getting a double -> JailDice;
         }
         public void JailDice()
         {
@@ -82,6 +79,25 @@ namespace Capital_Avenue.Models
                     PlayerList[CurrentPlayer].JailTurn = 0;
                     break;
             }
+        }
+
+        public void SellProperty()
+        {
+            throw new NotImplementedException();
+            // TO DISPLAY, SO SOMEONE ELSE : Show the player all of his property, and let him select those he want to sell
+            // TO DISPLAY, SO SOMEONE ELSE : When he want to sell them, activate the function SellProperty
+            // When he sell, the function check each property to then sell each houses/hotel on it,
+            // giving half the value of their purchase price (normally common for all) <- Calling the resell of house function as many times as necessary
+            // When it's done, sell the properties and giving the half the money of purchase, also being the same value for the mortgage
+            // After it's done, it's done.
+        }
+
+        public void MortgageProperty()
+        {
+            throw new NotImplementedException();
+            // Will most likely be put in models/property.cs
+            // Will just change one parameter of the properties selectionned to IsInBank = true;
+            // So, the job of the one doing the property and the HOUSES
         }
 
         public void EndTurn()
