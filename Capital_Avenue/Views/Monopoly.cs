@@ -1,5 +1,6 @@
 using Capital_Avenue.Models;
 using Capital_Avenue.Services;
+using Capital_Avenue.Views.Auction;
 using Capital_Avenue.Views.Board;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ namespace Capital_Avenue.Views
         private Image[] images = ConfigService.GetDice();
         private int diceIndex;
         private System.Windows.Forms.Timer diceTimer;
+        //Dictionary<int, Property> NameList = new Dictionary<int, Property>();
 
         public Monopoly(Game game)
         {
@@ -141,6 +143,10 @@ namespace Capital_Avenue.Views
                     ucBoard1.MovePawn(currentPlayer, currentGame.Dice.ResultDice);
                     break;
             }
+            if (currentGame.PlayerList[currentGame.CurrentPlayer].Capital <= 0)
+            {
+                this.BankruptAction();
+            }
             UCLeftPanel.UpdatePlayerUC(currentGame.PlayerList[currentGame.CurrentPlayer]);
         }
 
@@ -162,12 +168,12 @@ namespace Capital_Avenue.Views
             }
             UCLeftPanel.UpdatePlayerUC(currentGame.PlayerList[currentGame.CurrentPlayer]);
         }
-
-        private void onBankruptButton_Click(object sender, EventArgs e)
+        public void onBankrupt_Click(object sender, EventArgs e)
         {
-            onBankrupt_Click();
+            this.BankruptAction();
         }
-        public void onBankrupt_Click()
+
+        public void BankruptAction()
         {
             DialogResult result = MessageBox.Show($"{char.ToUpper(currentGame.PlayerList[currentGame.CurrentPlayer].Name[0]) + currentGame.PlayerList[currentGame.CurrentPlayer].Name.Substring(1)} are you sure you want to declare bankruptcy?", "Confirm Bankruptcy", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
@@ -177,5 +183,19 @@ namespace Capital_Avenue.Views
             }
         }
 
+        private void SMButton_Click(object sender, EventArgs e)
+        {
+            SellMortgage SMA = new SellMortgage();
+            string Action = "Sell";
+            SMA.SMABox(currentGame.PlayerList[currentGame.CurrentPlayer], Action);
+            SMA.ShowDialog();
+        }
+
+        private void AuctionButton_Click(object sender, EventArgs e)
+        {
+            OtherPlayerChoice AuctionChoice = new OtherPlayerChoice();
+            AuctionChoice.OPABox(currentGame.PlayerList[currentGame.CurrentPlayer], currentGame.PlayerList);
+            AuctionChoice.ShowDialog();
+        }
     }
 }

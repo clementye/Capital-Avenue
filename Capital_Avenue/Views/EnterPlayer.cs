@@ -92,10 +92,34 @@ namespace Capital_Avenue.Views
             PlayerTextList.Clear();
             int selectedNumber = (int)NumberPlayer.SelectedItem;
             // Change this one to a switch, with default being for two. Will be WAY USEFL and USERFRIENDLY
-            for (int i = 1; i <= selectedNumber; i++)
+            switch (selectedNumber)
             {
-                this.addPlayerTex(i);
+                case 2:
+                    for (int i = 1; i <= selectedNumber; i++)
+                    {
+                        this.addPlayerTex(i);
+                    }
+                    break;
+                case 3:
+                    for (int i = 1; i <= selectedNumber; i++)
+                    {
+                        this.addPlayerTex(i);
+                    }
+                    break;
+                case 4:
+                    for (int i = 1; i <= selectedNumber; i++)
+                    {
+                        this.addPlayerTex(i);
+                    }
+                    break;
+                default:
+                    for (int i = 1; i <= 2; i++)
+                    {
+                        this.addPlayerTex(i);
+                    }
+                    break;
             }
+            
             
         }
 

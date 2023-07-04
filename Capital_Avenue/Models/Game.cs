@@ -1,4 +1,5 @@
-﻿using Capital_Avenue.Views.Board;
+﻿using Capital_Avenue.Views;
+using Capital_Avenue.Views.Board;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -81,25 +82,6 @@ namespace Capital_Avenue.Models
             }
         }
 
-        public void SellProperty()
-        {
-            throw new NotImplementedException();
-            // TO DISPLAY, SO SOMEONE ELSE : Show the player all of his property, and let him select those he want to sell
-            // TO DISPLAY, SO SOMEONE ELSE : When he want to sell them, activate the function SellProperty
-            // When he sell, the function check each property to then sell each houses/hotel on it,
-            // giving half the value of their purchase price (normally common for all) <- Calling the resell of house function as many times as necessary
-            // When it's done, sell the properties and giving the half the money of purchase, also being the same value for the mortgage
-            // After it's done, it's done.
-        }
-
-        public void MortgageProperty()
-        {
-            throw new NotImplementedException();
-            // Will most likely be put in models/property.cs
-            // Will just change one parameter of the properties selectionned to IsInBank = true;
-            // So, the job of the one doing the property and the HOUSES
-        }
-
         public void EndTurn()
         {
             Player currentPlayer = PlayerList[CurrentPlayer];
@@ -128,17 +110,32 @@ namespace Capital_Avenue.Models
         public void Bankruptcy()
         {
             Player currentPlayer = PlayerList[CurrentPlayer];
-            currentPlayer.isBankrupt = true;
 
-            foreach (Property property in currentPlayer.OwnedProperties)
+            if (currentPlayer.Capital <= 0 && currentPlayer.OwnedProperties.Count !=0)
             {
-                //TODO : Add the property back to the game pool or perform any other necessary actions/reset number property
+                if (currentPlayer.OwnedProperties.All(p => p.IsInBank == true) == true)
+                {
+                    currentPlayer.isBankrupt = true;
+                    // If time, give mortgaged properties to either bank or the other players, to not become bankrup. Not obligatory.
+                    currentPlayer.Capital = 0;
+
+                    MessageBox.Show($"Player {currentPlayer.Name} has gone bankrupt!", "Bankruptcy Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    currentPlayer.Capital = 0;
+                    SellMortgage SMA = new SellMortgage();
+                    string Action = "Sell";
+                    SMA.SMABox(currentPlayer, Action);
+                    SMA.ShowDialog();
+                }
             }
-            currentPlayer.OwnedProperties.Clear();
 
-            currentPlayer.Capital = 0;
 
-            MessageBox.Show($"Player {currentPlayer.Name} has gone bankrupt!", "Bankruptcy Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+
+            
 
             EndTurn(); 
         }

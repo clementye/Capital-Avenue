@@ -13,8 +13,8 @@ namespace Capital_Avenue.Services
             return new List<string> {
                 "#6AFF2D",
                 "#401ad6",
-                "a98c12",
-                "#6AFF2D"
+                "#A98C12",
+                "#E873E3"
             };
         }
         public static Image[] GetPlayerImages()

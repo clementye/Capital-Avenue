@@ -30,7 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Monopoly));
-            onBankruptButton = new Button();
+            onBankrupt = new Button();
             currentPlayerName = new Label();
             ucBoard1 = new Board.Board();
             pictureBox1 = new PictureBox();
@@ -41,23 +41,25 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
+            SMButton = new Button();
+            AuctionButton = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Dice_lef).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dice_right).BeginInit();
             SuspendLayout();
             // 
-            // onBankruptButton
+            // onBankrupt
             // 
-            onBankruptButton.Anchor = AnchorStyles.Right;
-            onBankruptButton.Location = new Point(1123, 626);
-            onBankruptButton.Margin = new Padding(3, 4, 3, 4);
-            onBankruptButton.Name = "onBankruptButton";
-            onBankruptButton.Size = new Size(86, 36);
-            onBankruptButton.TabIndex = 41;
-            onBankruptButton.Text = "Faillite";
-            onBankruptButton.UseVisualStyleBackColor = true;
-            onBankruptButton.Click += onBankruptButton_Click;
+            onBankrupt.Anchor = AnchorStyles.Right;
+            onBankrupt.Location = new Point(1123, 626);
+            onBankrupt.Margin = new Padding(3, 4, 3, 4);
+            onBankrupt.Name = "onBankrupt";
+            onBankrupt.Size = new Size(86, 36);
+            onBankrupt.TabIndex = 41;
+            onBankrupt.Text = "Faillite";
+            onBankrupt.UseVisualStyleBackColor = true;
+            onBankrupt.Click += onBankrupt_Click;
             // 
             // currentPlayerName
             // 
@@ -155,11 +157,33 @@
             label3.TabIndex = 53;
             label3.Text = "Joueur Actuel :";
             // 
+            // SMButton
+            // 
+            SMButton.Location = new Point(828, 633);
+            SMButton.Name = "SMButton";
+            SMButton.Size = new Size(94, 29);
+            SMButton.TabIndex = 54;
+            SMButton.Text = "Vendre";
+            SMButton.UseVisualStyleBackColor = true;
+            SMButton.Click += SMButton_Click;
+            // 
+            // AuctionButton
+            // 
+            AuctionButton.Location = new Point(905, 724);
+            AuctionButton.Name = "AuctionButton";
+            AuctionButton.Size = new Size(214, 29);
+            AuctionButton.TabIndex = 55;
+            AuctionButton.Text = "Enchères";
+            AuctionButton.UseVisualStyleBackColor = true;
+            AuctionButton.Click += AuctionButton_Click;
+            // 
             // Monopoly
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
+            Controls.Add(AuctionButton);
+            Controls.Add(SMButton);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -168,7 +192,7 @@
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             Controls.Add(currentPlayerName);
-            Controls.Add(onBankruptButton);
+            Controls.Add(onBankrupt);
             Controls.Add(ucBoard1);
             DoubleBuffered = true;
             Name = "Monopoly";
@@ -182,7 +206,7 @@
         }
 
         #endregion
-        private Button onBankruptButton;
+        private Button onBankrupt;
         private Board.Board ucBoard1;
         private Label currentPlayerName;
         private PictureBox pictureBox1;
@@ -193,5 +217,7 @@
         private Label label1;
         private Label label2;
         private Label label3;
+        private Button SMButton;
+        private Button AuctionButton;
     }
 }

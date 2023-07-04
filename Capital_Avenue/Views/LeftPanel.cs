@@ -76,7 +76,14 @@ namespace Capital_Avenue.Views
             propertiesList.AppendLine($"Properties of {player.Name}:");
             foreach (var property in player.OwnedProperties)
             {
-                propertiesList.AppendLine(property.Name);
+                if (property.IsInBank == false)
+                {
+                    propertiesList.AppendLine(property.Name);
+                }
+                else
+                {
+                    propertiesList.AppendLine(property.Name + "\U0001F3E6");
+                }
             }
 
             MessageBox.Show(propertiesList.ToString(), "Player Properties");
