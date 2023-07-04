@@ -67,7 +67,10 @@ namespace Capital_Avenue.Views
             PropertiesBox = new CheckedListBox();
             foreach (Property p in player.OwnedProperties)
             {
-                PropertiesBox.Items.Add(p.Name, false);
+                if (p.IsInBank == false)
+                {
+                    PropertiesBox.Items.Add(p.Name, false);
+                }
             }
             PropertiesBox.Location = new Point(0, 110);
             // Later, add line to change size, with width at precise value and length depending of owned properties.

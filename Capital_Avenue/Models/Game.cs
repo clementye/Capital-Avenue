@@ -84,34 +84,42 @@ namespace Capital_Avenue.Models
 
         public void EndTurn()
         {
-            Player currentPlayer = PlayerList[CurrentPlayer];
-
-            if (currentPlayer.isBankrupt || currentPlayer.Capital < 0)
+            int WinNumber = 1;
+            int TotalPlayer = PlayerList.Count - 1;
+            while (PlayerList[CurrentPlayer].isBankrupt == true)
             {
-                PlayerList.Remove(currentPlayer);
+                CurrentPlayer++;
+                if (CurrentPlayer >= PlayerList.Count-1)
+                {
+                    CurrentPlayer = 0;
+                }
+                TotalPlayer--;
+            }
+            
+            if (WinNumber == TotalPlayer) 
+            {
+                this.WinGame(PlayerList[CurrentPlayer]);
             }
 
-            CurrentPlayer++;
+        }
 
-            if (CurrentPlayer >= PlayerList.Count)
+        public void WinGame(Player winner)
+        {
+            string message = $"Player {winner.Name} has won the game!";
+            DialogResult result = MessageBox.Show(message, "Game Over",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
             {
-                CurrentPlayer = 0;
+                Application.Exit();
             }
-
-            if (PlayerList.Count == 1)
-            {
-                Player winner = PlayerList[0];
-                MessageBox.Show($"Player {winner.Name} has won the game!", "Game Over", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
         }
 
         public void Bankruptcy()
         {
             Player currentPlayer = PlayerList[CurrentPlayer];
 
-            if (currentPlayer.Capital <= 0 && currentPlayer.OwnedProperties.Count !=0)
+            if (currentPlayer.Capital <= 0 && currentPlayer.OwnedProperties.Count !=0 || currentPlayer.OwnedProperties.Count != 0)
             {
                 if (currentPlayer.OwnedProperties.All(p => p.IsInBank == true) == true)
                 {
@@ -130,14 +138,7 @@ namespace Capital_Avenue.Models
                     SMA.ShowDialog();
                 }
             }
-
-
-
-
-
-            
-
-            EndTurn(); 
+            EndTurn();
         }
     }
 }

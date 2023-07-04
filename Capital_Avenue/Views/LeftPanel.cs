@@ -54,8 +54,8 @@ namespace Capital_Avenue.Views
 
             Button propertiesButton = new Button(); 
             propertiesButton.Text = "Properties";
-            propertiesButton.Size = new Size(120, 40);
-            propertiesButton.Location = new Point((p1.Width - propertiesButton.Width) / 2, 90);
+            propertiesButton.Size = new Size(90, 40);
+            propertiesButton.Location = new Point(0, 85);
             propertiesButton.Click += (sender, e) => PropertiesButton_Click(player);
             p1.Controls.Add(propertiesButton);
 

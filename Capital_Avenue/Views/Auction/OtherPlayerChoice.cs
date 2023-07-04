@@ -46,6 +46,7 @@ namespace Capital_Avenue.Views.Auction
             OtherPlayer = PlayerList.Where(pl1 => pl1.Name == s).FirstOrDefault();
             Auction AuctionShow = new Auction(CurrentPlayer, OtherPlayer);
             AuctionShow.ShowDialog();
+            this.Close();
         }
     }
 }
