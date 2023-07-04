@@ -18,6 +18,7 @@ namespace Capital_Avenue.Models
         public Dice Dice { get; private set; }
         private int Ldice = 0;
         private int NbDice = 2;
+        private int TotalPlayer;
         public Board GameBoard { get; set; }
         public Game(List<Player> pList)
         {
@@ -26,9 +27,11 @@ namespace Capital_Avenue.Models
             Dice = new Dice();
         }
         
+
         public void DiceInit()
         {
             Dice.addDice(Ldice, NbDice);
+            this.InitTotalPlayer();
         }
         
        public void DiceResult()
@@ -83,10 +86,14 @@ namespace Capital_Avenue.Models
             }
         }
 
+        public void InitTotalPlayer()
+        {
+           TotalPlayer = PlayerList.Count;
+        }
+
         public void EndTurn()
         {
             int WinNumber = 1;
-            int TotalPlayer = PlayerList.Count;
             if (PlayerList[CurrentPlayer].isBankrupt == true)
             {
                 TotalPlayer--;
