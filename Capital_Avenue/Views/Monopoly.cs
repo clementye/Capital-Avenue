@@ -23,6 +23,7 @@ namespace Capital_Avenue.Views
         private Image[] images = ConfigService.GetDice();
         private int diceIndex;
         private System.Windows.Forms.Timer diceTimer;
+        private Button quitButton;
 
         public Monopoly(Game game)
         {
@@ -39,8 +40,11 @@ namespace Capital_Avenue.Views
             diceTimer = new System.Windows.Forms.Timer();
             diceTimer.Interval = 70;
             diceTimer.Tick += DiceTimer_Tick;
-        }
 
+            quitButton = new Button();
+            quitButton.Click += quitButton_Click;
+            this.Controls.Add(quitButton);
+        }
 
         public void InitializeDice()
         {
@@ -85,9 +89,6 @@ namespace Capital_Avenue.Views
             await Task.Delay(currentGame.Dice.DiceList.Count * diceTimer.Interval);
             diceTimer.Start();
             this.DisplayDiceResult();
-
-
-
         }
 
         private void DiceTimer_Tick(object sender, EventArgs e)
@@ -167,6 +168,7 @@ namespace Capital_Avenue.Views
         {
             onBankrupt_Click();
         }
+
         public void onBankrupt_Click()
         {
             DialogResult result = MessageBox.Show($"{char.ToUpper(currentGame.PlayerList[currentGame.CurrentPlayer].Name[0]) + currentGame.PlayerList[currentGame.CurrentPlayer].Name.Substring(1)} are you sure you want to declare bankruptcy?", "Confirm Bankruptcy", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -177,5 +179,15 @@ namespace Capital_Avenue.Views
             }
         }
 
+        private void quitButton_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to quit the game?", "Quit Game",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
     }
 }

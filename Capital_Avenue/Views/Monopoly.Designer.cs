@@ -41,6 +41,7 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
+            Quit = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Dice_lef).BeginInit();
@@ -155,11 +156,22 @@
             label3.TabIndex = 53;
             label3.Text = "Joueur Actuel :";
             // 
+            // Quit
+            // 
+            Quit.BackgroundImage = (Image)resources.GetObject("Quit.BackgroundImage");
+            Quit.Location = new Point(1826, 882);
+            Quit.Name = "Quit";
+            Quit.Size = new Size(55, 74);
+            Quit.TabIndex = 54;
+            Quit.UseVisualStyleBackColor = true;
+            Quit.Click += quitButton_Click;
+            // 
             // Monopoly
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
+            Controls.Add(Quit);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -193,5 +205,6 @@
         private Label label1;
         private Label label2;
         private Label label3;
+        private Button Quit;
     }
 }

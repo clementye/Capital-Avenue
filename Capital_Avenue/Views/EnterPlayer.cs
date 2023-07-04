@@ -32,7 +32,7 @@ namespace Capital_Avenue.Views
             int dropdownHeight = this.NumberPlayer.Height;
             int panelWidth = this.Width;
             int dropdownX = (panelWidth - dropdownWidth) / 2;
-            int dropdownY = 10; 
+            int dropdownY = 10;
             this.NumberPlayer.Location = new Point(dropdownX, dropdownY);
 
             for (int i = 2; i <= 4; i++)
@@ -40,28 +40,30 @@ namespace Capital_Avenue.Views
                 this.NumberPlayer.Items.Add(i);
             }
             this.NumberPlayer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.NumberPlayer.SelectedIndex = 0;
 
-            System.Windows.Forms.Button button1 = new System.Windows.Forms.Button(); 
+            System.Windows.Forms.Button button1 = new System.Windows.Forms.Button();
             button1.Text = "Confirmer";
             button1.Size = new Size(100, 30);
-            button1.Location = new Point(dropdownX, dropdownY + dropdownHeight + 10); 
+            button1.Location = new Point(dropdownX, dropdownY + dropdownHeight + 10);
             button1.Click += button1_Click;
             this.Controls.Add(button1);
             this.SizeChanged += EnterPlayer_SizeChanged;
+
+            OnMyPawnPrinterChanged(null, EventArgs.Empty);
         }
 
         private void EnterPlayer_SizeChanged(object sender, EventArgs e)
         {
-
             int dropdownWidth = this.NumberPlayer.Width;
             int panelWidth = this.Width;
             int dropdownX = (panelWidth - dropdownWidth) / 2;
-            int dropdownY = 10; 
+            int dropdownY = 10;
             this.NumberPlayer.Location = new Point(dropdownX, dropdownY);
 
             if (this.Controls.Count > 0 && this.Controls[this.Controls.Count - 1] is System.Windows.Forms.Button button1)
             {
-                int buttonY = dropdownY + this.NumberPlayer.Height + 60; 
+                int buttonY = dropdownY + this.NumberPlayer.Height + 60;
                 button1.Location = new Point(dropdownX, buttonY);
             }
         }
@@ -84,19 +86,15 @@ namespace Capital_Avenue.Views
             }
         }
 
-
-
         private void OnMyPawnPrinterChanged(object sender, EventArgs e)
         {
             leftPlayerPanel.Controls.Clear();
             PlayerTextList.Clear();
             int selectedNumber = (int)NumberPlayer.SelectedItem;
-            // Change this one to a switch, with default being for two. Will be WAY USEFL and USERFRIENDLY
             for (int i = 1; i <= selectedNumber; i++)
             {
                 this.addPlayerTex(i);
             }
-            
         }
 
         public void addPlayerTex(int position)
@@ -122,8 +120,7 @@ namespace Capital_Avenue.Views
                 {
                     for (int j = g + 1; j < PlayerTextList.Count; j++)
                     {
-                        if ((PlayerTextList[g].comboBox.SelectedIndex.ToString()) ==
-                            (PlayerTextList[j].comboBox.SelectedIndex.ToString()))
+                        if ((PlayerTextList[g].comboBox.SelectedIndex.ToString()) == (PlayerTextList[j].comboBox.SelectedIndex.ToString()))
                         {
                             MessageBox.Show("The avatars are identical.");
                             return false;

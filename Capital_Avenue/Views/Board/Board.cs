@@ -51,14 +51,14 @@ namespace Capital_Avenue.Views.Board
                 if (!isGoingToJail)
                 {
                     string Message = $"Vous avez reçu \n 200 euros,\n {p.Name}!";
-                    Card c = new Card(Properties.Resources.Emojy_Depart, Message,"Bonus");
+                    Card c = new Card(Properties.Resources.Emojy_Depart, Message, "Bonus");
                     c.ShowDialog();
                     p.Capital += 200;
 
                 }
-                
+
             }
-            
+
             Cases[p.Position].RemovePawn(p);
             p.Position = NewPosition;
             Cases[p.Position].AddPawn(p);
@@ -76,15 +76,14 @@ namespace Capital_Avenue.Views.Board
                     pro.TaxProperty(player, pro);
                 }
                 else
-                {   
-                    PropertyCard c = new PropertyCard(pro,player);
+                {
+                    PropertyCard c = new PropertyCard(pro, player);
                     c.ShowDialog();
-
                 }
             }
             else if (indexCase == 7 || indexCase == 22 || indexCase == 36)
             {
-               CardChance.ExecuteChanceCardAction(player);
+                CardChance.ExecuteChanceCardAction(player);
             }
             else if (indexCase == 2 || indexCase == 17 || indexCase == 33)
             {
@@ -94,16 +93,42 @@ namespace Capital_Avenue.Views.Board
             {
                 MovePlayerToJail(player);
             }
+            else if (indexCase == 4)
+            {
+                DialogResult result = MessageBox.Show("You landed on a tax space. Choose how to pay the tax:\n\n" +
+                    "1. Pay a fixed amount of 200 (Yes)\n" +
+                    "2. Pay 10% of your capital (No)", "Tax Payment", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes) // Pay fixed amount
+                {
+                    int taxAmount = 200;
+                    player.Capital -= taxAmount;
+                    MessageBox.Show($"You paid {taxAmount} in taxes.", "Tax Payment");
+                }
+                else // Pay 10% of capital
+                {
+                    int taxAmount = (int)(player.Capital * 0.1);
+                    player.Capital -= taxAmount;
+                    MessageBox.Show($"You paid {taxAmount} ({(int)(0.1 * 100)}% of your capital) in taxes.", "Tax Payment");
+                }
+            }
+            else if (indexCase == 38)
+            {
+                int taxAmount = 100;
+                player.Capital -= taxAmount;
+                MessageBox.Show($"You landed on a luxury tax space. You paid {taxAmount} in taxes.", "Tax Payment");
+            }
         }
 
-       public void MovePlayerToJail(Player player)
+
+            public void MovePlayerToJail(Player player)
         {
             int move = player.Position > 10 ? 50 - player.Position : 10 - player.Position;
             MovePawn(player, move, true);
             player.isInJail = true;
             MessageBox.Show($"Vous allez en prison, {player.Name} !");
         }
-      
+
         public void MovePawnToPosition(Player player, int newPosition)
         {
             int move = newPosition > player.Position ? newPosition - player.Position : 40 - newPosition - player.Position;
@@ -391,7 +416,6 @@ namespace Capital_Avenue.Views.Board
             Cases.Add(VerticalRightCase7);//37
             Property[37] = new Property(37, "USA", ColorProperty.Bleu,Color.DeepSkyBlue,350,25, 20, 40, 60, 80);
             Cases.Add(VerticalRightCase8);
-            Property[38] = new Property(38, "SALES TAXE", ColorProperty.Aucun, Color.White,75, 150, 20, 40, 60, 80);
             Cases.Add(VerticalRightCase9);
             Property[39] = new Property(39, "CHINA", ColorProperty.Bleu,Color.DeepSkyBlue,400, 50, 20, 40, 60, 80);
 
