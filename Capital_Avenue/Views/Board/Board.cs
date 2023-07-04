@@ -45,6 +45,10 @@ namespace Capital_Avenue.Views.Board
         public void MovePawn(Player p, int diceValue, bool isGoingToJail = false)
         {
             int NewPosition = p.Position + diceValue;
+            if (NewPosition < 0)
+            {
+                NewPosition += 40;
+            }
             if (NewPosition > 39)
             {
                 NewPosition -= 40;

@@ -143,7 +143,7 @@ namespace Capital_Avenue.Views
                     ucBoard1.MovePawn(currentPlayer, currentGame.Dice.ResultDice);
                     break;
             }
-            if (currentGame.PlayerList[currentGame.CurrentPlayer].Capital <= 0)
+            if (currentGame.PlayerList[currentGame.CurrentPlayer].Capital < 0)
             {
                 this.BankruptAction();
             }

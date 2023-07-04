@@ -6,6 +6,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Capital_Avenue.Models
 {
@@ -47,7 +48,7 @@ namespace Capital_Avenue.Models
                         MessageBox.Show($"Trois Double à la suite. En Prison.");
                         PlayerList[CurrentPlayer].isInJail = true;
                         PlayerList[CurrentPlayer].JailTurn = 3;
-                        //GameBoard.MovePlayerToJail(PlayerList[CurrentPlayer]);
+                        GameBoard.MovePlayerToJail(PlayerList[CurrentPlayer]);
                     }
                     break;
             }
@@ -85,22 +86,29 @@ namespace Capital_Avenue.Models
         public void EndTurn()
         {
             int WinNumber = 1;
-            int TotalPlayer = PlayerList.Count - 1;
-            while (PlayerList[CurrentPlayer].isBankrupt == true)
+            int TotalPlayer = PlayerList.Count;
+            if (PlayerList[CurrentPlayer].isBankrupt == true)
             {
+                TotalPlayer--;
+            }
                 CurrentPlayer++;
-                if (CurrentPlayer >= PlayerList.Count-1)
+                if (CurrentPlayer >= PlayerList.Count)
                 {
                     CurrentPlayer = 0;
                 }
+                while (PlayerList[CurrentPlayer].isBankrupt == true) // Need to correct that, do not work at all.
+                {
+                    CurrentPlayer++;
+                    if (CurrentPlayer >= PlayerList.Count)
+                    {
+                      CurrentPlayer = 0;
+                    }
                 TotalPlayer--;
-            }
-            
-            if (WinNumber == TotalPlayer) 
-            {
-                this.WinGame(PlayerList[CurrentPlayer]);
-            }
-
+                }
+                if (WinNumber == TotalPlayer)
+                {
+                    this.WinGame(PlayerList[CurrentPlayer]);
+                }
         }
 
         public void WinGame(Player winner)
@@ -111,7 +119,7 @@ namespace Capital_Avenue.Models
             MessageBoxIcon.Question);
             if (result == DialogResult.OK)
             {
-                Application.Exit();
+                System.Windows.Forms.Application.Exit();
             }
         }
 
@@ -119,9 +127,10 @@ namespace Capital_Avenue.Models
         {
             Player currentPlayer = PlayerList[CurrentPlayer];
 
-            if (currentPlayer.Capital <= 0 && currentPlayer.OwnedProperties.Count !=0 || currentPlayer.OwnedProperties.Count != 0)
+            if (currentPlayer.Capital <= 0 && currentPlayer.OwnedProperties.Count !=0 || currentPlayer.OwnedProperties.Count == 0)
             {
-                if (currentPlayer.OwnedProperties.All(p => p.IsInBank == true) == true)
+                var test = currentPlayer.OwnedProperties.All(p => p.IsInBank == true);
+                if (test == true)
                 {
                     currentPlayer.isBankrupt = true;
                     // If time, give mortgaged properties to either bank or the other players, to not become bankrup. Not obligatory.
