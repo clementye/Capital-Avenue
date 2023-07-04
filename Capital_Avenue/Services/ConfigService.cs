@@ -11,10 +11,11 @@ namespace Capital_Avenue.Services
         public static List<String> GetPlayerColors()
         {
             return new List<string> {
-                "#6AFF2D",
-                "#401ad6",
-                "#A98C12",
-                "#E873E3"
+                "#EEE8AA",
+                "#FFB6C1",
+                "#90EE90",
+                "#ADD8E6",
+                
             };
         }
         public static Image[] GetPlayerImages()
