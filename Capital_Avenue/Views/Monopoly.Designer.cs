@@ -41,6 +41,7 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
+            Quit = new Button();
             SMButton = new Button();
             AuctionButton = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -177,6 +178,16 @@
             AuctionButton.UseVisualStyleBackColor = true;
             AuctionButton.Click += AuctionButton_Click;
             // 
+            // Quit
+            // 
+            Quit.BackgroundImage = (Image)resources.GetObject("Quit.BackgroundImage");
+            Quit.Location = new Point(1826, 882);
+            Quit.Name = "Quit";
+            Quit.Size = new Size(55, 74);
+            Quit.TabIndex = 54;
+            Quit.UseVisualStyleBackColor = true;
+            Quit.Click += quitButton_Click;
+            // 
             // Monopoly
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -184,6 +195,7 @@
             BackColor = SystemColors.ButtonHighlight;
             Controls.Add(AuctionButton);
             Controls.Add(SMButton);
+            Controls.Add(Quit);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -219,5 +231,6 @@
         private Label label3;
         private Button SMButton;
         private Button AuctionButton;
+        private Button Quit;
     }
 }

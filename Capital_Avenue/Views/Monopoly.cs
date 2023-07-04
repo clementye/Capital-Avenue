@@ -24,7 +24,7 @@ namespace Capital_Avenue.Views
         private Image[] images = ConfigService.GetDice();
         private int diceIndex;
         private System.Windows.Forms.Timer diceTimer;
-        //Dictionary<int, Property> NameList = new Dictionary<int, Property>();
+        private Button quitButton;
 
         public Monopoly(Game game)
         {
@@ -41,8 +41,11 @@ namespace Capital_Avenue.Views
             diceTimer = new System.Windows.Forms.Timer();
             diceTimer.Interval = 70;
             diceTimer.Tick += DiceTimer_Tick;
-        }
 
+            quitButton = new Button();
+            quitButton.Click += quitButton_Click;
+            this.Controls.Add(quitButton);
+        }
 
         public void InitializeDice()
         {
@@ -87,9 +90,6 @@ namespace Capital_Avenue.Views
             await Task.Delay(currentGame.Dice.DiceList.Count * diceTimer.Interval);
             diceTimer.Start();
             this.DisplayDiceResult();
-
-
-
         }
 
         private void DiceTimer_Tick(object sender, EventArgs e)
@@ -196,6 +196,16 @@ namespace Capital_Avenue.Views
             OtherPlayerChoice AuctionChoice = new OtherPlayerChoice();
             AuctionChoice.OPABox(currentGame.PlayerList[currentGame.CurrentPlayer], currentGame.PlayerList);
             AuctionChoice.ShowDialog();
+        }
+        private void quitButton_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to quit the game?", "Quit Game",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
     }
 }
