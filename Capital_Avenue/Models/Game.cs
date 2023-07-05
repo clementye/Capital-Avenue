@@ -19,6 +19,7 @@ namespace Capital_Avenue.Models
         private int Ldice = 0;
         private int NbDice = 2;
         public Board GameBoard { get; set; }
+        int TotalPlayer;
         public Game(List<Player> pList)
         {
             PlayerList = pList;
@@ -28,6 +29,7 @@ namespace Capital_Avenue.Models
         
         public void DiceInit()
         {
+            TotalPlayer = PlayerList.Count;
             Dice.addDice(Ldice, NbDice);
         }
         
@@ -86,7 +88,6 @@ namespace Capital_Avenue.Models
         public void EndTurn()
         {
             int WinNumber = 1;
-            int TotalPlayer = PlayerList.Count;
             if (PlayerList[CurrentPlayer].isBankrupt == true)
             {
                 TotalPlayer--;
@@ -96,7 +97,7 @@ namespace Capital_Avenue.Models
                 {
                     CurrentPlayer = 0;
                 }
-                while (PlayerList[CurrentPlayer].isBankrupt == true) // Need to correct that, do not work at all.
+                while (PlayerList[CurrentPlayer].isBankrupt == true)
                 {
                     CurrentPlayer++;
                     if (CurrentPlayer >= PlayerList.Count)
@@ -104,11 +105,13 @@ namespace Capital_Avenue.Models
                       CurrentPlayer = 0;
                     }
                 TotalPlayer--;
+                
                 }
                 if (WinNumber == TotalPlayer)
                 {
                     this.WinGame(PlayerList[CurrentPlayer]);
                 }
+                
         }
 
         public void WinGame(Player winner)
@@ -127,7 +130,7 @@ namespace Capital_Avenue.Models
         {
             Player currentPlayer = PlayerList[CurrentPlayer];
 
-            if (currentPlayer.Capital <= 0 && currentPlayer.OwnedProperties.Count !=0 || currentPlayer.OwnedProperties.Count == 0)
+            if (currentPlayer.Capital <= 0 && currentPlayer.OwnedProperties.Count !=0 || currentPlayer.OwnedProperties.Count >= 0)
             {
                 var test = currentPlayer.OwnedProperties.All(p => p.IsInBank == true);
                 if (test == true)

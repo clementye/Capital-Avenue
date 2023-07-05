@@ -41,7 +41,7 @@ namespace Capital_Avenue
             // If yes, then question if want to buy a house instead of want to buy property
             currentPlayer.Capital -= property.Price;
             property.Owner = currentPlayer;
-            currentPlayer.AddCard(property);
+            currentPlayer.AddProperty(property); // <- AddCar is for Community Card and Chance Card.
             this.Close();
         }
 

@@ -161,6 +161,7 @@ namespace Capital_Avenue.Views
             {
                 case true:
                     currentGame.JailAction();
+                    currentPlayerName.Text = currentGame.PlayerList[currentGame.CurrentPlayer].Name;
                     break;
                 case false:
                     currentPlayerName.Text = currentGame.PlayerList[currentGame.CurrentPlayer].Name;
@@ -171,6 +172,8 @@ namespace Capital_Avenue.Views
         public void onBankrupt_Click(object sender, EventArgs e)
         {
             this.BankruptAction();
+            currentPlayerName.Text = currentGame.PlayerList[currentGame.CurrentPlayer].Name;
+            UCLeftPanel.UpdatePlayerUC(currentGame.PlayerList[currentGame.CurrentPlayer]);
         }
 
         public void BankruptAction()
@@ -179,7 +182,6 @@ namespace Capital_Avenue.Views
             if (result == DialogResult.Yes)
             {
                 currentGame.Bankruptcy();
-                UCLeftPanel.UpdatePlayerUC(currentGame.PlayerList[currentGame.CurrentPlayer]);
             }
         }
 
