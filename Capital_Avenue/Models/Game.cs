@@ -1,10 +1,14 @@
-﻿using Capital_Avenue.Views.Board;
+﻿using Capital_Avenue.Views;
+using Capital_Avenue.Views.Board;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
+
 
 namespace Capital_Avenue.Models
 {
@@ -16,7 +20,9 @@ namespace Capital_Avenue.Models
         public Dice Dice { get; private set; }
         private int Ldice = 0;
         private int NbDice = 2;
+        private int TotalPlayer;
         public Board GameBoard { get; set; }
+        int TotalPlayer;
         public Game(List<Player> pList)
         {
             PlayerList = pList;
@@ -24,17 +30,24 @@ namespace Capital_Avenue.Models
             Dice = new Dice();
         }
         
+
         public void DiceInit()
         {
+            TotalPlayer = PlayerList.Count;
             Dice.addDice(Ldice, NbDice);
+            TotalPlayer = PlayerList.Count;
         }
-        
-       public void DiceResult()
-        { //Change it to actual double rule
+
+        public void DiceResult()
+        {
+            PlayDiceThrowSoundEffect();
+
+            Task.Delay(900).Wait();
+
             Dice.DiceThrower();
-            switch(Dice.isDouble)
+            switch (Dice.isDouble)
             {
-                case false: 
+                case false:
                     PlayerList[CurrentPlayer].TotalDouble = 0;
                     break;
                 case true:
@@ -43,12 +56,24 @@ namespace Capital_Avenue.Models
                     {
                         Dice.ResultDice = 0;
                         PlayerList[CurrentPlayer].TotalDouble = 0;
-                        MessageBox.Show($"Trois Double à la suite. En Prison.");
+                        MessageBox.Show($"Three doubles in a row. In Jail.");
                         PlayerList[CurrentPlayer].isInJail = true;
                         PlayerList[CurrentPlayer].JailTurn = 3;
-                        //GameBoard.MovePlayerToJail(PlayerList[CurrentPlayer]);
+                        GameBoard.MovePlayerToJail(PlayerList[CurrentPlayer]);
                     }
                     break;
+            }
+        }
+        private void PlayDiceThrowSoundEffect()
+        {
+            try
+            {
+                SoundPlayer soundPlayer = new SoundPlayer(Properties.Resources.dice_throw);
+                soundPlayer.Play();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error playing dice throw sound effect: " + ex.Message);
             }
         }
 
@@ -81,66 +106,87 @@ namespace Capital_Avenue.Models
             }
         }
 
-        public void SellProperty()
-        {
-            throw new NotImplementedException();
-            // TO DISPLAY, SO SOMEONE ELSE : Show the player all of his property, and let him select those he want to sell
-            // TO DISPLAY, SO SOMEONE ELSE : When he want to sell them, activate the function SellProperty
-            // When he sell, the function check each property to then sell each houses/hotel on it,
-            // giving half the value of their purchase price (normally common for all) <- Calling the resell of house function as many times as necessary
-            // When it's done, sell the properties and giving the half the money of purchase, also being the same value for the mortgage
-            // After it's done, it's done.
-        }
-
-        public void MortgageProperty()
-        {
-            throw new NotImplementedException();
-            // Will most likely be put in models/property.cs
-            // Will just change one parameter of the properties selectionned to IsInBank = true;
-            // So, the job of the one doing the property and the HOUSES
-        }
-
         public void EndTurn()
         {
-            Player currentPlayer = PlayerList[CurrentPlayer];
-
-            if (currentPlayer.isBankrupt || currentPlayer.Capital < 0)
+            int WinNumber = 1;
+            if (PlayerList[CurrentPlayer].isBankrupt == true)
             {
-                PlayerList.Remove(currentPlayer);
+                TotalPlayer--;
             }
-
-            CurrentPlayer++;
-
-            if (CurrentPlayer >= PlayerList.Count)
-            {
-                CurrentPlayer = 0;
-            }
-
-            if (PlayerList.Count == 1)
-            {
-                Player winner = PlayerList[0];
-                MessageBox.Show($"Player {winner.Name} has won the game!", "Game Over", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
+                CurrentPlayer++;
+                if (CurrentPlayer >= PlayerList.Count)
+                {
+                    CurrentPlayer = 0;
+                }
+                while (PlayerList[CurrentPlayer].isBankrupt == true)
+                {
+                    CurrentPlayer++;
+                    if (CurrentPlayer >= PlayerList.Count)
+                    {
+                      CurrentPlayer = 0;
+                    }
+                TotalPlayer--;
+                
+                }
+                if (WinNumber == TotalPlayer)
+                {
+                    this.WinGame(PlayerList[CurrentPlayer]);
+                }
+                
         }
+
+        public void WinGame(Player winner)
+        {
+            PlayWinnerSoundEffect();
+            Task.Delay(1877).Wait();
+            string message = $"Player {winner.Name} has won the game!";
+            DialogResult result = MessageBox.Show(message, "Congratulation !",MessageBoxButtons.OK,MessageBoxIcon.Question);
+
+            if (result == DialogResult.OK)
+            {
+                System.Windows.Forms.Application.Exit();
+            }
+        }
+
+        private void PlayWinnerSoundEffect()
+        {
+            try
+            {
+                SoundPlayer soundPlayer = new SoundPlayer(Properties.Resources.winner_sound);
+                soundPlayer.Play();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error playing winner sound effect: " + ex.Message);
+            }
+        }
+
 
         public void Bankruptcy()
         {
             Player currentPlayer = PlayerList[CurrentPlayer];
-            currentPlayer.isBankrupt = true;
 
-            foreach (Property property in currentPlayer.OwnedProperties)
+            if (currentPlayer.Capital <= 0 && currentPlayer.OwnedProperties.Count !=0 || currentPlayer.OwnedProperties.Count >= 0)
             {
-                //TODO : Add the property back to the game pool or perform any other necessary actions/reset number property
+                var test = currentPlayer.OwnedProperties.All(p => p.IsInBank == true);
+                if (test == true)
+                {
+                    currentPlayer.isBankrupt = true;
+                    // If time, give mortgaged properties to either bank or the other players, to not become bankrup. Not obligatory.
+                    currentPlayer.Capital = 0;
+
+                    MessageBox.Show($"Player {currentPlayer.Name} has gone bankrupt!", "Bankruptcy Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    currentPlayer.Capital = 0;
+                    SellMortgage SMA = new SellMortgage();
+                    string Action = "Sell";
+                    SMA.SMABox(currentPlayer, Action);
+                    SMA.ShowDialog();
+                }
             }
-            currentPlayer.OwnedProperties.Clear();
-
-            currentPlayer.Capital = 0;
-
-            MessageBox.Show($"Player {currentPlayer.Name} has gone bankrupt!", "Bankruptcy Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            EndTurn(); 
+            EndTurn();
         }
     }
 }

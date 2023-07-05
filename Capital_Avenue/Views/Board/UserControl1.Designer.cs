@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             tableLayoutPanel1 = new TableLayoutPanel();
+            checkedListBox1 = new CheckedListBox();
+            checkBox1 = new CheckBox();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -46,18 +48,41 @@
             tableLayoutPanel1.Size = new Size(112, 135);
             tableLayoutPanel1.TabIndex = 0;
             // 
+            // checkedListBox1
+            // 
+            checkedListBox1.FormattingEnabled = true;
+            checkedListBox1.Location = new Point(423, 65);
+            checkedListBox1.Name = "checkedListBox1";
+            checkedListBox1.Size = new Size(150, 114);
+            checkedListBox1.TabIndex = 1;
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(433, 94);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(101, 24);
+            checkBox1.TabIndex = 2;
+            checkBox1.Text = "checkBox1";
+            checkBox1.UseVisualStyleBackColor = true;
+            // 
             // UserControl1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(checkBox1);
+            Controls.Add(checkedListBox1);
             Controls.Add(tableLayoutPanel1);
             Name = "UserControl1";
             Size = new Size(766, 306);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private TableLayoutPanel tableLayoutPanel1;
+        private CheckedListBox checkedListBox1;
+        private CheckBox checkBox1;
     }
 }

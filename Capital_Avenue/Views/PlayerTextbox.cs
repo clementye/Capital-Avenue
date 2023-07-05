@@ -14,12 +14,11 @@ using System.Windows.Forms;
 
 namespace Capital_Avenue.Views
 {
-    public class PlayerTextbox:UserControl
+    public class PlayerTextbox : UserControl
     {
-
-        //public Panel p1;
         public TextBox Textbox;
         public ComboBox comboBox { get; set; }
+
         public PlayerTextbox(int position)
         {
             List<string> colors = ConfigService.GetPlayerColors();
@@ -29,7 +28,7 @@ namespace Capital_Avenue.Views
             this.AddTexbox(position, colors[position - 1], pos);
         }
 
-        public void AddTexbox(int numberChoice,string color, int position)
+        public void AddTexbox(int numberChoice, string color, int position)
         {
             Panel p1 = new Panel();
             Label l1 = new Label();
@@ -43,8 +42,9 @@ namespace Capital_Avenue.Views
             comboBox.DrawMode = DrawMode.OwnerDrawVariable;
             comboBox.Items.Clear();
             this.Controls.Add(p1);
-            this.ImageShow();
+            this.ImageShow(numberChoice - 1);
             l1.Text = "joueur " + numberChoice;
+            Textbox.Text = "Mario " + numberChoice;
             p1.Controls.Add(l1);
             p1.Controls.Add(comboBox);
             p1.Controls.Add(Textbox);
@@ -52,18 +52,17 @@ namespace Capital_Avenue.Views
             comboBox.Top = (this.ClientSize.Height - comboBox.Height) / 2;
             Textbox.Left = Width / 2 - Textbox.Width / 2;
             Textbox.Top = Height / 2 - Textbox.Height / 2 - comboBox.Height - 2;
-            comboBox.Top = Textbox.Bottom +1;
+            comboBox.Top = Textbox.Bottom + 1;
             this.Location = new Point(0, position);
-            this.Size = new Size(250,130);
+            this.Size = new Size(250, 130);
         }
-      public void ImageShow()
+
+        public void ImageShow(int playerIndex)
         {
             Image[] images = ConfigService.GetPlayerImages();
             comboBox.DisplayImages(images);
-            comboBox.SelectedIndex = 0;
+            comboBox.SelectedItem = images[playerIndex];
             comboBox.DropDownHeight = 200;
         }
-       
-
     }
 }

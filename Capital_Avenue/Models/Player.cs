@@ -31,9 +31,14 @@ namespace Capital_Avenue.Models
             isInJail = false;
             this.JailTurn = 0;
         }
-        public void AddCard(Property p)
+        public void AddProperty(Property p)
         {
             this.OwnedProperties.Add(p);
+        }
+
+        public void AddCard(string card)
+        {
+            this.Cards.Add(card);
         }
     }
 }

@@ -25,6 +25,7 @@ namespace Capital_Avenue.Models
         }
         public void ExecuteCommunityCardAction(Player player)
         {
+            Task.Delay(500).Wait();
             int action = GetRandomCommunityCardAction();
 
             switch (action)
@@ -62,7 +63,7 @@ namespace Capital_Avenue.Models
         }
         public void ErrorMessage(Image image, string Message)
         {
-            Card c = new Card(image, Message, "Carte Caumunauté");
+            Card c = new Card(image, Message, "Carte Communauté");
             c.ShowDialog();
         }
         public void ReceiveAnnualIncome(Player player)
