@@ -399,7 +399,7 @@ namespace Capital_Avenue.Views.Board
             //Ajouter les case dans la liste des cases
             Cases.Add(StartCase);
             Cases.Add(HorizontaldownCase9);
-            Property[1] = new Property(1, "GHANA", ColorProperty.Marron,Color.Peru, 60, 2,20,40,60,80);
+            Property[1] = new Property(1, "GHANA", ColorProperty.Marron,Color.Peru, 60, 2, 10, 30, 90, 160, 250);
             Cases.Add(HorizontaldownCase8);
             Cases.Add(HorizontaldownCase7);
             Property[3] = new Property(3, "UGANDA", ColorProperty.Marron,Color.Peru,60,4,20,60,180,320,450);

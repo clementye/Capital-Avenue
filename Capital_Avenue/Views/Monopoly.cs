@@ -226,14 +226,6 @@ namespace Capital_Avenue.Views
             }
         }
 
-        private void SMButton_Click(object sender, EventArgs e)
-        {
-            SellMortgage SMA = new SellMortgage();
-            string Action = "Sell";
-            SMA.SMABox(currentGame.PlayerList[currentGame.CurrentPlayer], Action);
-            SMA.ShowDialog();
-        }
-
         private void PlayClosingSoundEffect()
         {
             try
@@ -244,22 +236,6 @@ namespace Capital_Avenue.Views
             catch (Exception ex)
             {
                 Console.WriteLine("Error playing door sound effect: " + ex.Message);
-            }
-        }
-        private void AuctionButton_Click(object sender, EventArgs e)
-        {
-            OtherPlayerChoice AuctionChoice = new OtherPlayerChoice();
-            AuctionChoice.OPABox(currentGame.PlayerList[currentGame.CurrentPlayer], currentGame.PlayerList);
-            AuctionChoice.ShowDialog();
-        }
-        private void quitButton_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Are you sure you want to quit the game?", "Quit Game",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-            {
-                Application.Exit();
             }
         }
     }

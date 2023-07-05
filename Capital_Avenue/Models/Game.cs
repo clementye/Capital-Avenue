@@ -22,7 +22,6 @@ namespace Capital_Avenue.Models
         private int NbDice = 2;
         private int TotalPlayer;
         public Board GameBoard { get; set; }
-        int TotalPlayer;
         public Game(List<Player> pList)
         {
             PlayerList = pList;
