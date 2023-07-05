@@ -1,10 +1,12 @@
-﻿using Capital_Avenue.Views.Board;
+﻿using Capital_Avenue.Views;
+using Capital_Avenue.Views.Board;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Capital_Avenue.Models
 {
@@ -46,7 +48,7 @@ namespace Capital_Avenue.Models
                         MessageBox.Show($"Trois Double à la suite. En Prison.");
                         PlayerList[CurrentPlayer].isInJail = true;
                         PlayerList[CurrentPlayer].JailTurn = 3;
-                        //GameBoard.MovePlayerToJail(PlayerList[CurrentPlayer]);
+                        GameBoard.MovePlayerToJail(PlayerList[CurrentPlayer]);
                     }
                     break;
             }
@@ -81,66 +83,71 @@ namespace Capital_Avenue.Models
             }
         }
 
-        public void SellProperty()
-        {
-            throw new NotImplementedException();
-            // TO DISPLAY, SO SOMEONE ELSE : Show the player all of his property, and let him select those he want to sell
-            // TO DISPLAY, SO SOMEONE ELSE : When he want to sell them, activate the function SellProperty
-            // When he sell, the function check each property to then sell each houses/hotel on it,
-            // giving half the value of their purchase price (normally common for all) <- Calling the resell of house function as many times as necessary
-            // When it's done, sell the properties and giving the half the money of purchase, also being the same value for the mortgage
-            // After it's done, it's done.
-        }
-
-        public void MortgageProperty()
-        {
-            throw new NotImplementedException();
-            // Will most likely be put in models/property.cs
-            // Will just change one parameter of the properties selectionned to IsInBank = true;
-            // So, the job of the one doing the property and the HOUSES
-        }
-
         public void EndTurn()
         {
-            Player currentPlayer = PlayerList[CurrentPlayer];
-
-            if (currentPlayer.isBankrupt || currentPlayer.Capital < 0)
+            int WinNumber = 1;
+            int TotalPlayer = PlayerList.Count;
+            if (PlayerList[CurrentPlayer].isBankrupt == true)
             {
-                PlayerList.Remove(currentPlayer);
+                TotalPlayer--;
             }
+                CurrentPlayer++;
+                if (CurrentPlayer >= PlayerList.Count)
+                {
+                    CurrentPlayer = 0;
+                }
+                while (PlayerList[CurrentPlayer].isBankrupt == true) // Need to correct that, do not work at all.
+                {
+                    CurrentPlayer++;
+                    if (CurrentPlayer >= PlayerList.Count)
+                    {
+                      CurrentPlayer = 0;
+                    }
+                TotalPlayer--;
+                }
+                if (WinNumber == TotalPlayer)
+                {
+                    this.WinGame(PlayerList[CurrentPlayer]);
+                }
+        }
 
-            CurrentPlayer++;
-
-            if (CurrentPlayer >= PlayerList.Count)
+        public void WinGame(Player winner)
+        {
+            string message = $"Player {winner.Name} has won the game!";
+            DialogResult result = MessageBox.Show(message, "Game Over",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
             {
-                CurrentPlayer = 0;
+                System.Windows.Forms.Application.Exit();
             }
-
-            if (PlayerList.Count == 1)
-            {
-                Player winner = PlayerList[0];
-                MessageBox.Show($"Player {winner.Name} has won the game!", "Game Over", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
         }
 
         public void Bankruptcy()
         {
             Player currentPlayer = PlayerList[CurrentPlayer];
-            currentPlayer.isBankrupt = true;
 
-            foreach (Property property in currentPlayer.OwnedProperties)
+            if (currentPlayer.Capital <= 0 && currentPlayer.OwnedProperties.Count !=0 || currentPlayer.OwnedProperties.Count == 0)
             {
-                //TODO : Add the property back to the game pool or perform any other necessary actions/reset number property
+                var test = currentPlayer.OwnedProperties.All(p => p.IsInBank == true);
+                if (test == true)
+                {
+                    currentPlayer.isBankrupt = true;
+                    // If time, give mortgaged properties to either bank or the other players, to not become bankrup. Not obligatory.
+                    currentPlayer.Capital = 0;
+
+                    MessageBox.Show($"Player {currentPlayer.Name} has gone bankrupt!", "Bankruptcy Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    currentPlayer.Capital = 0;
+                    SellMortgage SMA = new SellMortgage();
+                    string Action = "Sell";
+                    SMA.SMABox(currentPlayer, Action);
+                    SMA.ShowDialog();
+                }
             }
-            currentPlayer.OwnedProperties.Clear();
-
-            currentPlayer.Capital = 0;
-
-            MessageBox.Show($"Player {currentPlayer.Name} has gone bankrupt!", "Bankruptcy Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            EndTurn(); 
+            EndTurn();
         }
     }
 }

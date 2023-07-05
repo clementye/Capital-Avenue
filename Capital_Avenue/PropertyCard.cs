@@ -37,6 +37,8 @@ namespace Capital_Avenue
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // Switch that check if brought.
+            // If yes, then question if want to buy a house instead of want to buy property
             currentPlayer.Capital -= property.Price;
             property.Owner = currentPlayer;
             currentPlayer.AddCard(property);
@@ -45,6 +47,7 @@ namespace Capital_Avenue
 
         private void button2_Click(object sender, EventArgs e)
         {
+            // Switch 
             this.Close();
         }
     }
