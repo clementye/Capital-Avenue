@@ -44,8 +44,8 @@ namespace Capital_Avenue.Views
             comboBox.Items.Clear();
             this.Controls.Add(p1);
             this.ImageShow();
-            l1.Text = "joueur " + numberChoice;
-            Textbox.Text = "Mario " + numberChoice;
+            l1.Text = " 𝐉𝐨𝐮𝐞𝐮𝐫 " + numberChoice;
+            Textbox.Text = "𝐌𝐚𝐫𝐢𝐨 " + numberChoice;
             p1.Controls.Add(l1);
             p1.Controls.Add(comboBox);
             p1.Controls.Add(Textbox);
