@@ -51,7 +51,7 @@
             // pictureBox1
             // 
             pictureBox1.BorderStyle = BorderStyle.FixedSingle;
-            pictureBox1.Location = new Point(12, 12);
+            pictureBox1.Location = new Point(3, 3);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(345, 85);
             pictureBox1.TabIndex = 0;
@@ -81,7 +81,7 @@
             // pictureBox2
             // 
             pictureBox2.BorderStyle = BorderStyle.FixedSingle;
-            pictureBox2.Location = new Point(12, 94);
+            pictureBox2.Location = new Point(3, 85);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(345, 337);
             pictureBox2.TabIndex = 3;
@@ -89,7 +89,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(43, 330);
+            button1.Location = new Point(34, 321);
             button1.Name = "button1";
             button1.Size = new Size(272, 40);
             button1.TabIndex = 4;
@@ -99,7 +99,7 @@
             // 
             // ButtonQuitter
             // 
-            ButtonQuitter.Location = new Point(43, 376);
+            ButtonQuitter.Location = new Point(34, 367);
             ButtonQuitter.Name = "ButtonQuitter";
             ButtonQuitter.Size = new Size(272, 40);
             ButtonQuitter.TabIndex = 5;
@@ -111,7 +111,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(23, 293);
+            label2.Location = new Point(14, 284);
             label2.Name = "label2";
             label2.Size = new Size(213, 20);
             label2.TabIndex = 6;
@@ -121,7 +121,7 @@
             // 
             price.AutoSize = true;
             price.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            price.Location = new Point(252, 293);
+            price.Location = new Point(243, 284);
             price.Name = "price";
             price.Size = new Size(35, 20);
             price.TabIndex = 7;
@@ -131,7 +131,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(23, 147);
+            label3.Location = new Point(14, 138);
             label3.Name = "label3";
             label3.Size = new Size(155, 20);
             label3.TabIndex = 8;
@@ -141,7 +141,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(23, 181);
+            label4.Location = new Point(14, 172);
             label4.Name = "label4";
             label4.Size = new Size(151, 20);
             label4.TabIndex = 9;
@@ -151,7 +151,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(23, 215);
+            label5.Location = new Point(14, 206);
             label5.Name = "label5";
             label5.Size = new Size(151, 20);
             label5.TabIndex = 10;
@@ -161,7 +161,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(23, 255);
+            label6.Location = new Point(14, 246);
             label6.Name = "label6";
             label6.Size = new Size(151, 20);
             label6.TabIndex = 11;
@@ -171,7 +171,7 @@
             // 
             PriceOneHouse.AutoSize = true;
             PriceOneHouse.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            PriceOneHouse.Location = new Point(240, 144);
+            PriceOneHouse.Location = new Point(231, 135);
             PriceOneHouse.Name = "PriceOneHouse";
             PriceOneHouse.Size = new Size(52, 23);
             PriceOneHouse.TabIndex = 12;
@@ -181,7 +181,7 @@
             // 
             PriceTowHouse.AutoSize = true;
             PriceTowHouse.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            PriceTowHouse.Location = new Point(240, 178);
+            PriceTowHouse.Location = new Point(231, 169);
             PriceTowHouse.Name = "PriceTowHouse";
             PriceTowHouse.Size = new Size(47, 23);
             PriceTowHouse.TabIndex = 13;
@@ -191,7 +191,7 @@
             // 
             PriceThreeHouse.AutoSize = true;
             PriceThreeHouse.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            PriceThreeHouse.Location = new Point(240, 215);
+            PriceThreeHouse.Location = new Point(231, 206);
             PriceThreeHouse.Name = "PriceThreeHouse";
             PriceThreeHouse.Size = new Size(47, 23);
             PriceThreeHouse.TabIndex = 14;
@@ -201,7 +201,7 @@
             // 
             PriceFourHouse.AutoSize = true;
             PriceFourHouse.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            PriceFourHouse.Location = new Point(240, 252);
+            PriceFourHouse.Location = new Point(231, 243);
             PriceFourHouse.Name = "PriceFourHouse";
             PriceFourHouse.RightToLeft = RightToLeft.Yes;
             PriceFourHouse.Size = new Size(47, 23);
@@ -213,7 +213,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Snow;
-            ClientSize = new Size(370, 446);
+            ClientSize = new Size(351, 425);
             ControlBox = false;
             Controls.Add(PriceFourHouse);
             Controls.Add(PriceThreeHouse);

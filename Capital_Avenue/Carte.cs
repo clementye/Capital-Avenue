@@ -32,7 +32,7 @@ namespace Capital_Avenue
             PriceThreeHouse.Text = p.PriceThreeHome.ToString() + "€";
             PriceFourHouse.Text = p.PriceFourHome.ToString() + "€";
             this.currentPlayer = player;
-          
+
         }
 
         private void button1_Click(object sender, EventArgs e)

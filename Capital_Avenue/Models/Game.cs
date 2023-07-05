@@ -3,10 +3,12 @@ using Capital_Avenue.Views.Board;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
+
 
 namespace Capital_Avenue.Models
 {
@@ -31,15 +33,19 @@ namespace Capital_Avenue.Models
         public void DiceInit()
         {
             Dice.addDice(Ldice, NbDice);
-            this.InitTotalPlayer();
+            TotalPlayer = PlayerList.Count;
         }
-        
-       public void DiceResult()
-        { //Change it to actual double rule
+
+        public void DiceResult()
+        {
+            PlayDiceThrowSoundEffect();
+
+            Task.Delay(900).Wait();
+
             Dice.DiceThrower();
-            switch(Dice.isDouble)
+            switch (Dice.isDouble)
             {
-                case false: 
+                case false:
                     PlayerList[CurrentPlayer].TotalDouble = 0;
                     break;
                 case true:
@@ -48,12 +54,24 @@ namespace Capital_Avenue.Models
                     {
                         Dice.ResultDice = 0;
                         PlayerList[CurrentPlayer].TotalDouble = 0;
-                        MessageBox.Show($"Trois Double à la suite. En Prison.");
+                        MessageBox.Show($"Three doubles in a row. In Jail.");
                         PlayerList[CurrentPlayer].isInJail = true;
                         PlayerList[CurrentPlayer].JailTurn = 3;
                         GameBoard.MovePlayerToJail(PlayerList[CurrentPlayer]);
                     }
                     break;
+            }
+        }
+        private void PlayDiceThrowSoundEffect()
+        {
+            try
+            {
+                SoundPlayer soundPlayer = new SoundPlayer(Properties.Resources.dice_throw);
+                soundPlayer.Play();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error playing dice throw sound effect: " + ex.Message);
             }
         }
 
@@ -86,11 +104,6 @@ namespace Capital_Avenue.Models
             }
         }
 
-        public void InitTotalPlayer()
-        {
-           TotalPlayer = PlayerList.Count;
-        }
-
         public void EndTurn()
         {
             int WinNumber = 1;
@@ -120,21 +133,36 @@ namespace Capital_Avenue.Models
 
         public void WinGame(Player winner)
         {
+            PlayWinnerSoundEffect();
+            Task.Delay(1877).Wait();
             string message = $"Player {winner.Name} has won the game!";
-            DialogResult result = MessageBox.Show(message, "Game Over",
-            MessageBoxButtons.OK,
-            MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show(message, "Congratulation !",MessageBoxButtons.OK,MessageBoxIcon.Question);
+
             if (result == DialogResult.OK)
             {
                 System.Windows.Forms.Application.Exit();
             }
         }
 
+        private void PlayWinnerSoundEffect()
+        {
+            try
+            {
+                SoundPlayer soundPlayer = new SoundPlayer(Properties.Resources.winner_sound);
+                soundPlayer.Play();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error playing winner sound effect: " + ex.Message);
+            }
+        }
+
+
         public void Bankruptcy()
         {
             Player currentPlayer = PlayerList[CurrentPlayer];
 
-            if (currentPlayer.Capital <= 0 && currentPlayer.OwnedProperties.Count !=0 || currentPlayer.OwnedProperties.Count == 0)
+            if (currentPlayer.Capital <= 0 && currentPlayer.OwnedProperties.Count !=0 || currentPlayer.OwnedProperties.Count >= 0)
             {
                 var test = currentPlayer.OwnedProperties.All(p => p.IsInBank == true);
                 if (test == true)

@@ -9,6 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Design;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -178,8 +179,22 @@ namespace Capital_Avenue.Views
             DialogResult result = MessageBox.Show($"{char.ToUpper(currentGame.PlayerList[currentGame.CurrentPlayer].Name[0]) + currentGame.PlayerList[currentGame.CurrentPlayer].Name.Substring(1)} are you sure you want to declare bankruptcy?", "Confirm Bankruptcy", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
+                PlayBankruptSoundEffect();
                 currentGame.Bankruptcy();
                 UCLeftPanel.UpdatePlayerUC(currentGame.PlayerList[currentGame.CurrentPlayer]);
+            }
+        }
+
+        private void PlayBankruptSoundEffect()
+        {
+            try
+            {
+                SoundPlayer soundPlayer = new SoundPlayer(Properties.Resources.bankrupt_sound);
+                soundPlayer.Play();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error playing bankrupt sound effect: " + ex.Message);
             }
         }
 
@@ -199,12 +214,26 @@ namespace Capital_Avenue.Views
         }
         private void quitButton_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure you want to quit the game?", "Quit Game",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Are you sure you want to quit the game?", "Quit Game",MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
+                PlayClosingSoundEffect();
+                Task.Delay(2000).Wait();
                 Application.Exit();
+            }
+        }
+
+        private void PlayClosingSoundEffect()
+        {
+            try
+            {
+                SoundPlayer soundPlayer = new SoundPlayer(Properties.Resources.close);
+                soundPlayer.Play();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error playing door sound effect: " + ex.Message);
             }
         }
     }

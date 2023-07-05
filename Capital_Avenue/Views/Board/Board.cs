@@ -5,11 +5,13 @@ using System.Data;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Numerics;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace Capital_Avenue.Views.Board
 {
@@ -87,10 +89,12 @@ namespace Capital_Avenue.Views.Board
             }
             else if (indexCase == 7 || indexCase == 22 || indexCase == 36)
             {
+                PlayCardSoundEffect();
                 CardChance.ExecuteChanceCardAction(player);
             }
             else if (indexCase == 2 || indexCase == 17 || indexCase == 33)
             {
+                PlayCardSoundEffect();
                 CardCommunity.ExecuteCommunityCardAction(player);
             }
             else if (indexCase == 30)
@@ -99,6 +103,7 @@ namespace Capital_Avenue.Views.Board
             }
             else if (indexCase == 4)
             {
+                PlayTaxSoundEffect();
                 DialogResult result = MessageBox.Show("You landed on a tax space. Choose how to pay the tax:\n\n" +
                     "1. Pay a fixed amount of 200 (Yes)\n" +
                     "2. Pay 10% of your capital (No)", "Tax Payment", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -120,17 +125,57 @@ namespace Capital_Avenue.Views.Board
             {
                 int taxAmount = 100;
                 player.Capital -= taxAmount;
+                PlayTaxSoundEffect();
                 MessageBox.Show($"You landed on a luxury tax space. You paid {taxAmount} in taxes.", "Tax Payment");
             }
         }
 
+        private void PlayCardSoundEffect()
+        {
+            try
+            {
+                SoundPlayer soundPlayer = new SoundPlayer(Properties.Resources.card);
+                soundPlayer.Play();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error playing Card sound effect: " + ex.Message);
+            }
+        }
 
-            public void MovePlayerToJail(Player player)
+        private void PlayTaxSoundEffect()
+        {
+            try
+            {
+                SoundPlayer soundPlayer = new SoundPlayer(Properties.Resources.tax);
+                soundPlayer.Play();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error playing Card sound effect: " + ex.Message);
+            }
+        }
+
+        public void MovePlayerToJail(Player player)
         {
             int move = player.Position > 10 ? 50 - player.Position : 10 - player.Position;
+            PlayPoliceSoundEffect();
             MovePawn(player, move, true);
             player.isInJail = true;
             MessageBox.Show($"Vous allez en prison, {player.Name} !");
+        }
+
+        private void PlayPoliceSoundEffect()
+        {
+            try
+            {
+                SoundPlayer soundPlayer = new SoundPlayer(Properties.Resources.police);
+                soundPlayer.Play();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error playing winner sound effect: " + ex.Message);
+            }
         }
 
         public void MovePawnToPosition(Player player, int newPosition)
@@ -354,10 +399,8 @@ namespace Capital_Avenue.Views.Board
             //Ajouter les case dans la liste des cases
             Cases.Add(StartCase);
             Cases.Add(HorizontaldownCase9);
-
             Property[1] = new Property(1, "GHANA", ColorProperty.Marron,Color.Peru, 60, 2,20,40,60,80);
             Cases.Add(HorizontaldownCase8);
-
             Cases.Add(HorizontaldownCase7);
             Property[3] = new Property(3, "UGANDA", ColorProperty.Marron,Color.Peru,60,4,20,40,60,80);
             Cases.Add(HorizontaldownCase6);
