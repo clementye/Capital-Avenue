@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            button1 = new Button();
+            button2 = new Button();
             label1 = new Label();
+            OptionChoice = new ComboBox();
             checkedListBox1 = new CheckedListBox();
             CapitalP1 = new TextBox();
             AuctionConfirm = new Button();
@@ -46,6 +49,24 @@
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
+            // 
+            // button1
+            // 
+            button1.Location = new Point(12, 12);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 0;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(284, 16);
+            button2.Name = "button2";
+            button2.Size = new Size(94, 29);
+            button2.TabIndex = 1;
+            button2.Text = "button2";
+            button2.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -195,7 +216,10 @@
             Controls.Add(AuctionConfirm);
             Controls.Add(CapitalP1);
             Controls.Add(checkedListBox1);
+            Controls.Add(OptionChoice);
             Controls.Add(label1);
+            Controls.Add(button2);
+            Controls.Add(button1);
             Name = "Auction";
             Text = "Auction";
             panel1.ResumeLayout(false);
@@ -207,7 +231,11 @@
         }
 
         #endregion
+
+        private Button button1;
+        private Button button2;
         private Label label1;
+        private ComboBox OptionChoice;
         private CheckedListBox checkedListBox1;
         private TextBox CapitalP1;
         private Button AuctionConfirm;

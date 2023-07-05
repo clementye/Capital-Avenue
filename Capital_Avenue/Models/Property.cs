@@ -18,12 +18,12 @@ namespace Capital_Avenue.Models
         public int PriceTwoHome { get; set; }
         public int PriceThreeHome { get; set; }
         public int PriceFourHome { get; set; }
+        public int PriceHostel { get; set; }
         public bool IsInBank;
 
         public Player Owner { get; set; }
-
-
-        public Property(int index, string name, ColorProperty groupe, Color color, int prix, int loyer, int PriceOneHome, int PriceTwoHome, int PriceThreeHome, int PriceFourHome) : base(index, name)
+      
+        public Property(int index, string name, ColorProperty groupe, Color color, int prix, int loyer, int PriceOneHome, int PriceTwoHome, int PriceThreeHome,int PriceFourHome,int PriceHostel) : base(index, name)
         {
             this.Groupe = groupe;
             this.Name = name;
@@ -35,6 +35,7 @@ namespace Capital_Avenue.Models
             this.PriceTwoHome = PriceTwoHome;
             this.PriceThreeHome = PriceThreeHome;
             this.PriceFourHome = PriceFourHome;
+            this.PriceHostel = PriceHostel;
             housesCount = 0;
             this.Owner = null;
             this.IsInBank = false;

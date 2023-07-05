@@ -30,7 +30,7 @@ namespace Capital_Avenue.Views.Auction
                 if (p.IsInBank == false)
                 {
                     checkedListBox1.Items.Add(p.Name, false);
-                }
+        }
             }
             foreach (Property p2 in Oplayer.OwnedProperties)
             {
@@ -108,7 +108,7 @@ namespace Capital_Avenue.Views.Auction
             this.AuctionTradeP(P1, P2, checkedListBox1);
             this.AuctionTradeP(P2, P1, checkedListBox2);
             /*if (P1.Cards.Count > 0 || P2.Cards.Count > 0)
-            {
+        {
                 this.AuctionTradeC(P1, P2, P1Box);
                 this.AuctionTradeC(P2, P1, P2Box);
             }*/
@@ -120,7 +120,7 @@ namespace Capital_Avenue.Views.Auction
         private void AuctionTradeP(Player Cpla, Player Opla, CheckedListBox box)
         {
             for (int i = 0; i < box.CheckedItems.Count; i++)
-            {
+        {
                 var FoundProperty = Cpla.OwnedProperties.Find(p2 => p2.Name == box.CheckedItems[i]);
                 Opla.AddProperty(FoundProperty);
                 FoundProperty.Owner = Opla;
@@ -136,7 +136,7 @@ namespace Capital_Avenue.Views.Auction
                 Opla.AddCard(FoundProperty);
                 Cpla.Cards.Remove(FoundProperty);
             }
-        }
+    }
 
         private void AuctionMoney(Player Cpla, Player Opla, TextBox Box)
         {
