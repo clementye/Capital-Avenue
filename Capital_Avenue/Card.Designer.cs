@@ -84,9 +84,10 @@
             // pictureBox3
             // 
             pictureBox3.BackColor = Color.Coral;
-            pictureBox3.Location = new Point(12, 9);
+            pictureBox3.Dock = DockStyle.Fill;
+            pictureBox3.Location = new Point(0, 0);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(508, 280);
+            pictureBox3.Size = new Size(549, 304);
             pictureBox3.TabIndex = 4;
             pictureBox3.TabStop = false;
             // 
@@ -97,7 +98,7 @@
             label2.BorderStyle = BorderStyle.FixedSingle;
             label2.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = Color.Black;
-            label2.Location = new Point(252, 33);
+            label2.Location = new Point(240, 22);
             label2.Name = "label2";
             label2.Size = new Size(61, 27);
             label2.TabIndex = 5;
@@ -107,7 +108,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(607, 340);
+            ClientSize = new Size(549, 304);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(button1);

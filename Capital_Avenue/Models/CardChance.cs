@@ -25,6 +25,8 @@ namespace Capital_Avenue.Models
 
         public void ExecuteChanceCardAction(Player player)
         {
+            Task.Delay(500).Wait();
+            Task.Delay(500).Wait();
             int action = GetRandomChanceCardAction(); // Obtenir une action aléatoire pour la carte Chance
 
             switch (action)

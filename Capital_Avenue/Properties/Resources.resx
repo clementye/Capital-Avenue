@@ -121,6 +121,12 @@
   <data name="bankruptcy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bankruptcy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="bankrupt_sound" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bankrupt_sound.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="card" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\card.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="case1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Cases\case1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -247,6 +253,9 @@
   <data name="Chariot" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MicrosoftTeams-image (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="close" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\close.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Diamant" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MicrosoftTeams-image (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -270,6 +279,9 @@
   </data>
   <data name="dice_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\dice 0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dice_throw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dice_throw.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Emojy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Emojy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -295,7 +307,16 @@
   <data name="Micro" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MicrosoftTeams-image (6).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="police" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\police.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tax" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tax.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Voiture1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MicrosoftTeams-image (4).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="winner_sound" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\winner_sound.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
