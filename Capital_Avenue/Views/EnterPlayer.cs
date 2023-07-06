@@ -1,19 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Reflection;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Drawing;
-using Capital_Avenue.Models;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
-using TextBox = System.Windows.Forms.TextBox;
+﻿using Capital_Avenue.Models;
 // a
 namespace Capital_Avenue.Views
 {
@@ -83,6 +68,7 @@ namespace Capital_Avenue.Views
                 }
                 Game newGame = new Game(playerList);
                 Program.PageHome.NextPage(new Monopoly(newGame));
+                Program.PageHome.simpleSound.Stop();
             }
         }
 

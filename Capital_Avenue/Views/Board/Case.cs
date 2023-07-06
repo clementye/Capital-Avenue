@@ -1,11 +1,5 @@
 ﻿using Capital_Avenue.Models;
 using Capital_Avenue.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Capital_Avenue.Views.Board
 {

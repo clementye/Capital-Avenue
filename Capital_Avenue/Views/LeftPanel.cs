@@ -1,12 +1,4 @@
-﻿using Capital_Avenue.Models;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Text;
 
 namespace Capital_Avenue.Views
 {
@@ -52,7 +44,7 @@ namespace Capital_Avenue.Views
             l3.Location = new Point(0, 60);
             p1.Controls.Add(l3);
 
-            Button propertiesButton = new Button(); 
+            Button propertiesButton = new Button();
             propertiesButton.Text = "Properties";
             propertiesButton.Size = new Size(90, 40);
             propertiesButton.Location = new Point(0, 85);
@@ -88,6 +80,18 @@ namespace Capital_Avenue.Views
 
             MessageBox.Show(propertiesList.ToString(), "Player Properties");
         }
+
+        private void InitializeComponent()
+        {
+            SuspendLayout();
+            // 
+            // LeftPanel
+            // 
+            BackgroundImageLayout = ImageLayout.Stretch;
+            Name = "LeftPanel";
+            ResumeLayout(false);
+        }
+
         public void UpdatePlayerUC(Player player)
         {
             // Réinitialisation des boutons de tour
@@ -112,20 +116,64 @@ namespace Capital_Avenue.Views
                         turnButton.BackColor = Color.Red;
                         turnButton.ForeColor = Color.White;
                         turnButton.Size = new Size(80, 30);
-
                         int x = panel.Width - turnButton.Width - 10;
                         int y = panel.Height - turnButton.Height - 10;
                         turnButton.Location = new Point(x, y);
-
+                        PictureBox jailCellPictureBox = panel.Controls.Find("jailCellPictureBox", true).FirstOrDefault() as PictureBox;
                         panel.Controls.Add(turnButton);
                     }
+
+                    if (panel.Controls[0].Text == player.Name)
+                    {
+                        panel.Controls[1].Text = "Properties: " + player.OwnedProperties.Count.ToString();
+                        panel.Controls[2].Text = "Capital: " + player.Capital.ToString();
+
+                        PictureBox jailCellPictureBox = panel.Controls.Find("jailCellPictureBox", true).FirstOrDefault() as PictureBox;
+
+                        if (player.isInJail)
+                        {
+                            if (jailCellPictureBox == null)
+                            {
+                                jailCellPictureBox = new PictureBox();
+                                jailCellPictureBox.Name = "jailCellPictureBox";
+                                jailCellPictureBox.Image = Properties.Resources.jail_cell;
+                                jailCellPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                                jailCellPictureBox.Size = new Size(50, 50);
+
+                                int x = panel.Width - jailCellPictureBox.Width - 10;
+                                int y = 10;
+                                jailCellPictureBox.Location = new Point(x, y);
+
+                                panel.Controls.Add(jailCellPictureBox);
+                            }
+                            jailCellPictureBox.Visible = true;
+                        }
+                        else
+                        {
+                            if (jailCellPictureBox != null)
+                            {
+                                panel.Controls.Remove(jailCellPictureBox);
+                                jailCellPictureBox.Dispose();
+                            }
+
+                            int playerIndex = PlayerList.FindIndex(x => x.Name == player.Name);
+                            List<string> colors = ConfigService.GetPlayerColors();
+                            if (playerIndex >= 0 && playerIndex < colors.Count)
+                            {
+                                panel.BackColor = ColorTranslator.FromHtml(colors[playerIndex]);
+                            }
+
+                            panel.BorderStyle = BorderStyle.FixedSingle;
+                        }
+                    }
+
+
+                    // Reste du code pour la mise à jour des autres informations des joueurs
+                    // ...
                 }
+
             }
-
-            // Reste du code pour la mise à jour des autres informations des joueurs
-            // ...
         }
-
     }
-    }
+}
 
