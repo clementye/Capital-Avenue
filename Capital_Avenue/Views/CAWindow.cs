@@ -28,7 +28,7 @@ namespace Capital_Avenue
         {
             //this.TopMost = true;
             //this.FormBorderStyle = FormBorderStyle.None; // Activate only during presentation
-            //this.WindowState = FormWindowState.Maximized;
+            this.WindowState = FormWindowState.Maximized;
             int x = (Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2;
             int y = (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2;
             this.SetDesktopLocation(x, y);

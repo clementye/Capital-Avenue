@@ -36,7 +36,6 @@
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             timer1 = new System.Windows.Forms.Timer(components);
-            Dice_lef = new PictureBox();
             dice_right = new PictureBox();
             label1 = new Label();
             label2 = new Label();
@@ -44,10 +43,11 @@
             Quit = new Button();
             SMButton = new Button();
             AuctionButton = new Button();
+            Dice_lef = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)Dice_lef).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dice_right).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Dice_lef).BeginInit();
             SuspendLayout();
             // 
             // onBankrupt
@@ -85,11 +85,12 @@
             ucBoard1.ForeColor = Color.Transparent;
             ucBoard1.Location = new Point(566, 56);
             ucBoard1.Name = "ucBoard1";
-            ucBoard1.Size = new Size(887, 900);
+            ucBoard1.Size = new Size(900, 900);
             ucBoard1.TabIndex = 42;
             // 
             // pictureBox1
             // 
+            pictureBox1.BackColor = Color.Transparent;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(862, 491);
             pictureBox1.Name = "pictureBox1";
@@ -100,6 +101,7 @@
             // 
             // pictureBox2
             // 
+            pictureBox2.BackColor = Color.Transparent;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
             pictureBox2.Location = new Point(1084, 485);
             pictureBox2.Name = "pictureBox2";
@@ -108,18 +110,9 @@
             pictureBox2.TabStop = false;
             pictureBox2.Click += pictureBox2_Click;
             // 
-            // Dice_lef
-            // 
-            Dice_lef.BackColor = SystemColors.ButtonHighlight;
-            Dice_lef.Location = new Point(804, 315);
-            Dice_lef.Name = "Dice_lef";
-            Dice_lef.Size = new Size(134, 111);
-            Dice_lef.TabIndex = 49;
-            Dice_lef.TabStop = false;
-            // 
             // dice_right
             // 
-            dice_right.BackColor = SystemColors.ControlLightLight;
+            dice_right.BackColor = Color.Transparent;
             dice_right.Location = new Point(1060, 315);
             dice_right.Name = "dice_right";
             dice_right.Size = new Size(132, 111);
@@ -158,6 +151,16 @@
             label3.TabIndex = 53;
             label3.Text = "Joueur Actuel :";
             // 
+            // Quit
+            // 
+            Quit.BackgroundImage = (Image)resources.GetObject("Quit.BackgroundImage");
+            Quit.Location = new Point(1826, 882);
+            Quit.Name = "Quit";
+            Quit.Size = new Size(55, 74);
+            Quit.TabIndex = 54;
+            Quit.UseVisualStyleBackColor = true;
+            Quit.Click += quitButton_Click;
+            // 
             // SMButton
             // 
             SMButton.Location = new Point(828, 633);
@@ -174,25 +177,25 @@
             AuctionButton.Name = "AuctionButton";
             AuctionButton.Size = new Size(214, 29);
             AuctionButton.TabIndex = 55;
-            AuctionButton.Text = "Enchères";
+            AuctionButton.Text = "Échange";
             AuctionButton.UseVisualStyleBackColor = true;
             AuctionButton.Click += AuctionButton_Click;
             // 
-            // Quit
+            // Dice_lef
             // 
-            Quit.BackgroundImage = (Image)resources.GetObject("Quit.BackgroundImage");
-            Quit.Location = new Point(1826, 882);
-            Quit.Name = "Quit";
-            Quit.Size = new Size(55, 74);
-            Quit.TabIndex = 54;
-            Quit.UseVisualStyleBackColor = true;
-            Quit.Click += quitButton_Click;
+            Dice_lef.BackColor = Color.Transparent;
+            Dice_lef.Location = new Point(804, 315);
+            Dice_lef.Name = "Dice_lef";
+            Dice_lef.Size = new Size(134, 111);
+            Dice_lef.TabIndex = 49;
+            Dice_lef.TabStop = false;
             // 
             // Monopoly
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ButtonHighlight;
+            BackColor = Color.White;
+            BackgroundImageLayout = ImageLayout.Stretch;
             Controls.Add(AuctionButton);
             Controls.Add(SMButton);
             Controls.Add(Quit);
@@ -211,8 +214,8 @@
             Size = new Size(1884, 1069);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)Dice_lef).EndInit();
             ((System.ComponentModel.ISupportInitialize)dice_right).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Dice_lef).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -224,7 +227,6 @@
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
         private System.Windows.Forms.Timer timer1;
-        private PictureBox Dice_lef;
         private PictureBox dice_right;
         private Label label1;
         private Label label2;
@@ -232,5 +234,6 @@
         private Button SMButton;
         private Button AuctionButton;
         private Button Quit;
+        private PictureBox Dice_lef;
     }
 }

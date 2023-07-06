@@ -1,6 +1,6 @@
-﻿namespace Capital_Avenue.Views
+﻿namespace Capital_Avenue.Views.Board
 {
-    partial class SellMortgage
+    partial class ProOwned
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -28,17 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            SuspendLayout();
-            // 
-            // SellMortgage
-            // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(282, 253);
-            Location = new Point(1000, 150);
-            Name = "SellMortgage";
-            StartPosition = FormStartPosition.Manual;
-            ResumeLayout(false);
+            components = new System.ComponentModel.Container();
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         }
 
         #endregion

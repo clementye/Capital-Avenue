@@ -1,4 +1,5 @@
 ﻿using Capital_Avenue.Models;
+using Capital_Avenue.Views.Board;
 
 namespace Capital_Avenue
 {
@@ -30,7 +31,7 @@ namespace Capital_Avenue
             // If yes, then question if want to buy a house instead of want to buy property
             currentPlayer.Capital -= property.Price;
             property.Owner = currentPlayer;
-            currentPlayer.AddProperty(property); // <- AddCar is for Community Card and Chance Card.
+            currentPlayer.AddProperty(property);
             this.Close();
         }
 

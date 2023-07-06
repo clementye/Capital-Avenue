@@ -37,6 +37,7 @@
             // 
             // leftPlayerPanel
             // 
+            leftPlayerPanel.BackColor = Color.Transparent;
             leftPlayerPanel.Location = new Point(3, 14);
             leftPlayerPanel.Name = "leftPlayerPanel";
             leftPlayerPanel.Size = new Size(413, 548);
@@ -63,6 +64,7 @@
             // 
             Controls.Add(NumberPlayer);
             Controls.Add(leftPlayerPanel);
+            DoubleBuffered = true;
             Name = "EnterPlayer";
             Size = new Size(1178, 638);
             ResumeLayout(false);

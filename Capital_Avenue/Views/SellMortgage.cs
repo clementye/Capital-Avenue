@@ -6,7 +6,6 @@ namespace Capital_Avenue.Views
     public partial class SellMortgage : Form
     {
         private Player currentPlayer;
-
         /*ImageList ImgList;
         ListView ListView;*/
         CheckedListBox PropertiesBox;
@@ -15,7 +14,7 @@ namespace Capital_Avenue.Views
             InitializeComponent();
             this.currentPlayer = player;
             this.Size = new Size(300, 500);
-            this.Location = new Point(200, 100);
+            this.Location = new Point(250, 150);
             switch (action)
             {
                 case "Sell":
@@ -29,7 +28,7 @@ namespace Capital_Avenue.Views
                     this.MButtonAdder();
                     break;
             }
-            
+
         }
 
         public void BaseHeader(Player player) // For SELL/MORTGAGE
@@ -41,12 +40,13 @@ namespace Capital_Avenue.Views
             FlowLayoutPanel flow = new FlowLayoutPanel();
             flow.FlowDirection = FlowDirection.TopDown;
             flow.AutoSize = true;
-            PlayerName.Text = player.Name +", vos propriétés :";
+            PlayerName.Text = player.Name + ", vos propriétés :";
             PlayerName.Location = new Point(0, 80);
+            PlayerName.Size = new Size(270, 60);
             BankLabelSell.Text = "Vendre à la Banque";
             BankLabelSell.Font = new Font("Arial", 12, FontStyle.Bold);
             BankLabelSell.Location = new Point(0, 30);
-            BankLabelSell.Size = new Size(150, 50);
+            BankLabelSell.Size = new Size(270, 50);
             BankPanel.Controls.Add(BankLabelSell);
             BankPanel.Controls.Add(PlayerName);
             BankPanel.Size = new Size(200, 100);
@@ -63,6 +63,7 @@ namespace Capital_Avenue.Views
                     PropertiesBox.Items.Add(p.Name, false);
                 }
             }
+            PropertiesBox.Size = new Size(270, 260);
             PropertiesBox.Location = new Point(0, 110);
             // Later, add line to change size, with width at precise value and length depending of owned properties.
             this.Controls.Add(PropertiesBox);
@@ -81,17 +82,17 @@ namespace Capital_Avenue.Views
             Button MortgageButton = new Button(); // Same here
             Panel SMPanel = new Panel();
             SellButton.Text = "Vendre";
-            SellButton.Location = new Point(0, 0);
-            SellButton.Size = new Size(70, 50);
+            SellButton.Location = new Point(10, 0);
+            SellButton.Size = new Size(105, 50);
             SellButton.Click += SellButton_Click;
             MortgageButton.Text = "Hypothéquer";
-            MortgageButton.Location = new Point(100, 0);
-            MortgageButton.Size = new Size(70, 50);
+            MortgageButton.Location = new Point(160, 0);
+            MortgageButton.Size = new Size(105, 50);
             MortgageButton.Click += MortgageButton_Click;
             SMPanel.Controls.Add(SellButton);
             SMPanel.Controls.Add(MortgageButton);
-            SMPanel.Size = new Size(200, 100);
-            SMPanel.Location = new Point(0, 300);
+            SMPanel.Size = new Size(290, 100);
+            SMPanel.Location = new Point(0, 380);
             this.Controls.Add(SMPanel);
         }
 
@@ -101,11 +102,11 @@ namespace Capital_Avenue.Views
             Panel MPanel = new Panel();
             MortgageButton.Text = "Hypothéquer";
             MortgageButton.Location = new Point(0, 0);
-            MortgageButton.Size = new Size(70, 50);
+            MortgageButton.Size = new Size(105, 50);
             MortgageButton.Click += MortgageButton_Click;
             MPanel.Controls.Add(MortgageButton);
-            MPanel.Size = new Size(200, 100);
-            MPanel.Location = new Point(0, 300);
+            MPanel.Size = new Size(290, 100);
+            MPanel.Location = new Point(0, 380);
             this.Controls.Add(MPanel);
         }
         public void SellButton_Click(object sender, EventArgs e)

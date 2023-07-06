@@ -30,7 +30,7 @@
         {
             SuspendLayout();
             // 
-            // UCBoard
+            // Board
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -38,8 +38,9 @@
             BackColor = Color.Transparent;
             BackgroundImageLayout = ImageLayout.None;
             BorderStyle = BorderStyle.FixedSingle;
+            DoubleBuffered = true;
             ForeColor = Color.Transparent;
-            Name = "UCBoard";
+            Name = "Board";
             Size = new Size(600, 600);
             ResumeLayout(false);
         }

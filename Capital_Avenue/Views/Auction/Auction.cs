@@ -9,6 +9,8 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
+using Capital_Avenue.Services;
 
 namespace Capital_Avenue.Views.Auction
 {
@@ -20,9 +22,12 @@ namespace Capital_Avenue.Views.Auction
         CheckedListBox P2Box;
         private Player P1;
         private Player P2;
-        public Auction(Player Cplayer, Player Oplayer)
+        List<string> colors = ConfigService.GetPlayerColors();
+        public Auction(Player Cplayer, Player Oplayer, int Ocolor, int Ccolor)
         {
             InitializeComponent();
+            panel1.BackColor = ColorTranslator.FromHtml(colors[Ccolor]);
+            panel2.BackColor = ColorTranslator.FromHtml(colors[Ocolor]);
             label2.Text = Cplayer.Name;
             label3.Text = Oplayer.Name;
             foreach (Property p in Cplayer.OwnedProperties)
@@ -30,7 +35,7 @@ namespace Capital_Avenue.Views.Auction
                 if (p.IsInBank == false)
                 {
                     checkedListBox1.Items.Add(p.Name, false);
-        }
+                }
             }
             foreach (Property p2 in Oplayer.OwnedProperties)
             {
@@ -120,7 +125,7 @@ namespace Capital_Avenue.Views.Auction
         private void AuctionTradeP(Player Cpla, Player Opla, CheckedListBox box)
         {
             for (int i = 0; i < box.CheckedItems.Count; i++)
-        {
+            {
                 var FoundProperty = Cpla.OwnedProperties.Find(p2 => p2.Name == box.CheckedItems[i]);
                 Opla.AddProperty(FoundProperty);
                 FoundProperty.Owner = Opla;
@@ -136,7 +141,7 @@ namespace Capital_Avenue.Views.Auction
                 Opla.AddCard(FoundProperty);
                 Cpla.Cards.Remove(FoundProperty);
             }
-    }
+        }
 
         private void AuctionMoney(Player Cpla, Player Opla, TextBox Box)
         {

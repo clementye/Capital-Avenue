@@ -9,6 +9,8 @@ namespace Capital_Avenue.Views
         private List<Player> PlayerList;
         public LeftPanel(List<Player> playerList)
         {
+            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            this.BackColor = Color.Transparent;
             this.PlayerList = playerList;
             List<string> colors = ConfigService.GetPlayerColors();
             int basePosition = 120;
@@ -87,6 +89,7 @@ namespace Capital_Avenue.Views
             // 
             // LeftPanel
             // 
+            BackColor = Color.Transparent;
             BackgroundImageLayout = ImageLayout.Stretch;
             Name = "LeftPanel";
             ResumeLayout(false);

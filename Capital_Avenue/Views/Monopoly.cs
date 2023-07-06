@@ -8,8 +8,10 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Design;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Media;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -30,6 +32,8 @@ namespace Capital_Avenue.Views
         public Monopoly(Game game)
         {
             InitializeComponent();
+            this.BackgroundImage = Properties.Resources.font1;
+            this.BackgroundImageLayout = ImageLayout.Stretch;
             this.currentGame = game;
             this.AddPlayerPanel();
             currentPlayerName.Text = currentGame.PlayerList[0].Name.ToUpper();
@@ -149,6 +153,7 @@ namespace Capital_Avenue.Views
                 this.BankruptAction();
             }
             UCLeftPanel.UpdatePlayerUC(currentGame.PlayerList[currentGame.CurrentPlayer]);
+            this.ChangeOwnerShow();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -175,6 +180,7 @@ namespace Capital_Avenue.Views
             this.BankruptAction();
             currentPlayerName.Text = currentGame.PlayerList[currentGame.CurrentPlayer].Name;
             UCLeftPanel.UpdatePlayerUC(currentGame.PlayerList[currentGame.CurrentPlayer]);
+            this.ChangeOwnerShow();
         }
 
         public void BankruptAction()
@@ -192,6 +198,7 @@ namespace Capital_Avenue.Views
                     PlayBankruptSoundEffect();
                     currentGame.Bankruptcy();
                 }
+                
             }
         }
 
@@ -214,6 +221,7 @@ namespace Capital_Avenue.Views
             string Action = "Sell";
             SMA.SMABox(currentGame.PlayerList[currentGame.CurrentPlayer], Action);
             SMA.ShowDialog();
+            this.ChangeOwnerShow();
         }
 
         private void AuctionButton_Click(object sender, EventArgs e)
@@ -221,10 +229,12 @@ namespace Capital_Avenue.Views
             OtherPlayerChoice AuctionChoice = new OtherPlayerChoice();
             AuctionChoice.OPABox(currentGame.PlayerList[currentGame.CurrentPlayer], currentGame.PlayerList);
             AuctionChoice.ShowDialog();
+            currentPlayerName.Text = currentGame.PlayerList[currentGame.CurrentPlayer].Name;
+            this.ChangeOwnerShow();
         }
         private void quitButton_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure you want to quit the game?", "Quit Game",MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Are you sure you want to quit the game?", "Quit Game", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
@@ -244,6 +254,18 @@ namespace Capital_Avenue.Views
             catch (Exception ex)
             {
                 Console.WriteLine("Error playing door sound effect: " + ex.Message);
+            }
+        }
+
+        private void ChangeOwnerShow()
+        {
+            foreach (ProOwned PO in ucBoard1.CaseOwner)
+            {
+                foreach (Property P in currentGame.PlayerList[currentGame.CurrentPlayer].OwnedProperties)
+                {
+                    PO.UpdateShow(currentGame.PlayerList[currentGame.CurrentPlayer], P, currentGame.PlayerList);
+
+                }
             }
         }
     }

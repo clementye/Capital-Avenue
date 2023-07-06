@@ -9,6 +9,8 @@ namespace Capital_Avenue.Views
         public EnterPlayer()
         {
             InitializeComponent();
+            this.BackgroundImage = Properties.Resources.font1;
+            this.BackgroundImageLayout = ImageLayout.Stretch;
             this.Dock = DockStyle.Fill;
             PlayerTextList = new List<PlayerTextbox>();
 

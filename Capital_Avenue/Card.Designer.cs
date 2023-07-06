@@ -115,7 +115,9 @@
             Controls.Add(pictureBox1);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox3);
+            Location = new Point(740, 300);
             Name = "Card";
+            StartPosition = FormStartPosition.Manual;
             Text = "CardC";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
