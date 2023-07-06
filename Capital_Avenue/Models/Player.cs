@@ -1,7 +1,4 @@
-﻿using Capital_Avenue.Views;
-using System.DirectoryServices.ActiveDirectory;
-
-namespace Capital_Avenue.Models
+﻿namespace Capital_Avenue.Models
 {
     public class Player
     {
