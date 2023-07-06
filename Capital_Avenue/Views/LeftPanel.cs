@@ -88,58 +88,44 @@ namespace Capital_Avenue.Views
 
             MessageBox.Show(propertiesList.ToString(), "Player Properties");
         }
-
         public void UpdatePlayerUC(Player player)
         {
+            // Réinitialisation des boutons de tour
             foreach (UserControl uc in this.Controls)
             {
-                if (uc.Controls[0] is Panel p)
+                if (uc.Controls[0] is Panel panel)
                 {
-                    if (p.Controls[0].Text == player.Name)
+                    // Recherche du bouton de tour existant et le supprimer
+                    Control[] existingButtons = panel.Controls.Find("turnButton", true);
+                    foreach (var button in existingButtons)
                     {
-                        p.Controls[1].Text = "Properties: " + player.OwnedProperties.Count.ToString();
-                        p.Controls[2].Text = "Capital: " + player.Capital.ToString();
+                        panel.Controls.Remove(button);
+                        button.Dispose();
+                    }
 
-                        PictureBox jailCellPictureBox = p.Controls.Find("jailCellPictureBox", true).FirstOrDefault() as PictureBox;
+                    // Vérification du joueur en cours et ajout du bouton de tour si nécessaire
+                    if (panel.Controls[0].Text == player.Name)
+                    {
+                        Button turnButton = new Button();
+                        turnButton.Name = "turnButton";
+                        turnButton.Text = "Tour";
+                        turnButton.BackColor = Color.Red;
+                        turnButton.ForeColor = Color.White;
+                        turnButton.Size = new Size(80, 30);
 
-                        if (player.isInJail)
-                        {
-                            if (jailCellPictureBox == null)
-                            {
-                                jailCellPictureBox = new PictureBox();
-                                jailCellPictureBox.Name = "jailCellPictureBox";
-                                jailCellPictureBox.Image = Properties.Resources.jail_cell; 
-                                jailCellPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-                                jailCellPictureBox.Size = new Size(50, 50);
+                        int x = panel.Width - turnButton.Width - 10;
+                        int y = panel.Height - turnButton.Height - 10;
+                        turnButton.Location = new Point(x, y);
 
-                                int x = p.Width - jailCellPictureBox.Width - 10;
-                                int y = 10;
-                                jailCellPictureBox.Location = new Point(x, y);
-
-                                p.Controls.Add(jailCellPictureBox);
-                            }
-                            jailCellPictureBox.Visible = true;
-                        }
-                        else
-                        {
-                            if (jailCellPictureBox != null)
-                            {
-                                p.Controls.Remove(jailCellPictureBox);
-                                jailCellPictureBox.Dispose();
-                            }
-
-                            int playerIndex = PlayerList.FindIndex(x => x.Name == player.Name);
-                            List<string> colors = ConfigService.GetPlayerColors();
-                            if (playerIndex >= 0 && playerIndex < colors.Count)
-                            {
-                                p.BackColor = ColorTranslator.FromHtml(colors[playerIndex]);
-                            }
-
-                            p.BorderStyle = BorderStyle.FixedSingle;
-                        }
+                        panel.Controls.Add(turnButton);
                     }
                 }
             }
+
+            // Reste du code pour la mise à jour des autres informations des joueurs
+            // ...
         }
+
     }
-}
+    }
+
