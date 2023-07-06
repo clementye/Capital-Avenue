@@ -179,11 +179,19 @@ namespace Capital_Avenue.Views
 
         public void BankruptAction()
         {
-            DialogResult result = MessageBox.Show($"{char.ToUpper(currentGame.PlayerList[currentGame.CurrentPlayer].Name[0]) + currentGame.PlayerList[currentGame.CurrentPlayer].Name.Substring(1)} are you sure you want to declare bankruptcy?", "Confirm Bankruptcy", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+            if (currentGame.PlayerList[currentGame.CurrentPlayer].Capital < 0)
             {
                 PlayBankruptSoundEffect();
                 currentGame.Bankruptcy();
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show($"{char.ToUpper(currentGame.PlayerList[currentGame.CurrentPlayer].Name[0]) + currentGame.PlayerList[currentGame.CurrentPlayer].Name.Substring(1)} are you sure you want to declare bankruptcy?", "Confirm Bankruptcy", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    PlayBankruptSoundEffect();
+                    currentGame.Bankruptcy();
+                }
             }
         }
 
