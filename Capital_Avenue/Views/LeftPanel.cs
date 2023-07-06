@@ -1,12 +1,4 @@
-﻿using Capital_Avenue.Models;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Text;
 
 namespace Capital_Avenue.Views
 {
@@ -52,7 +44,7 @@ namespace Capital_Avenue.Views
             l3.Location = new Point(0, 60);
             p1.Controls.Add(l3);
 
-            Button propertiesButton = new Button(); 
+            Button propertiesButton = new Button();
             propertiesButton.Text = "Properties";
             propertiesButton.Size = new Size(90, 40);
             propertiesButton.Location = new Point(0, 85);
@@ -89,6 +81,17 @@ namespace Capital_Avenue.Views
             MessageBox.Show(propertiesList.ToString(), "Player Properties");
         }
 
+        private void InitializeComponent()
+        {
+            SuspendLayout();
+            // 
+            // LeftPanel
+            // 
+            BackgroundImageLayout = ImageLayout.Stretch;
+            Name = "LeftPanel";
+            ResumeLayout(false);
+        }
+
         public void UpdatePlayerUC(Player player)
         {
             foreach (UserControl uc in this.Controls)
@@ -108,7 +111,7 @@ namespace Capital_Avenue.Views
                             {
                                 jailCellPictureBox = new PictureBox();
                                 jailCellPictureBox.Name = "jailCellPictureBox";
-                                jailCellPictureBox.Image = Properties.Resources.jail_cell; 
+                                jailCellPictureBox.Image = Properties.Resources.jail_cell;
                                 jailCellPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
                                 jailCellPictureBox.Size = new Size(50, 50);
 

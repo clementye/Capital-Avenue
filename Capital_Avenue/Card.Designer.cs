@@ -42,9 +42,9 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.Coral;
-            pictureBox1.Location = new Point(79, 63);
+            pictureBox1.Location = new Point(51, 63);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(157, 206);
+            pictureBox1.Size = new Size(161, 234);
             pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -53,9 +53,9 @@
             // 
             button1.BackColor = Color.Coral;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Location = new Point(274, 224);
+            button1.Location = new Point(240, 233);
             button1.Name = "button1";
-            button1.Size = new Size(118, 33);
+            button1.Size = new Size(106, 34);
             button1.TabIndex = 1;
             button1.Text = "ok";
             button1.UseVisualStyleBackColor = false;
@@ -64,9 +64,9 @@
             // pictureBox2
             // 
             pictureBox2.BackColor = Color.Coral;
-            pictureBox2.Location = new Point(79, 63);
+            pictureBox2.Location = new Point(51, 63);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(392, 206);
+            pictureBox2.Size = new Size(420, 234);
             pictureBox2.TabIndex = 2;
             pictureBox2.TabStop = false;
             // 
@@ -75,7 +75,7 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Coral;
             label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(242, 141);
+            label1.Location = new Point(254, 116);
             label1.Name = "label1";
             label1.Size = new Size(59, 23);
             label1.TabIndex = 3;
@@ -86,7 +86,7 @@
             pictureBox3.BackColor = Color.Coral;
             pictureBox3.Location = new Point(12, 9);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(508, 280);
+            pictureBox3.Size = new Size(560, 306);
             pictureBox3.TabIndex = 4;
             pictureBox3.TabStop = false;
             // 

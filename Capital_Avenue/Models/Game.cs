@@ -1,12 +1,5 @@
 ﻿using Capital_Avenue.Views;
 using Capital_Avenue.Views.Board;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Capital_Avenue.Models
 {

@@ -1,17 +1,6 @@
 using Capital_Avenue.Models;
 using Capital_Avenue.Services;
 using Capital_Avenue.Views.Auction;
-using Capital_Avenue.Views.Board;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Design;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Capital_Avenue.Views
 {
