@@ -26,8 +26,8 @@ namespace Capital_Avenue
 
         private void CAWindow_Load(object sender, EventArgs e)
         {
-            //this.TopMost = true;
-            //this.FormBorderStyle = FormBorderStyle.None; // Activate only during presentation
+            this.TopMost = true;
+            this.FormBorderStyle = FormBorderStyle.None; // Activate only during presentation
             this.WindowState = FormWindowState.Maximized;
             int x = (Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2;
             int y = (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2;

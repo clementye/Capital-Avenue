@@ -81,7 +81,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.BackColor = Color.WhiteSmoke;
+            pictureBox1.BackColor = Color.Transparent;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(318, -68);
             pictureBox1.Name = "pictureBox1";

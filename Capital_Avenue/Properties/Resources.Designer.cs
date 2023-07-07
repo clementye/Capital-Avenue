@@ -61,16 +61,7 @@ namespace Capital_Avenue.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream bankrupt_sound {
-            get {
-                return ResourceManager.GetStream("bankrupt_sound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Back {
             get {
@@ -99,6 +90,15 @@ namespace Capital_Avenue.Properties {
         }
         
         /// <summary>
+        ///   Recherche une ressource localisée de type System.IO.UnmanagedMemoryStream semblable à System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream bankrupt_sound {
+            get {
+                return ResourceManager.GetStream("bankrupt_sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap bankruptcy {
@@ -109,20 +109,30 @@ namespace Capital_Avenue.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream card {
-            get {
-                return ResourceManager.GetStream("card", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Recherche une ressource localisée de type System.IO.UnmanagedMemoryStream semblable à System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream button_sound {
             get {
                 return ResourceManager.GetStream("button_sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Capital_avenue {
+            get {
+                object obj = ResourceManager.GetObject("Capital_avenue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.IO.UnmanagedMemoryStream semblable à System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream card {
+            get {
+                return ResourceManager.GetStream("card", resourceCulture);
             }
         }
         
@@ -547,7 +557,7 @@ namespace Capital_Avenue.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        ///   Recherche une ressource localisée de type System.IO.UnmanagedMemoryStream semblable à System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream close {
             get {
@@ -556,7 +566,7 @@ namespace Capital_Avenue.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Diamant {
             get {
@@ -636,7 +646,7 @@ namespace Capital_Avenue.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        ///   Recherche une ressource localisée de type System.IO.UnmanagedMemoryStream semblable à System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream dice_throw {
             get {
@@ -645,7 +655,7 @@ namespace Capital_Avenue.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Emojy {
             get {
@@ -765,25 +775,6 @@ namespace Capital_Avenue.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream police {
-            get {
-                return ResourceManager.GetStream("police", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream tax {
-            get {
-                return ResourceManager.GetStream("tax", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap MicrosoftTeams_image__7_ {
@@ -820,6 +811,15 @@ namespace Capital_Avenue.Properties {
             get {
                 object obj = ResourceManager.GetObject("option_normal", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.IO.UnmanagedMemoryStream semblable à System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream police {
+            get {
+                return ResourceManager.GetStream("police", resourceCulture);
             }
         }
         
@@ -874,6 +874,15 @@ namespace Capital_Avenue.Properties {
         }
         
         /// <summary>
+        ///   Recherche une ressource localisée de type System.IO.UnmanagedMemoryStream semblable à System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream tax {
+            get {
+                return ResourceManager.GetStream("tax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Voiture1 {
@@ -884,7 +893,7 @@ namespace Capital_Avenue.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        ///   Recherche une ressource localisée de type System.IO.UnmanagedMemoryStream semblable à System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream winner_sound {
             get {
