@@ -14,7 +14,7 @@
         public int PriceHostel { get; set; }
         public bool IsInBank;
 
-        public Player Owner { get; set; }
+        public Player? Owner { get; set; }
       
         public Property(int index, string name, ColorProperty groupe, Color color, int prix, int loyer, int PriceOneHome, int PriceTwoHome, int PriceThreeHome,int PriceFourHome, int PriceHostel) : base(index, name)
         {

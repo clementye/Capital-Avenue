@@ -49,6 +49,11 @@ namespace Capital_Avenue.Views
             this.Size = new Size(250, 130);
         }
 
+        private void InitializeComponent()
+        {
+
+        }
+
         public void ImageShow(int playerIndex)
         {
             Image[] images = ConfigService.GetPlayerImages();

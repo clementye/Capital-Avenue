@@ -9,12 +9,14 @@ namespace Capital_Avenue.Views
         /*ImageList ImgList;
         ListView ListView;*/
         CheckedListBox PropertiesBox;
-        public void SMABox(Player player, string action) // string action is for what is the player doing
+        Game GM;
+        public void SMABox(Player player, string action, Game gm) // string action is for what is the player doing
         {
             InitializeComponent();
             this.currentPlayer = player;
             this.Size = new Size(300, 500);
             this.Location = new Point(250, 150);
+            this.GM = gm;
             switch (action)
             {
                 case "Sell":
@@ -118,6 +120,7 @@ namespace Capital_Avenue.Views
                 currentPlayer.Capital += FoundProperty.Price / 2;
             }
             currentPlayer.OwnedProperties.RemoveAll(p3 => p3.Owner == null);
+            GM.ChangeOwnerShow();
             this.Close();
         }
 

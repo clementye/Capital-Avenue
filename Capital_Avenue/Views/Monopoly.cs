@@ -153,7 +153,7 @@ namespace Capital_Avenue.Views
                 this.BankruptAction();
             }
             UCLeftPanel.UpdatePlayerUC(currentGame.PlayerList[currentGame.CurrentPlayer]);
-            this.ChangeOwnerShow();
+            currentGame.ChangeOwnerShow();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -180,7 +180,7 @@ namespace Capital_Avenue.Views
             this.BankruptAction();
             currentPlayerName.Text = currentGame.PlayerList[currentGame.CurrentPlayer].Name;
             UCLeftPanel.UpdatePlayerUC(currentGame.PlayerList[currentGame.CurrentPlayer]);
-            this.ChangeOwnerShow();
+            currentGame.ChangeOwnerShow();
         }
 
         public void BankruptAction()
@@ -219,9 +219,9 @@ namespace Capital_Avenue.Views
         {
             SellMortgage SMA = new SellMortgage();
             string Action = "Sell";
-            SMA.SMABox(currentGame.PlayerList[currentGame.CurrentPlayer], Action);
+            SMA.SMABox(currentGame.PlayerList[currentGame.CurrentPlayer], Action, currentGame);
             SMA.ShowDialog();
-            this.ChangeOwnerShow();
+            
         }
 
         private void AuctionButton_Click(object sender, EventArgs e)
@@ -230,7 +230,7 @@ namespace Capital_Avenue.Views
             AuctionChoice.OPABox(currentGame.PlayerList[currentGame.CurrentPlayer], currentGame.PlayerList);
             AuctionChoice.ShowDialog();
             currentPlayerName.Text = currentGame.PlayerList[currentGame.CurrentPlayer].Name;
-            this.ChangeOwnerShow();
+            currentGame.ChangeOwnerShow();
         }
         private void quitButton_Click(object sender, EventArgs e)
         {
@@ -254,18 +254,6 @@ namespace Capital_Avenue.Views
             catch (Exception ex)
             {
                 Console.WriteLine("Error playing door sound effect: " + ex.Message);
-            }
-        }
-
-        private void ChangeOwnerShow()
-        {
-            foreach (ProOwned PO in ucBoard1.CaseOwner)
-            {
-                foreach (Property P in currentGame.PlayerList[currentGame.CurrentPlayer].OwnedProperties)
-                {
-                    PO.UpdateShow(currentGame.PlayerList[currentGame.CurrentPlayer], P, currentGame.PlayerList);
-
-                }
             }
         }
     }

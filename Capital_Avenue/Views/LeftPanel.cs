@@ -91,6 +91,7 @@ namespace Capital_Avenue.Views
             // 
             BackColor = Color.Transparent;
             BackgroundImageLayout = ImageLayout.Stretch;
+            DoubleBuffered = true;
             Name = "LeftPanel";
             ResumeLayout(false);
         }

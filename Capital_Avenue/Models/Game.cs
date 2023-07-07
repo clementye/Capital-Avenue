@@ -181,11 +181,24 @@ namespace Capital_Avenue.Models
                     currentPlayer.Capital = 0;
                     SellMortgage SMA = new SellMortgage();
                     string Action = "Sell";
-                    SMA.SMABox(currentPlayer, Action);
+                    SMA.SMABox(currentPlayer, Action, this);
                     SMA.ShowDialog();
                 }
             }
             EndTurn();
+        }
+        public void ChangeOwnerShow()
+        {
+            foreach (ProOwned PO in GameBoard.CaseOwner)
+            {
+                foreach (Player pla in PlayerList)
+                {
+                    foreach (Property P in pla.OwnedProperties)
+                    {
+                        PO.UpdateShow(P, PlayerList);
+                    }
+                }
+            }
         }
     }
 }
